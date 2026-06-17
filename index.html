@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal Portfolio - Design Works">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <title>Wilton Wei | Portfolio</title>
+
+  <!-- Google Fonts: Playfair Display (serif headings) + Inter (sans-serif body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================ -->
+  <!-- 🎞️ FILM GRAIN NOISE OVERLAY                  -->
+  <!-- ============================================ -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ============================================ -->
+  <!-- 🖱️ CUSTOM CURSOR ELEMENTS                    -->
+  <!-- ============================================ -->
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-follower" aria-hidden="true">
+    <span class="cursor-label">View</span>
+  </div>
+
+  <!-- Hover preview image (follows cursor on project cards) -->
+  <div class="hover-preview" id="hoverPreview">
+    <img src="" alt="" id="hoverPreviewImg">
+    <video src="" muted loop playsinline id="hoverPreviewVideo"></video>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 🧭 NAVIGATION                                -->
+  <!-- ============================================ -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-logo">WILTON PORTFOLIO</a>
+    <ul class="nav-links">
+      <li><a href="#works" class="nav-link">Works</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="韦毅韬-UXUI方向简历.pdf" class="nav-link nav-link--btn" target="_blank">Resume</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- ✨ HERO SECTION                              -->
+  <!-- 👋 EDIT: Change the text between <h1> tags   -->
+  <!--    to your own name and title.               -->
+  <!-- ============================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-glow" id="heroGlow"></div>
+    <!-- Antigravity particle canvas -->
+    <canvas class="antigravity-canvas" id="antigravityCanvas" aria-hidden="true"></canvas>
+    <!-- Floating geometric fragments -->
+    <div class="hero-fragments" id="heroFragments" aria-hidden="true">
+      <span class="fragment fragment--circle"  data-depth="0.7" style="top:12%; left:8%;"></span>
+      <span class="fragment fragment--dot"     data-depth="0.4" style="top:18%; right:10%;"></span>
+      <span class="fragment fragment--line-h"  data-depth="0.9" style="bottom:28%; left:6%;"></span>
+      <span class="fragment fragment--cross"   data-depth="0.5" style="top:65%; right:14%;"></span>
+      <span class="fragment fragment--circle"  data-depth="0.3" style="bottom:30%; right:8%;"></span>
+      <span class="fragment fragment--line-v"  data-depth="0.7" style="top:8%; left:50%;"></span>
+      <span class="fragment fragment--dot"     data-depth="0.5" style="bottom:22%; left:14%;"></span>
+      <span class="fragment fragment--line-h"  data-depth="0.6" style="top:38%; right:7%;"></span>
+      <span class="fragment fragment--ring"    data-depth="0.4" style="top:50%; left:16%;"></span>
+      <span class="fragment fragment--dot"     data-depth="0.8" style="top:28%; right:20%;"></span>
+      <span class="fragment fragment--line-v"  data-depth="0.5" style="bottom:35%; right:16%;"></span>
+      <span class="fragment fragment--cross"   data-depth="0.3" style="bottom:18%; left:22%;"></span>
+      <span class="fragment fragment--circle"  data-depth="0.6" style="top:75%; left:7%;"></span>
+      <span class="fragment fragment--ring"    data-depth="0.4" style="top:15%; right:28%;"></span>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-name">
+        <span class="hero-line accent">WILTON</span>
+      </h1>
+      <p class="hero-subtitle">韦毅韬 · UX/UI Designer</p>
+      <p class="hero-tagline">Designing intuitive experiences for emerging technology.</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 🖼️ WORKS / PROJECTS GALLERY                  -->
+  <!-- 👋 EDIT: To add a project, copy one card     -->
+  <!--    block (<div class="work-card">...</div>)  -->
+  <!--    and change:                               -->
+  <!--     - src="" to your image path              -->
+  <!--     - <h3> text to project title             -->
+  <!--     - <span> text to project category        -->
+  <!--    Images go in: assets/images/              -->
+  <!-- ============================================ -->
+  <section class="works" id="works">
+    <h2 class="section-heading">Selected Works</h2>
+
+    <div class="works-grid">
+
+      <!-- PROJECT CARD 1 -->
+      <article class="work-card work-card--link" data-category="APP UI/UX Design" data-hover-img="assets/images/Neva Bank2.png" onclick="location.href='projects/neva-bank.html'">
+        <div class="work-card-image">
+          <img src="assets/images/Neva Bank2.png" alt="Neva Bank" class="work-img">
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-text">
+            <span class="work-card-category">APP UI/UX Design</span>
+            <h3 class="work-card-title">Neva Bank</h3>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT CARD 2 -->
+      <article class="work-card work-card--link" data-category="Dashboard Design" data-hover-img="assets/images/智投平台封面.png" onclick="location.href='projects/smart-adspro.html'">
+        <div class="work-card-image">
+          <img src="assets/images/智投平台封面.png" alt="Smart AdsPro" class="work-img">
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-text">
+            <span class="work-card-category">Dashboard Design</span>
+            <h3 class="work-card-title">Smart AdsPro</h3>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT CARD 3 -->
+      <article class="work-card work-card--link" data-category="APP UI/UX Design" data-hover-img="assets/images/chill封面.png" onclick="location.href='projects/chillmanner.html'">
+        <div class="work-card-image">
+          <img src="assets/images/chill封面.png" alt="Chill Manner" class="work-img">
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-text">
+            <span class="work-card-category">APP UI/UX Design</span>
+            <h3 class="work-card-title">Chill Manner</h3>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT CARD 4 -->
+      <article class="work-card work-card--link" data-category="Web UI/UX Design" data-hover-img="assets/images/directall封面.png" onclick="location.href='projects/directall.html'">
+        <div class="work-card-image">
+          <img src="assets/images/directall封面.png" alt="DirectAll" class="work-img">
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-text">
+            <span class="work-card-category">Web UI/UX Design</span>
+            <h3 class="work-card-title">DirectAll</h3>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT CARD 5 -->
+      <article class="work-card work-card--link" data-category="APP UI/UX Design" data-hover-img="assets/images/爪爪封面.png" onclick="location.href='projects/paw-journey.html'">
+        <div class="work-card-image">
+          <img src="assets/images/爪爪封面.png" alt="爪爪奇妙之旅" class="work-img">
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-text">
+            <span class="work-card-category">APP UI/UX Design</span>
+            <h3 class="work-card-title">爪爪奇妙之旅</h3>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT CARD 6 — Large -->
+      <article class="work-card" data-category="Web Design" data-hover-img="assets/images/work-6.svg">
+        <div class="work-card-image">
+          <img src="assets/images/work-6.svg" alt="Architecture Studio" class="work-img">
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-text">
+            <span class="work-card-category">Web Design</span>
+            <h3 class="work-card-title">Architecture Studio</h3>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 👤 ABOUT SECTION                             -->
+  <!-- 👋 EDIT: Change the text in <p> tags to     -->
+  <!--    your own bio and description.             -->
+  <!--    Replace the placeholder with your photo.  -->
+  <!-- ============================================ -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-image-wrapper">
+        <div class="about-image">
+          <img src="assets/images/about.png" alt="Wilton Wei">
+        </div>
+        <div class="about-watermark">W</div>
+      </div>
+      <div class="about-text">
+        <h2 class="section-heading">About Me</h2>
+        <div class="about-rule"></div>
+        <p class="about-body">你好，我是韦毅韬（Wilton），一名UI/UX设计师，毕业于香港岭南大学艺术科技与商业（ATB）硕士项目。商科与设计的跨学科背景让我在产品设计过程中兼顾用户体验与商业逻辑，从策略到落地关注每一个细节。</p>
+        <p class="about-body">目前我深耕于UI/UX设计领域，同时研习Vibe Coding，探索用AI加速创作流程。生活中我热衷摄影，追求构图与光线的秩序感。我相信好的设计不追求复杂技法，而是恰如其分地解决问题。</p>
+        <div class="about-services">
+          <span class="service-tag">UI/UX Design</span>
+          <span class="service-tag">Vibe Coding</span>
+          <span class="service-tag">Photography</span>
+          <span class="service-tag">AI Creator</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ✉️ CONTACT / FOOTER                          -->
+  <!-- 👋 EDIT: Change the social links in the     -->
+  <!--    CONFIG section at the top of script.js    -->
+  <!-- ============================================ -->
+  <section class="contact" id="contact">
+    <h2 class="contact-heading">Let's Work<br>Together</h2>
+    <div class="contact-links">
+      <a href="mailto:weiyitao2023@outlook.com" class="contact-link magnetic" data-type="email">
+        <span class="contact-link-label">Email</span>
+        <span class="contact-link-value">weiyitao2023@outlook.com</span>
+      </a>
+      <a href="tel:+8619924115435" class="contact-link magnetic" data-type="phone">
+        <span class="contact-link-label">Phone</span>
+        <span class="contact-link-value">+86 199-2411-5435</span>
+      </a>
+      <a href="#" class="contact-link magnetic" data-type="wechat" onclick="navigator.clipboard.writeText('19924115435'); alert('微信已复制：19924115435')">
+        <span class="contact-link-label">WeChat</span>
+        <span class="contact-link-value">19924115435</span>
+      </a>
+    </div>
+    <footer class="footer">
+      <p>&copy; 2026 Wilton Wei. All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 📜 SCRIPTS (CDN + Custom)                    -->
+  <!-- ============================================ -->
+  <!-- GSAP Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- GSAP ScrollTrigger Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>

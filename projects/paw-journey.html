@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爪爪奇妙之旅 — Wilton Wei</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="project.css">
+</head>
+<body class="project-page page-paw">
+
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <nav class="nav scrolled">
+    <a href="../index.html" class="nav-logo">WILTON PORTFOLIO</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#works" class="nav-link">Works</a></li>
+      <li><a href="../index.html#about" class="nav-link">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- 🐼 HERO — 爪爪奇妙之旅                         -->
+  <!-- ============================================ -->
+  <section class="paw-hero" id="pawHero">
+
+    <!-- World Map Background -->
+    <div class="paw-map" data-depth="0.03">
+      <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <path d="M180,180 C220,140 320,100 380,110 C440,120 480,160 500,200 C520,240 510,300 490,350 C470,400 420,430 360,440 C300,450 250,420 220,380 C190,340 160,280 150,230 Z" fill="rgba(139,196,176,0.12)" stroke="rgba(139,196,176,0.25)" stroke-width="1"/>
+        <path d="M300,480 C340,460 380,470 400,500 C420,530 410,600 380,660 C350,720 310,760 280,750 C250,740 240,690 250,630 C260,570 270,520 280,490 Z" fill="rgba(139,196,176,0.10)" stroke="rgba(139,196,176,0.22)" stroke-width="1"/>
+        <path d="M620,140 C660,120 720,110 760,130 C800,150 830,180 840,220 C850,260 830,300 800,320 C770,340 720,330 680,310 C640,290 610,250 600,200 Z" fill="rgba(139,196,176,0.12)" stroke="rgba(139,196,176,0.25)" stroke-width="1"/>
+        <path d="M650,340 C690,330 740,340 770,370 C800,400 810,460 790,540 C770,620 730,680 680,700 C630,720 600,680 590,620 C580,560 590,480 610,410 Z" fill="rgba(139,196,176,0.10)" stroke="rgba(139,196,176,0.22)" stroke-width="1"/>
+        <path d="M820,100 C900,70 1000,50 1100,60 C1200,70 1300,100 1350,160 C1400,220 1380,300 1320,360 C1260,420 1180,400 1100,380 C1020,360 940,350 880,320 C820,290 780,240 770,180 Z" fill="rgba(139,196,176,0.12)" stroke="rgba(139,196,176,0.25)" stroke-width="1"/>
+        <path d="M1120,520 C1160,500 1220,500 1260,520 C1300,540 1300,580 1270,600 C1240,620 1180,620 1140,600 C1100,580 1080,550 1100,530 Z" fill="rgba(139,196,176,0.10)" stroke="rgba(139,196,176,0.22)" stroke-width="1"/>
+        <path d="M1050,380 C1080,370 1120,380 1130,400 C1130,420 1100,440 1070,440 C1040,440 1020,420 1030,400 Z" fill="rgba(139,196,176,0.09)" stroke="rgba(139,196,176,0.20)" stroke-width="1"/>
+        <path d="M1080,420 C1100,415 1120,420 1125,435 C1120,450 1095,455 1075,450 C1060,445 1060,430 1080,420 Z" fill="rgba(139,196,176,0.08)" stroke="rgba(139,196,176,0.18)" stroke-width="1"/>
+        <path d="M1280,200 C1295,190 1305,210 1300,240 C1295,270 1280,280 1275,260 C1270,240 1270,215 1280,200 Z" fill="rgba(139,196,176,0.10)" stroke="rgba(139,196,176,0.20)" stroke-width="1"/>
+        <path d="M400,100 C430,80 460,90 470,120 C480,150 460,170 430,170 C400,170 380,150 380,130 Z" fill="rgba(139,196,176,0.09)" stroke="rgba(139,196,176,0.18)" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <!-- Map Location Pins (pulse animation) -->
+    <div class="paw-pins" data-depth="0.06">
+      <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <circle cx="1285" cy="215" r="4" fill="#FF7B6B" opacity="0.7">
+          <animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.7;0.4;0.7" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="1060" cy="270" r="4" fill="#FF7B6B" opacity="0.7">
+          <animate attributeName="r" values="4;6;4" dur="2.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.7;0.4;0.7" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="800" cy="155" r="3.5" fill="#FF7B6B" opacity="0.6">
+          <animate attributeName="r" values="3.5;5.5;3.5" dur="3.6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.6;0.3;0.6" dur="3.6s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="1080" cy="400" r="3.5" fill="#FF7B6B" opacity="0.6">
+          <animate attributeName="r" values="3.5;5.5;3.5" dur="3.2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.6;0.3;0.6" dur="3.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="670" cy="155" r="3.5" fill="#FF7B6B" opacity="0.6">
+          <animate attributeName="r" values="3.5;5.5;3.5" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.6;0.3;0.6" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="440" cy="210" r="3.5" fill="#FF7B6B" opacity="0.5">
+          <animate attributeName="r" values="3.5;5.5;3.5" dur="3.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.5;0.25;0.5" dur="3.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="350" cy="200" r="3.5" fill="#FF7B6B" opacity="0.5">
+          <animate attributeName="r" values="3.5;5.5;3.5" dur="3.3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.5;0.25;0.5" dur="3.3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="1240" cy="540" r="4" fill="#FF7B6B" opacity="0.7">
+          <animate attributeName="r" values="4;6;4" dur="3.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.7;0.4;0.7" dur="3.5s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+
+    <!-- Vintage Travel Journal — Animated Flight Routes -->
+    <div class="paw-planes" data-depth="0.055" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <!-- ── Vintage propeller airliner (top-down, pointing right) ── -->
+          <g id="vintage-plane">
+            <g transform="scale(0.65)">
+              <!-- Soft ground shadow -->
+              <ellipse cx="-1" cy="7" rx="16" ry="3" fill="rgba(139,115,85,0.06)"/>
+              <!-- Fuselage -->
+              <path d="M-20,-3.5 L16,-3.5 Q22,-3.5 26,0 Q22,3.5 16,3.5 L-20,3.5 Q-26,3.5 -28,0 Q-26,-3.5 -20,-3.5 Z"
+                    fill="#FBF7F0" stroke="#8B7355" stroke-width="0.8" stroke-linejoin="round"/>
+              <!-- Cockpit windshield (subtle arc) -->
+              <path d="M18,-2.5 Q22,0 18,2.5" fill="none" stroke="#8B7355" stroke-width="0.5" opacity="0.6"/>
+              <!-- Left wing (straight, tapered) -->
+              <path d="M-3,-3 L-5,-22 L3,-22 L6,-3 Z"
+                    fill="#FBF7F0" stroke="#8B7355" stroke-width="0.7" stroke-linejoin="round"/>
+              <!-- Right wing -->
+              <path d="M-3,3 L-5,22 L3,22 L6,3 Z"
+                    fill="#FBF7F0" stroke="#8B7355" stroke-width="0.7" stroke-linejoin="round"/>
+              <!-- Left engine nacelle -->
+              <ellipse cx="-1" cy="-13" rx="4" ry="2.2" fill="#FBF7F0" stroke="#8B7355" stroke-width="0.6"/>
+              <circle cx="-1" cy="-13" r="1.2" fill="#8B7355" opacity="0.25"/>
+              <!-- Right engine nacelle -->
+              <ellipse cx="-1" cy="13" rx="4" ry="2.2" fill="#FBF7F0" stroke="#8B7355" stroke-width="0.6"/>
+              <circle cx="-1" cy="13" r="1.2" fill="#8B7355" opacity="0.2"/>
+              <!-- Horizontal stabilizer (tail wings) -->
+              <path d="M-18,-2.5 L-26,-8 L-22,-2.5 Z" fill="#FBF7F0" stroke="#8B7355" stroke-width="0.6" stroke-linejoin="round"/>
+              <path d="M-18,2.5 L-26,8 L-22,2.5 Z" fill="#FBF7F0" stroke="#8B7355" stroke-width="0.6" stroke-linejoin="round"/>
+              <!-- Vertical stabilizer (tail fin, top-down as center line) -->
+              <line x1="-22" y1="0" x2="-28" y2="0" stroke="#8B7355" stroke-width="1" stroke-linecap="round"/>
+              <!-- Cabin windows -->
+              <circle cx="-14" cy="-0.7" r="0.55" fill="#8B7355" opacity="0.5"/>
+              <circle cx="-10" cy="-0.7" r="0.55" fill="#8B7355" opacity="0.5"/>
+              <circle cx="-6"  cy="-0.7" r="0.55" fill="#8B7355" opacity="0.5"/>
+              <circle cx="-2"  cy="-0.7" r="0.55" fill="#8B7355" opacity="0.5"/>
+              <circle cx="2"   cy="-0.7" r="0.55" fill="#8B7355" opacity="0.5"/>
+              <circle cx="6"   cy="-0.7" r="0.55" fill="#8B7355" opacity="0.5"/>
+              <circle cx="10"  cy="-0.7" r="0.55" fill="#8B7355" opacity="0.5"/>
+              <circle cx="14"  cy="-0.7" r="0.55" fill="#8B7355" opacity="0.4"/>
+            </g>
+          </g>
+
+          <!-- ── Airplane + exhaust trail ── -->
+          <g id="vintage-plane-trail">
+            <circle cx="-34" cy="0" r="1.2" fill="#C4754A" opacity="0.22"/>
+            <circle cx="-40" cy="0" r="0.9" fill="#C4754A" opacity="0.14"/>
+            <circle cx="-46" cy="0" r="0.6" fill="#C4754A" opacity="0.08"/>
+            <circle cx="-52" cy="0" r="0.4" fill="#C4754A" opacity="0.04"/>
+            <use href="#vintage-plane"/>
+          </g>
+
+          <!-- ── Location pin marker ── -->
+          <g id="pin">
+            <circle cx="0" cy="0" r="3" fill="#E1522A" opacity="0.55"/>
+            <circle cx="0" cy="0" r="1.2" fill="white" opacity="0.7"/>
+          </g>
+
+          <!-- ── Passport stamp accent ── -->
+          <g id="stamp">
+            <circle cx="0" cy="0" r="9" fill="none" stroke="#C4754A" stroke-width="0.7" opacity="0.35"
+                    transform="rotate(-8)"/>
+            <circle cx="0" cy="0" r="7" fill="none" stroke="#C4754A" stroke-width="0.4" opacity="0.25"
+                    transform="rotate(-8)"/>
+            <text x="0" y="1.8" text-anchor="middle" font-size="3.5" fill="#C4754A" opacity="0.3"
+                  transform="rotate(-8)">✈</text>
+          </g>
+        </defs>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- ROUTE 1: Tokyo → Beijing (East Asia)      -->
+        <!-- ═══════════════════════════════════════════ -->
+        <g>
+          <path d="M1285,215 C1220,225 1140,255 1060,270"
+                fill="none" stroke="#C4A882" stroke-width="1.2"
+                stroke-dasharray="6 4" stroke-linecap="round"
+                stroke-dashoffset="280" opacity="0.6">
+            <animate attributeName="stroke-dashoffset" from="280" to="0"
+                     dur="12s" repeatCount="indefinite"/>
+          </path>
+          <use href="#stamp" x="1170" y="242"/>
+          <g>
+            <animateMotion dur="12s" repeatCount="indefinite"
+                           path="M1285,215 C1220,225 1140,255 1060,270" rotate="auto"/>
+            <g>
+              <animateTransform attributeName="transform" type="translate"
+                                values="0,0; 0,-2.5; 0,0; 0,2.5; 0,0"
+                                dur="3.5s" repeatCount="indefinite"/>
+              <use href="#vintage-plane-trail"/>
+            </g>
+          </g>
+        </g>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- ROUTE 2: Beijing → Singapore (Asia south)  -->
+        <!-- ═══════════════════════════════════════════ -->
+        <g>
+          <path d="M1060,270 C1070,320 1080,360 1080,400"
+                fill="none" stroke="#C4A882" stroke-width="1.2"
+                stroke-dasharray="6 4" stroke-linecap="round"
+                stroke-dashoffset="180" opacity="0.6">
+            <animate attributeName="stroke-dashoffset" from="180" to="0"
+                     dur="10s" repeatCount="indefinite"/>
+          </path>
+          <g>
+            <animateMotion dur="10s" repeatCount="indefinite" begin="-3s"
+                           path="M1060,270 C1070,320 1080,360 1080,400" rotate="auto"/>
+            <g>
+              <animateTransform attributeName="transform" type="translate"
+                                values="0,0; 0,-2; 0,0; 0,2; 0,0"
+                                dur="3.2s" repeatCount="indefinite"/>
+              <use href="#vintage-plane-trail"/>
+            </g>
+          </g>
+        </g>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- ROUTE 3: London → New York (transatlantic) -->
+        <!-- ═══════════════════════════════════════════ -->
+        <g>
+          <path d="M670,155 C600,170 500,195 440,210"
+                fill="none" stroke="#C4A882" stroke-width="1.2"
+                stroke-dasharray="6 4" stroke-linecap="round"
+                stroke-dashoffset="280" opacity="0.6">
+            <animate attributeName="stroke-dashoffset" from="280" to="0"
+                     dur="15s" repeatCount="indefinite"/>
+          </path>
+          <use href="#stamp" x="555" y="182"/>
+          <g>
+            <animateMotion dur="15s" repeatCount="indefinite" begin="-10s"
+                           path="M670,155 C600,170 500,195 440,210" rotate="auto"/>
+            <g>
+              <animateTransform attributeName="transform" type="translate"
+                                values="0,0; 0,-2.5; 0,0; 0,2.5; 0,0"
+                                dur="3.8s" repeatCount="indefinite"/>
+              <use href="#vintage-plane-trail"/>
+            </g>
+          </g>
+        </g>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- ROUTE 4: New York → Sydney (transpacific)  -->
+        <!-- ═══════════════════════════════════════════ -->
+        <g>
+          <path d="M440,215 C500,380 800,560 1240,540"
+                fill="none" stroke="#C4A882" stroke-width="1.2"
+                stroke-dasharray="6 4" stroke-linecap="round"
+                stroke-dashoffset="900" opacity="0.6">
+            <animate attributeName="stroke-dashoffset" from="900" to="0"
+                     dur="24s" repeatCount="indefinite"/>
+          </path>
+          <use href="#stamp" x="820" y="390"/>
+          <g>
+            <animateMotion dur="24s" repeatCount="indefinite" begin="-14s"
+                           path="M440,215 C500,380 800,560 1240,540" rotate="auto"/>
+            <g>
+              <animateTransform attributeName="transform" type="translate"
+                                values="0,0; 0,-3; 0,0; 0,3; 0,0"
+                                dur="4.5s" repeatCount="indefinite"/>
+              <use href="#vintage-plane-trail"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Interactive City Markers -->
+    <div class="paw-markers" data-depth="0.048">
+      <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <!-- Glow filter -->
+          <filter id="marker-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Tokyo -->
+        <g class="paw-marker" transform="translate(1285, 215)">
+          <circle cx="0" cy="0" r="14" fill="transparent" class="marker-hit"/>
+          <circle cx="0" cy="0" r="2.5" fill="#E1522A" opacity="0.6" class="marker-dot"/>
+          <circle cx="0" cy="0" r="8" fill="#E1522A" opacity="0" class="marker-glow-circle"/>
+          <text x="10" y="-8" font-family="'Poppins','Noto Sans SC',sans-serif" font-size="8" font-weight="500"
+                fill="#5A7D6B" opacity="0" class="marker-label">Tokyo</text>
+          <text x="10" y="4" font-family="'Poppins',sans-serif" font-size="6.5" font-weight="300"
+                fill="#8BA89A" opacity="0" class="marker-coords">35.7°N 139.7°E</text>
+        </g>
+
+        <!-- Beijing -->
+        <g class="paw-marker" transform="translate(1060, 270)">
+          <circle cx="0" cy="0" r="14" fill="transparent" class="marker-hit"/>
+          <circle cx="0" cy="0" r="2.5" fill="#E1522A" opacity="0.6" class="marker-dot"/>
+          <circle cx="0" cy="0" r="8" fill="#E1522A" opacity="0" class="marker-glow-circle"/>
+          <text x="10" y="-8" font-family="'Poppins','Noto Sans SC',sans-serif" font-size="8" font-weight="500"
+                fill="#5A7D6B" opacity="0" class="marker-label">Beijing</text>
+          <text x="10" y="4" font-family="'Poppins',sans-serif" font-size="6.5" font-weight="300"
+                fill="#8BA89A" opacity="0" class="marker-coords">39.9°N 116.4°E</text>
+        </g>
+
+        <!-- Moscow -->
+        <g class="paw-marker" transform="translate(800, 155)">
+          <circle cx="0" cy="0" r="14" fill="transparent" class="marker-hit"/>
+          <circle cx="0" cy="0" r="2.5" fill="#E1522A" opacity="0.6" class="marker-dot"/>
+          <circle cx="0" cy="0" r="8" fill="#E1522A" opacity="0" class="marker-glow-circle"/>
+          <text x="10" y="-8" font-family="'Poppins','Noto Sans SC',sans-serif" font-size="8" font-weight="500"
+                fill="#5A7D6B" opacity="0" class="marker-label">Moscow</text>
+          <text x="10" y="4" font-family="'Poppins',sans-serif" font-size="6.5" font-weight="300"
+                fill="#8BA89A" opacity="0" class="marker-coords">55.8°N 37.6°E</text>
+        </g>
+
+        <!-- Singapore -->
+        <g class="paw-marker" transform="translate(1080, 400)">
+          <circle cx="0" cy="0" r="14" fill="transparent" class="marker-hit"/>
+          <circle cx="0" cy="0" r="2.5" fill="#E1522A" opacity="0.6" class="marker-dot"/>
+          <circle cx="0" cy="0" r="8" fill="#E1522A" opacity="0" class="marker-glow-circle"/>
+          <text x="10" y="-8" font-family="'Poppins','Noto Sans SC',sans-serif" font-size="8" font-weight="500"
+                fill="#5A7D6B" opacity="0" class="marker-label">Singapore</text>
+          <text x="10" y="4" font-family="'Poppins',sans-serif" font-size="6.5" font-weight="300"
+                fill="#8BA89A" opacity="0" class="marker-coords">1.3°N 103.8°E</text>
+        </g>
+
+        <!-- London -->
+        <g class="paw-marker" transform="translate(670, 155)">
+          <circle cx="0" cy="0" r="14" fill="transparent" class="marker-hit"/>
+          <circle cx="0" cy="0" r="2.5" fill="#E1522A" opacity="0.6" class="marker-dot"/>
+          <circle cx="0" cy="0" r="8" fill="#E1522A" opacity="0" class="marker-glow-circle"/>
+          <text x="10" y="-8" font-family="'Poppins','Noto Sans SC',sans-serif" font-size="8" font-weight="500"
+                fill="#5A7D6B" opacity="0" class="marker-label">London</text>
+          <text x="10" y="4" font-family="'Poppins',sans-serif" font-size="6.5" font-weight="300"
+                fill="#8BA89A" opacity="0" class="marker-coords">51.5°N 0.1°W</text>
+        </g>
+
+        <!-- New York -->
+        <g class="paw-marker" transform="translate(440, 210)">
+          <circle cx="0" cy="0" r="14" fill="transparent" class="marker-hit"/>
+          <circle cx="0" cy="0" r="2.5" fill="#E1522A" opacity="0.6" class="marker-dot"/>
+          <circle cx="0" cy="0" r="8" fill="#E1522A" opacity="0" class="marker-glow-circle"/>
+          <text x="10" y="-8" font-family="'Poppins','Noto Sans SC',sans-serif" font-size="8" font-weight="500"
+                fill="#5A7D6B" opacity="0" class="marker-label">New York</text>
+          <text x="10" y="4" font-family="'Poppins',sans-serif" font-size="6.5" font-weight="300"
+                fill="#8BA89A" opacity="0" class="marker-coords">40.7°N 74.0°W</text>
+        </g>
+
+        <!-- San Francisco -->
+        <g class="paw-marker" transform="translate(350, 200)">
+          <circle cx="0" cy="0" r="14" fill="transparent" class="marker-hit"/>
+          <circle cx="0" cy="0" r="2.5" fill="#E1522A" opacity="0.6" class="marker-dot"/>
+          <circle cx="0" cy="0" r="8" fill="#E1522A" opacity="0" class="marker-glow-circle"/>
+          <text x="10" y="-8" font-family="'Poppins','Noto Sans SC',sans-serif" font-size="8" font-weight="500"
+                fill="#5A7D6B" opacity="0" class="marker-label">San Francisco</text>
+          <text x="10" y="4" font-family="'Poppins',sans-serif" font-size="6.5" font-weight="300"
+                fill="#8BA89A" opacity="0" class="marker-coords">37.8°N 122.4°W</text>
+        </g>
+
+        <!-- Sydney -->
+        <g class="paw-marker" transform="translate(1240, 540)">
+          <circle cx="0" cy="0" r="14" fill="transparent" class="marker-hit"/>
+          <circle cx="0" cy="0" r="2.5" fill="#E1522A" opacity="0.6" class="marker-dot"/>
+          <circle cx="0" cy="0" r="8" fill="#E1522A" opacity="0" class="marker-glow-circle"/>
+          <text x="10" y="-8" font-family="'Poppins','Noto Sans SC',sans-serif" font-size="8" font-weight="500"
+                fill="#5A7D6B" opacity="0" class="marker-label">Sydney</text>
+          <text x="10" y="4" font-family="'Poppins',sans-serif" font-size="6.5" font-weight="300"
+                fill="#8BA89A" opacity="0" class="marker-coords">33.9°S 151.2°E</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Emoji Animal Avatars -->
+    <div class="paw-animals" data-depth="0.04" aria-hidden="true">
+      <span class="paw-animal" style="top:28%; left:72%;">🐼</span>
+      <span class="paw-animal" style="top:58%; left:84%;">🐨</span>
+      <span class="paw-animal" style="top:50%; left:48%;">🦁</span>
+      <span class="paw-animal" style="top:18%; left:50%;">🦊</span>
+      <span class="paw-animal" style="top:26%; left:28%;">🐻</span>
+    </div>
+
+    <!-- Floating Clouds -->
+    <div class="paw-clouds" aria-hidden="true">
+      <svg class="paw-cloud paw-cloud--1" viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40,60 Q40,45 55,40 Q60,25 80,25 Q100,10 120,25 Q140,20 150,35 Q170,35 170,55 Q175,70 155,70 L45,70 Q30,70 30,60 Z" fill="white" opacity="0.6"/>
+      </svg>
+      <svg class="paw-cloud paw-cloud--2" viewBox="0 0 140 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,45 Q30,30 45,28 Q50,15 70,15 Q85,5 105,18 Q120,15 130,30 Q140,30 140,45 Q142,55 130,55 L35,55 Q20,55 22,45 Z" fill="white" opacity="0.4"/>
+      </svg>
+      <svg class="paw-cloud paw-cloud--3" viewBox="0 0 160 70" xmlns="http://www.w3.org/2000/svg">
+        <path d="M35,52 Q35,38 50,35 Q55,22 75,22 Q95,8 115,22 Q130,18 140,30 Q155,30 155,50 Q158,60 145,60 L40,60 Q25,60 28,52 Z" fill="white" opacity="0.5"/>
+      </svg>
+      <svg class="paw-cloud paw-cloud--4" viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25,38 Q25,25 40,23 Q45,12 60,12 Q75,4 90,16 Q100,12 108,22 Q118,22 118,38 Q120,45 110,45 L28,45 Q18,45 20,38 Z" fill="white" opacity="0.35"/>
+      </svg>
+      <svg class="paw-cloud paw-cloud--5" viewBox="0 0 150 65" xmlns="http://www.w3.org/2000/svg">
+        <path d="M35,50 Q35,35 50,32 Q55,18 75,18 Q95,4 115,20 Q130,16 140,30 Q150,30 150,48 Q152,58 138,58 L38,58 Q20,58 25,50 Z" fill="white" opacity="0.45"/>
+      </svg>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="paw-hero-content">
+      <p class="paw-kicker">UX/UI Design &mdash; Mobile App</p>
+      <h1 class="paw-title">爪爪奇妙之旅</h1>
+      <p class="paw-subtitle">与动物伙伴一起探索世界</p>
+      <p class="paw-desc">一款融合虚拟宠物养成、世界探索与旅行收集体验的移动产品，通过陪伴与探索创造持续成长的乐趣。</p>
+      <div class="paw-tags">
+        <span class="paw-tag">Virtual Pet</span>
+        <span class="paw-tag">Exploration</span>
+        <span class="paw-tag">Mobile App</span>
+        <span class="paw-tag">UX/UI Design</span>
+      </div>
+      <div class="paw-meta">
+        <div class="paw-meta-item">
+          <span class="paw-meta-label">Role</span>
+          <span class="paw-meta-value">UX/UI Designer</span>
+        </div>
+        <div class="paw-meta-item">
+          <span class="paw-meta-label">Duration</span>
+          <span class="paw-meta-value">2 Weeks</span>
+        </div>
+        <div class="paw-meta-item">
+          <span class="paw-meta-label">Type</span>
+          <span class="paw-meta-value">Concept Project</span>
+        </div>
+        <div class="paw-meta-item">
+          <span class="paw-meta-label">Tools</span>
+          <span class="paw-meta-value">Figma</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative bottom gradient -->
+    <div class="paw-hero-bottom"></div>
+
+    <!-- Scroll Indicator -->
+    <div class="paw-scroll">
+      <span>Scroll to Explore</span>
+      <div class="paw-scroll-line"></div>
+    </div>
+
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 📖 QUOTE — 替我自由。                          -->
+  <!-- ============================================ -->
+  <section class="paw-quote">
+    <div class="paw-quote-rule"></div>
+    <blockquote class="paw-quote-text">替我自由。</blockquote>
+    <p class="paw-quote-attr">那些旅行视频评论区里，无数未曾出发的梦想。</p>
+    <div class="paw-quote-rule"></div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 🗺️ MAP REVEAL                                -->
+  <!-- ============================================ -->
+  <section class="paw-map-reveal">
+    <div class="paw-map-reveal-inner" id="mapReveal">
+      <img src="../assets/爪爪/map2.png" alt="World Map" class="paw-map-reveal-img">
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 💡 INSPIRATION — 灵感来源                      -->
+  <!-- ============================================ -->
+  <section class="paw-inspo">
+    <span class="paw-inspo-num">01</span>
+    <h2 class="paw-inspo-heading">灵感来源</h2>
+    <div class="paw-inspo-body">
+      <p>总有人向往旷野与远方。但现实中的时间、精力与经济成本，让一场说走就走的旅行成为奢望。</p>
+      <p class="paw-inspo-chat"><span>💬</span> 替我看看世界吧</p>
+      <p class="paw-inspo-chat"><span>💬</span> 我想去冰岛</p>
+      <p class="paw-inspo-chat"><span>💬</span> 替我自由</p>
+      <p>那些未能启程的遗憾，最终成为《爪爪奇妙之旅》的起点。</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 👤 USER PERSONAS — 我们为谁而设计?              -->
+  <!-- ============================================ -->
+  <section class="paw-personas">
+    <span class="paw-inspo-num">02</span>
+    <h2 class="paw-inspo-heading">我们为谁而设计?</h2>
+
+    <div class="paw-persona-cards">
+      <!-- Card 1 -->
+      <article class="paw-persona-card">
+        <div class="paw-persona-icon">🧳</div>
+        <h3 class="paw-persona-name">旅行向往者</h3>
+        <p class="paw-persona-desc">渴望远方却被时间、金钱或责任所困的人。</p>
+        <div class="paw-persona-tags">
+          <span class="paw-persona-tag">行为</span>
+          <span>浏览旅行视频、收藏目的地攻略、关注旅行博主</span>
+        </div>
+        <div class="paw-persona-tags">
+          <span class="paw-persona-tag">动机</span>
+          <span>替代性满足 · 精神逃离 · 探索未知</span>
+        </div>
+        <blockquote class="paw-persona-quote">"总有一天，我也要亲眼去看看。"</blockquote>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="paw-persona-card">
+        <div class="paw-persona-icon">🐾</div>
+        <h3 class="paw-persona-name">陪伴寻求者</h3>
+        <p class="paw-persona-desc">在日常生活里寻找情感慰藉与陪伴的人。</p>
+        <div class="paw-persona-tags">
+          <span class="paw-persona-tag">行为</span>
+          <span>使用治愈类App、养虚拟宠物、分享日常碎片</span>
+        </div>
+        <div class="paw-persona-tags">
+          <span class="paw-persona-tag">动机</span>
+          <span>情感陪伴 · 减压治愈 · 低负担互动</span>
+        </div>
+        <blockquote class="paw-persona-quote">"有时候，只是想有个小家伙陪在身边。"</blockquote>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="paw-persona-card">
+        <div class="paw-persona-icon">🌍</div>
+        <h3 class="paw-persona-name">探索收集者</h3>
+        <p class="paw-persona-desc">享受收集成就、解锁新地点与内容的探索型用户。</p>
+        <div class="paw-persona-tags">
+          <span class="paw-persona-tag">行为</span>
+          <span>追求全图鉴、打卡地标、参与限时活动</span>
+        </div>
+        <div class="paw-persona-tags">
+          <span class="paw-persona-tag">动机</span>
+          <span>成就感 · 好奇心 · 进度可视化</span>
+        </div>
+        <blockquote class="paw-persona-quote">"环游世界，从点亮每一个地标开始。"</blockquote>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 🎨 DESIGN STYLE — 设计风格                     -->
+  <!-- ============================================ -->
+  <section class="paw-style">
+    <span class="paw-inspo-num">03</span>
+    <h2 class="paw-inspo-heading">设计风格</h2>
+
+    <div class="paw-style-images">
+      <div class="paw-style-item">
+        <img src="../assets/爪爪/icon.png" alt="Icons" class="paw-style-img">
+      </div>
+      <div class="paw-style-item">
+        <img src="../assets/爪爪/字体.png" alt="Typography" class="paw-style-img">
+      </div>
+      <div class="paw-style-item">
+        <img src="../assets/爪爪/颜色.png" alt="Colors" class="paw-style-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 🧩 WIDGET — 桌面小组件                        -->
+  <!-- ============================================ -->
+  <section class="paw-widget">
+    <span class="paw-inspo-num">04</span>
+    <h2 class="paw-inspo-heading">桌面小组件 Widget</h2>
+    <p class="paw-widget-sub">轻量化信息触达，降低用户使用门槛</p>
+
+    <div class="paw-widget-grid">
+      <div class="paw-widget-image">
+        <img src="../assets/爪爪/widget.png" alt="Widget" class="paw-widget-img">
+      </div>
+      <div class="paw-widget-text">
+        <p>桌面小组件功能，将宠物旅行场景前置到手机桌面，用户无需打开APP即可实时查看宠物当前旅行地与动态，通过轻量化互动强化陪伴感，同时以实景+IP形象的场景化设计，提升产品辨识度与用户粘性。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ✈️ THE JOURNEY BEGINS — 核心功能展示            -->
+  <!-- ============================================ -->
+  <section class="paw-journey" id="journeySection">
+    <!-- Subtle world map background -->
+    <div class="paw-journey-bg" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <path d="M180,180 C220,140 320,100 380,110 C440,120 480,160 500,200 C520,240 510,300 490,350 C470,400 420,430 360,440 C300,450 250,420 220,380 C190,340 160,280 150,230 Z" fill="rgba(139,196,176,0.06)" stroke="rgba(139,196,176,0.12)" stroke-width="1"/>
+        <path d="M300,480 C340,460 380,470 400,500 C420,530 410,600 380,660 C350,720 310,760 280,750 C250,740 240,690 250,630 C260,570 270,520 280,490 Z" fill="rgba(139,196,176,0.05)" stroke="rgba(139,196,176,0.10)" stroke-width="1"/>
+        <path d="M620,140 C660,120 720,110 760,130 C800,150 830,180 840,220 C850,260 830,300 800,320 C770,340 720,330 680,310 C640,290 610,250 600,200 Z" fill="rgba(139,196,176,0.06)" stroke="rgba(139,196,176,0.12)" stroke-width="1"/>
+        <path d="M650,340 C690,330 740,340 770,370 C800,400 810,460 790,540 C770,620 730,680 680,700 C630,720 600,680 590,620 C580,560 590,480 610,410 Z" fill="rgba(139,196,176,0.05)" stroke="rgba(139,196,176,0.10)" stroke-width="1"/>
+        <path d="M820,100 C900,70 1000,50 1100,60 C1200,70 1300,100 1350,160 C1400,220 1380,300 1320,360 C1260,420 1180,400 1100,380 C1020,360 940,350 880,320 C820,290 780,240 770,180 Z" fill="rgba(139,196,176,0.06)" stroke="rgba(139,196,176,0.12)" stroke-width="1"/>
+        <path d="M1120,520 C1160,500 1220,500 1260,520 C1300,540 1300,580 1270,600 C1240,620 1180,620 1140,600 C1100,580 1080,550 1100,530 Z" fill="rgba(139,196,176,0.05)" stroke="rgba(139,196,176,0.10)" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <!-- Decorative flight path -->
+    <div class="paw-journey-path" aria-hidden="true">
+      <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <path d="M80,120 C200,200 250,300 400,350 C550,400 500,550 650,600 C750,630 820,580 900,680"
+              fill="none" stroke="#C4A882" stroke-width="1.2" stroke-dasharray="8 6" stroke-linecap="round" opacity="0.35"/>
+        <path d="M400,350 C500,280 600,200 720,160"
+              fill="none" stroke="#C4A882" stroke-width="1" stroke-dasharray="6 8" stroke-linecap="round" opacity="0.25"/>
+        <circle cx="80" cy="120" r="3" fill="#E1522A" opacity="0.3"/>
+        <circle cx="400" cy="350" r="3" fill="#E1522A" opacity="0.25"/>
+        <circle cx="650" cy="600" r="3.5" fill="#E1522A" opacity="0.35">
+          <animate attributeName="r" values="3.5;5.5;3.5" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="720" cy="160" r="3" fill="#E1522A" opacity="0.3"/>
+        <text x="230" y="230" font-size="11" opacity="0.25">✈</text>
+        <text x="520" y="470" font-size="12" opacity="0.25">✈</text>
+        <text x="580" y="280" font-size="11" opacity="0.2">✈</text>
+      </svg>
+    </div>
+
+    <!-- Section header -->
+    <div class="paw-journey-header">
+      <span class="paw-inspo-num">05</span>
+      <h2 class="paw-inspo-heading">玩转爪爪</h2>
+      <p class="paw-journey-sub">The Journey Begins · 从相遇到启程，一场奇妙旅程正在展开。</p>
+    </div>
+
+    <!-- Carousel -->
+    <div class="paw-carousel" id="mockCarousel">
+      <button class="paw-carousel-btn paw-carousel-prev" id="carouselPrev" aria-label="Previous">&#10094;</button>
+      <div class="paw-carousel-viewport">
+        <div class="paw-carousel-track" id="carouselTrack">
+          <div class="paw-carousel-slide">
+            <img src="../assets/爪爪/mock/1.png" alt="开屏" class="paw-carousel-img">
+            <span class="paw-carousel-label">开屏</span>
+          </div>
+          <div class="paw-carousel-slide">
+            <img src="../assets/爪爪/mock/2.png" alt="登录" class="paw-carousel-img">
+            <span class="paw-carousel-label">登录</span>
+          </div>
+          <div class="paw-carousel-slide">
+            <img src="../assets/爪爪/mock/3.png" alt="环游" class="paw-carousel-img">
+            <span class="paw-carousel-label">环游</span>
+          </div>
+          <div class="paw-carousel-slide">
+            <img src="../assets/爪爪/mock/5.png" alt="结伴" class="paw-carousel-img">
+            <span class="paw-carousel-label">结伴</span>
+          </div>
+          <div class="paw-carousel-slide">
+            <img src="../assets/爪爪/mock/4.png" alt="地图" class="paw-carousel-img">
+            <span class="paw-carousel-label">地图</span>
+          </div>
+        </div>
+      </div>
+      <button class="paw-carousel-btn paw-carousel-next" id="carouselNext" aria-label="Next">&#10095;</button>
+      <div class="paw-carousel-dots" id="carouselDots">
+        <button class="paw-carousel-dot active" data-index="0"></button>
+        <button class="paw-carousel-dot" data-index="1"></button>
+        <button class="paw-carousel-dot" data-index="2"></button>
+        <button class="paw-carousel-dot" data-index="3"></button>
+        <button class="paw-carousel-dot" data-index="4"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 📝 FEATURE DETAILS — 环游 & 结伴               -->
+  <!-- ============================================ -->
+  <section class="paw-features">
+    <div class="paw-feature">
+      <h3 class="paw-feature-heading">环游</h3>
+      <p class="paw-feature-body">「环游」动态页面是用户与虚拟宠物、其他玩家互动的核心场景，承接了产品"宠物替你环游世界 + 云社交"的核心玩法。你的宠物每天都会给你上传一张配上它自己的风景照，并且会为你讲述今天发生的随机故事。</p>
+    </div>
+    <div class="paw-feature">
+      <h3 class="paw-feature-heading">结伴</h3>
+      <p class="paw-feature-body">「结伴」是 APP 的云旅行社交模块，为用户提供两种结伴方式：<br><strong>1. 好友同行</strong> — 邀请好友一起开启虚拟旅行，实时查看对方宠物的旅行地行程，可互动留言，实现"线上云结伴"。<br><strong>2. 随机匹配</strong> — 匹配陌生用户一起旅行，拓展同好社交，满足不同社交需求。</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 🗺️ TRAVEL ROUTES — 路线 & 分享                 -->
+  <!-- ============================================ -->
+  <section class="paw-routes-share">
+    <div class="paw-routes-share-grid">
+      <div class="paw-routes-share-text">
+        <p>另外，还有多种旅行探索路线供你选择，你可以随时随地与你的旅行"搭子"分享一路上的所见所闻。</p>
+      </div>
+      <div class="paw-routes-share-images">
+        <img src="../assets/爪爪/路线.png" alt="路线" class="paw-routes-share-img">
+        <img src="../assets/爪爪/分享.png" alt="分享" class="paw-routes-share-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 🐾 VIRTUAL PET — 虚拟宠物形象                  -->
+  <!-- ============================================ -->
+  <section class="paw-pet">
+    <span class="paw-inspo-num">06</span>
+    <h2 class="paw-inspo-heading">虚拟宠物形象</h2>
+    <div class="paw-pet-content">
+      <p>多款宠物形象选择，随意更换<br><span>（部分皮肤需要游戏货币获取）</span></p>
+      <div class="paw-pet-image">
+        <img src="../assets/爪爪/ip.png" alt="虚拟宠物形象" class="paw-pet-img">
+      </div>
+
+      <span class="paw-pet-subheading">宠物皮肤系统</span>
+
+      <!-- Paired Skin Carousel -->
+      <div class="paw-skin-carousel" id="skinCarousel">
+        <button class="paw-carousel-btn paw-carousel-prev" id="skinPrev" aria-label="Previous">&#10094;</button>
+        <div class="paw-skin-viewport">
+          <div class="paw-skin-track" id="skinTrack">
+            <div class="paw-skin-group">
+              <img src="../assets/爪爪/皮肤/p1.png" alt="Skin 1" class="paw-skin-img">
+              <img src="../assets/爪爪/皮肤/p2.png" alt="Skin 2" class="paw-skin-img">
+            </div>
+            <div class="paw-skin-group">
+              <img src="../assets/爪爪/皮肤/t1.png" alt="Skin 3" class="paw-skin-img">
+              <img src="../assets/爪爪/皮肤/t2.png" alt="Skin 4" class="paw-skin-img">
+            </div>
+            <div class="paw-skin-group">
+              <img src="../assets/爪爪/皮肤/h1.png" alt="Skin 5" class="paw-skin-img">
+              <img src="../assets/爪爪/皮肤/h2.png" alt="Skin 6" class="paw-skin-img">
+            </div>
+            <div class="paw-skin-group">
+              <img src="../assets/爪爪/皮肤/e1.png" alt="Skin 7" class="paw-skin-img">
+              <img src="../assets/爪爪/皮肤/e2.png" alt="Skin 8" class="paw-skin-img">
+            </div>
+          </div>
+        </div>
+        <button class="paw-carousel-btn paw-carousel-next" id="skinNext" aria-label="Next">&#10095;</button>
+        <div class="paw-carousel-dots" id="skinDots">
+          <button class="paw-carousel-dot active" data-index="0"></button>
+          <button class="paw-carousel-dot" data-index="1"></button>
+          <button class="paw-carousel-dot" data-index="2"></button>
+          <button class="paw-carousel-dot" data-index="3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 📸 MEMORIES — 回忆·相册＆文创周边               -->
+  <!-- ============================================ -->
+  <section class="paw-memories">
+    <span class="paw-inspo-num">07</span>
+    <h2 class="paw-inspo-heading">回忆——相册＆文创周边</h2>
+
+    <!-- Images row -->
+    <div class="paw-memories-row">
+      <img src="../assets/爪爪/相册1.png" alt="相册1" class="paw-memories-img">
+      <img src="../assets/爪爪/相册2.png" alt="相册2" class="paw-memories-img">
+      <img src="../assets/爪爪/文创.png" alt="文创1" class="paw-memories-img">
+    </div>
+
+    <p class="paw-memories-desc"><strong>「相册」</strong>模块作为用户旅行历程的数字档案馆，完整存储了宠物的所有打卡照片与旅行动态。用户可查看每一站的旅行明信片、社交互动记录，并支持实体明信片的线上寄售服务，实现虚拟体验与现实仪式感的衔接。</p>
+    <p class="paw-memories-desc"><strong>「文创周边」</strong>模块为爪爪 IP 衍生产品商城，提供文化衫、手机壳、文具、家居用品等系列周边。用户可直接选购心仪商品，将虚拟旅程的 IP 形象转化为现实生活中的陪伴载体，同时拓展产品的商业价值与用户粘性。</p>
+  </section>
+
+  <!-- Custom Cursor + Parallax + Animation -->
+  <script>
+  (function() {
+    // --- Custom Cursor ---
+    var isTouch = 'ontouchstart' in window || window.matchMedia('(pointer: coarse)').matches;
+    if (!isTouch) {
+      var ring = document.querySelector('.cursor-ring');
+      var dot = document.querySelector('.cursor-dot');
+      var mouseX = window.innerWidth / 2;
+      var mouseY = window.innerHeight / 2;
+      var ringX = mouseX;
+      var ringY = mouseY;
+
+      document.addEventListener('mousemove', function(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + 'px';
+        dot.style.top = mouseY + 'px';
+      });
+
+      function animateCursor() {
+        ringX += (mouseX - ringX) * 0.2;
+        ringY += (mouseY - ringY) * 0.2;
+        ring.style.left = ringX + 'px';
+        ring.style.top = ringY + 'px';
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+    }
+
+    // --- Hero Parallax ---
+    var hero = document.getElementById('pawHero');
+    if (!hero) return;
+
+    // --- Mouse Parallax ---
+    var parallaxEls = hero.querySelectorAll('[data-depth]');
+
+    hero.addEventListener('mousemove', function(e) {
+      var rect = hero.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      parallaxEls.forEach(function(el) {
+        var depth = parseFloat(el.getAttribute('data-depth'));
+        var mx = x * depth * 100;
+        var my = y * depth * 100;
+        el.style.transform = 'translate3d(' + mx + 'px, ' + my + 'px, 0)';
+      });
+    });
+
+    hero.addEventListener('mouseleave', function() {
+      parallaxEls.forEach(function(el) {
+        el.style.transform = 'translate3d(0, 0, 0)';
+        el.style.transition = 'transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1)';
+      });
+    });
+
+    hero.addEventListener('mouseenter', function() {
+      parallaxEls.forEach(function(el) {
+        el.style.transition = 'transform 0.15s ease-out';
+      });
+    });
+
+    // --- Scroll-based parallax for map ---
+    var ticking = false;
+    var mapEl = hero.querySelector('.paw-map');
+    var pinsEl = hero.querySelector('.paw-pins');
+    var planesEl = hero.querySelector('.paw-planes');
+    var markersEl = hero.querySelector('.paw-markers');
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          var scrollY = window.pageYOffset;
+          if (mapEl) mapEl.style.transform = 'translate3d(0, ' + (scrollY * 0.04) + 'px, 0)';
+          if (planesEl) planesEl.style.transform = 'translate3d(0, ' + (scrollY * 0.055) + 'px, 0)';
+          if (markersEl) markersEl.style.transform = 'translate3d(0, ' + (scrollY * 0.048) + 'px, 0)';
+          if (pinsEl) pinsEl.style.transform = 'translate3d(0, ' + (scrollY * 0.07) + 'px, 0)';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // --- Map Reveal on Scroll ---
+    var mapReveal = document.getElementById('mapReveal');
+    if (mapReveal && 'IntersectionObserver' in window) {
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      revealObserver.observe(mapReveal);
+    } else if (mapReveal) {
+      mapReveal.classList.add('visible');
+    }
+
+    // --- Skin Carousel ---
+    var skinTrack = document.getElementById('skinTrack');
+    var skinDots = document.querySelectorAll('#skinDots .paw-carousel-dot');
+    var skinPrev = document.getElementById('skinPrev');
+    var skinNext = document.getElementById('skinNext');
+    var skinSlide = 0;
+    var skinTotal = 4;
+
+    function goToSkin(index) {
+      if (index < 0) index = skinTotal - 1;
+      if (index >= skinTotal) index = 0;
+      skinSlide = index;
+      skinTrack.style.transform = 'translateX(-' + (skinSlide * 100) + '%)';
+      skinDots.forEach(function(d, i) {
+        d.classList.toggle('active', i === skinSlide);
+      });
+    }
+
+    skinPrev.addEventListener('click', function() { goToSkin(skinSlide - 1); });
+    skinNext.addEventListener('click', function() { goToSkin(skinSlide + 1); });
+    skinDots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        goToSkin(parseInt(this.getAttribute('data-index')));
+      });
+    });
+
+    // --- Mock Carousel with Slide Effect ---
+    var track = document.getElementById('carouselTrack');
+    var slides = document.querySelectorAll('#carouselTrack .paw-carousel-slide');
+    var dots = document.querySelectorAll('#carouselDots .paw-carousel-dot');
+    var prevBtn = document.getElementById('carouselPrev');
+    var nextBtn = document.getElementById('carouselNext');
+    var currentSlide = 0;
+    var totalSlides = slides.length;
+
+    function goToSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentSlide = index;
+      track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    prevBtn.addEventListener('click', function() {
+      goToSlide(currentSlide - 1);
+    });
+
+    nextBtn.addEventListener('click', function() {
+      goToSlide(currentSlide + 1);
+    });
+
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        goToSlide(parseInt(this.getAttribute('data-index')));
+      });
+    });
+  })();
+  </script>
+
+</body>
+</html>

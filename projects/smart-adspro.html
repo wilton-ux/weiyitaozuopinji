@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart AdsPro — Wilton Wei</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="project.css">
+  <style>
+    .img-zoom {
+      transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .img-zoom:hover {
+      transform: scale(1.04);
+    }
+  </style>
+</head>
+<body class="project-page page-smart">
+
+  <!-- Custom Cursor -->
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <nav class="nav scrolled">
+    <a href="../index.html" class="nav-logo">WILTON PORTFOLIO</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#works" class="nav-link">Works</a></li>
+      <li><a href="../index.html#about" class="nav-link">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="proj-hero">
+    <p class="proj-kicker" style="font-size:44px;font-weight:700;letter-spacing:-0.02em;color:#1a1a1a">Smart AdsPro</p>
+    <h1 class="proj-title" style="font-size:32px;font-weight:500">智投平台</h1>
+    <p class="proj-hero-desc"></p>
+    <div class="hero-meta-row" style="justify-content:center">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Role</span>
+        <span class="hero-meta-value">UX Designer</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Type</span>
+        <span class="hero-meta-value">Dashboard Design</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Tools</span>
+        <span class="hero-meta-value">Figma, Google Stitch</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAROUSEL ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner">
+      <div class="smart-carousel-bg">
+        <div class="smart-carousel-track" id="smartCarousel">
+          <img src="../assets/投放/1.png" alt="投放1" class="smart-carousel-slide active">
+          <img src="../assets/投放/2.png" alt="投放2" class="smart-carousel-slide">
+          <img src="../assets/投放/3.png" alt="投放3" class="smart-carousel-slide">
+          <img src="../assets/投放/4.png" alt="投放4" class="smart-carousel-slide">
+          <img src="../assets/投放/5.png" alt="投放5" class="smart-carousel-slide">
+          <img src="../assets/投放/6.png" alt="投放6" class="smart-carousel-slide">
+        </div>
+        <div class="smart-carousel-dots">
+          <span class="smart-dot active" data-index="0"></span>
+          <span class="smart-dot" data-index="1"></span>
+          <span class="smart-dot" data-index="2"></span>
+          <span class="smart-dot" data-index="3"></span>
+          <span class="smart-dot" data-index="4"></span>
+          <span class="smart-dot" data-index="5"></span>
+        </div>
+        <button class="smart-carousel-prev" id="smartPrev">←</button>
+        <button class="smart-carousel-next" id="smartNext">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <h3 style="font-size:24px;font-weight:500;color:#7AAB00;text-align:left;margin-bottom:1rem">项目概览</h3>
+      <p style="font-size:16px;line-height:1.8;color:#888;font-weight:300">Smart Ads Pro 是一款面向信息流广告团队投放人员以及营销人员的智能广告投放平台，集数据监测、广告管理、素材管理、受众定向与 AI 创意生成于一体，帮助运营团队更高效地优化广告表现与提升投放转化。</p>
+    </div>
+  </section>
+
+  <!-- ============ COVER IMAGE ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px;text-align:center">
+      <img src="../assets/投放/desk.png" alt="Smart AdsPro" style="width:950px;max-width:100%;height:auto;display:inline-block;border-radius:6px">
+    </div>
+  </section>
+
+  <!-- ============ WHY THIS PROJECT ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <h3 style="font-size:24px;font-weight:500;color:#7AAB00;text-align:left;margin-bottom:1rem">为什么做这个项目</h3>
+      <p style="font-size:16px;line-height:1.8;color:#888;font-weight:300">攻读艺术科技硕士之前，我长期从事广告投放与效果营销相关工作。在实际工作中，我发现几乎所有依赖信息流投放的企业，都需要一套高效的 B 端广告投放平台，用于实时监测广告数据、优化投放效果，并对创意素材质量进行精细化管理。随着信息流广告逐渐成为数字营销的核心媒介，广告投放后台也从单纯的数据工具，演变为连接策略、创意与商业增长的重要基础设施。</p>
+    </div>
+  </section>
+
+  <!-- ============ CORE FEATURES ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <h3 style="font-size:24px;font-weight:500;color:#1a1a1a;text-align:center;margin-bottom:2rem">B端投放监测平台核心</h3>
+      <div style="text-align:center">
+        <img src="../assets/投放/Frame-1.png" alt="B端投放监测平台核心" style="max-width:100%;height:auto;display:inline-block;border-radius:6px">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ADVANTAGES ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <h3 style="font-size:24px;font-weight:500;color:#1a1a1a;text-align:center;margin-bottom:2rem">智投平台的优势</h3>
+      <div style="text-align:center">
+        <img src="../assets/投放/Frame.png" alt="智投平台的优势" style="max-width:100%;height:auto;display:inline-block;border-radius:6px">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOGO & COLORS ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <h3 style="font-size:24px;font-weight:500;color:#1a1a1a;text-align:center;margin-bottom:2rem">LOGO与主题颜色</h3>
+      <div style="text-align:center">
+        <img src="../assets/投放/Frame-2.png" alt="LOGO与主题颜色" style="max-width:100%;height:auto;display:inline-block;border-radius:6px">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE INTRO ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <h3 style="font-size:24px;font-weight:500;color:#7AAB00;text-align:left;margin-bottom:1.5rem">页面介绍</h3>
+      <div style="text-align:center">
+        <img src="../assets/投放/7.png" alt="页面介绍" style="max-width:100%;height:auto;display:inline-block;border-radius:6px">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <h3 style="font-size:24px;font-weight:500;color:#1a1a1a;text-align:left;margin-bottom:2rem">数据总览Dashboard</h3>
+      <div class="mockup-callouts" style="margin-bottom:2rem">
+        <div class="callout-item">
+          <span class="callout-num">01</span>
+          <div class="callout-text">
+            <strong>全景数据监控</strong>
+            <p>整合广告数据监控、效果分析、渠道对比、智能优化建议等能力，支持用户从宏观到微观掌握投放状态。</p>
+          </div>
+        </div>
+        <div class="callout-item">
+          <span class="callout-num">02</span>
+          <div class="callout-text">
+            <strong>数据驱动的优化决策</strong>
+            <p>提供数据驱动的优化决策支持，降低人工分析成本，提升投放效率与 ROI。数据总览看板可以直观的查看每日的投放数据波动。</p>
+          </div>
+        </div>
+      </div>
+      <img src="../assets/投放/8.png" alt="数据总览Dashboard" style="width:100%;max-width:100%;height:auto;display:block;border-radius:6px">
+    </div>
+  </section>
+
+  <!-- ============ AUDIENCE TARGETING (8.png CENTERED) ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px;text-align:center">
+      <h3 style="font-size:24px;font-weight:500;color:#1a1a1a;text-align:left;margin-bottom:1rem">受众定向选择与分析</h3>
+      <p style="font-size:16px;line-height:1.8;color:#888;font-weight:300;text-align:left;margin-bottom:2rem">广告投放的人群精细化运营中枢，整合了基础筛选、兴趣定向、相似扩量、效果预估与 AI 优化能力，帮助用户精准定位目标用户，提升广告投放的效率与 ROI。</p>
+      <img src="../assets/投放/9.png" alt="受众定向" style="max-width:100%;height:auto;display:inline-block;border-radius:6px">
+    </div>
+  </section>
+
+  <!-- ============ AD MONITORING (2.png LEFT + TEXT RIGHT) ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <div style="display:flex;align-items:center;gap:4rem">
+        <div style="flex:1">
+          <img src="../assets/投放/2.png" alt="" class="img-zoom" style="width:100%;height:auto;display:block;border-radius:6px">
+        </div>
+        <div style="flex:1">
+          <h3 style="font-size:24px;font-weight:500;color:#1a1a1a;margin-bottom:1rem">高效的广告监测与运营优化</h3>
+          <p style="font-size:16px;line-height:1.8;color:#888;font-weight:300">广告管理模块通过清晰的数据表格与状态标签，帮助运营人员实时查看广告表现、监控预算消耗，并快速进行广告编辑与优化操作。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CREATIVE RESOURCES (TEXT LEFT + 3.png RIGHT) ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <div style="display:flex;align-items:center;gap:4rem">
+        <div style="flex:1">
+          <h3 style="font-size:24px;font-weight:500;color:#1a1a1a;margin-bottom:1rem">帮助团队高效管理广告创意资源</h3>
+          <p style="font-size:16px;line-height:1.8;color:#888;font-weight:300">素材管理模块通过卡片化布局与可视化标签系统，帮助运营人员快速浏览、筛选与分析广告素材表现，降低多平台素材管理的复杂度。</p>
+        </div>
+        <div style="flex:1">
+          <img src="../assets/投放/3.png" alt="" class="img-zoom" style="width:100%;height:auto;display:block;border-radius:6px">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AI CREATIVE & COPY ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <h3 style="font-size:24px;font-weight:500;color:#1a1a1a;text-align:left;margin-bottom:1rem">AI创意与广告文案的使用</h3>
+      <p style="font-size:16px;line-height:1.8;color:#888;font-weight:300;margin-bottom:2rem">AI 创意模块主要用于辅助广告团队快速生成视觉广告素材，通过输入创意描述即可生成多种风格与尺寸的广告图片，并结合 CTR 预估与素材变体推荐，帮助运营人员提升广告创意生产效率与内容测试速度。文案管理模块用于统一管理广告投放文案与 AI 生成内容，帮助运营团队快速整理、筛选与优化不同平台的广告文案素材。</p>
+      <div style="display:flex;gap:2rem;align-items:center">
+        <img src="../assets/投放/AI创意2.png" alt="AI创意" class="img-zoom" style="flex:1;min-width:0;height:auto;display:block;border-radius:6px">
+        <p style="flex:1;font-size:16px;line-height:1.8;color:#888;font-weight:300">这是AI创意广告生成页面，支持用户通过文字描述 + 预设风格快速生成适配投放的游戏广告素材，并提供智能优化、CTR 预估和模板复用功能，一站式完成广告创意的生成与优化。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COPY MANAGEMENT (TEXT LEFT + 文案管理.png RIGHT) ============ -->
+  <section class="proj-section-dark">
+    <div class="proj-section-inner" style="max-width:1100px">
+      <div style="display:flex;align-items:center;gap:4rem">
+        <div style="flex:1">
+          <p style="font-size:16px;line-height:1.8;color:#888;font-weight:300">广告文案素材的管理中台 + AI 生成工具，帮助用户高效管理文案资产，同时通过 AI 快速产出适配投放的广告文案。</p>
+        </div>
+        <div style="flex:1">
+          <img src="../assets/投放/文案管理.png" alt="文案管理" class="img-zoom" style="width:100%;height:auto;display:block;border-radius:6px">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NAVIGATION ============ -->
+  <section class="proj-nav-bottom">
+    <a href="../index.html" class="proj-back-link">← Back to Works</a>
+    <a href="neva-bank.html" class="proj-next-link">Next: Neva Bank →</a>
+  </section>
+
+  <footer class="proj-footer">
+    <p>&copy; 2026 Wilton Wei</p>
+  </footer>
+
+  <!-- Carousel Script -->
+  <script>
+  (function() {
+    var slides = document.querySelectorAll('.smart-carousel-slide');
+    var dots = document.querySelectorAll('.smart-dot');
+    var current = 0;
+    var total = slides.length;
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = ((index % total) + total) % total;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    document.querySelectorAll('.smart-dot').forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        goTo(parseInt(this.getAttribute('data-index')));
+      });
+    });
+
+    document.getElementById('smartPrev').addEventListener('click', function() { goTo(current - 1); });
+    document.getElementById('smartNext').addEventListener('click', function() { goTo(current + 1); });
+
+    // Auto-rotate every 4s
+    setInterval(function() { goTo(current + 1); }, 4000);
+  })();
+  </script>
+
+  <!-- Cursor Script -->
+  <script>
+  (function() {
+    if ('ontouchstart' in window || window.matchMedia('(pointer: coarse)').matches) return;
+    var ring = document.querySelector('.cursor-ring');
+    var dot = document.querySelector('.cursor-dot');
+    if (!ring || !dot) return;
+    var mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', function(e) {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top = my + 'px';
+    });
+    function follow() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(follow);
+    }
+    requestAnimationFrame(follow);
+    document.querySelectorAll('a, button').forEach(function(el) {
+      el.addEventListener('mouseenter', function() { ring.classList.add('hover-link'); dot.classList.add('hover-link'); });
+      el.addEventListener('mouseleave', function() { ring.classList.remove('hover-link'); dot.classList.remove('hover-link'); });
+    });
+  })();
+  </script>
+
+</body>
+</html>

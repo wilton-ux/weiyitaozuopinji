@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chill Manner — Wilton Wei</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="project.css">
+  <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
+</head>
+<body class="project-page page-chill">
+
+  <style>
+    html {
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .snap-section {
+      scroll-snap-align: start;
+    }
+
+    .page-chill {
+      --proj-bg: #FFF6F1;
+    }
+    .page-chill .nav,
+    .page-chill .nav.scrolled {
+      background: rgba(255, 246, 241, 0.85);
+    }
+    .page-chill .cursor-ring {
+      border-color: #DE1280;
+    }
+    .page-chill .cursor-dot {
+      background: #DE1280;
+    }
+
+    /* ===== Section 1 — Behance-Style Cover ===== */
+    .cover-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .cover-bg-text {
+      position: absolute;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 12rem);
+      font-weight: 700;
+      color: rgba(222, 18, 128, 0.04);
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+      white-space: nowrap;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .cover-mockup-wrap {
+      position: relative;
+      z-index: 2;
+      perspective: 1200px;
+    }
+
+    .cover-mockup {
+      width: min(72vw, 320px);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+      transform-style: preserve-3d;
+    }
+
+    .cover-mockup img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Floating cards around mockup */
+    .cover-card {
+      position: absolute;
+      z-index: 3;
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+      transform-style: preserve-3d;
+      pointer-events: auto;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      min-width: 140px;
+    }
+
+    .cover-card-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #DE1280;
+    }
+
+    .cover-card-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      line-height: 1.3;
+    }
+
+    .cover-card-desc {
+      font-size: 0.72rem;
+      color: #888;
+      line-height: 1.4;
+    }
+
+    /* Card positions */
+    .cover-card--tl { top: 10%; left: -18%; }
+    .cover-card--tr { top: 6%; right: -16%; }
+    .cover-card--bl { bottom: 14%; left: -14%; }
+    .cover-card--br { bottom: 12%; right: -12%; }
+
+    /* Bottom info bar */
+    .cover-info {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(222, 18, 128, 0.15);
+    }
+
+    .cover-info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .cover-info-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #DE1280;
+    }
+
+    .cover-info-value {
+      font-size: 0.85rem;
+      color: #555;
+      font-weight: 300;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cover-mockup {
+        width: 88vw;
+        border-radius: 12px;
+      }
+      .cover-card {
+        min-width: 110px;
+        padding: 0.8rem 1rem;
+      }
+      .cover-card--tl { left: -10%; top: 10%; }
+      .cover-card--tr { right: -8%; top: 5%; }
+      .cover-card--bl { left: -6%; bottom: 14%; }
+      .cover-card--br { right: -4%; bottom: 12%; }
+      .cover-info {
+        gap: 1.2rem;
+      }
+    }
+  </style>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <nav class="nav scrolled">
+    <a href="../index.html" class="nav-logo">WILTON PORTFOLIO</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#works" class="nav-link">Works</a></li>
+      <li><a href="../index.html#about" class="nav-link">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1 — BEHANCE-STYLE COVER              -->
+  <!-- ============================================ -->
+  <section class="cover-section snap-section" id="coverSection">
+    <!-- Background giant text -->
+    <span class="cover-bg-text" id="coverBgText">CHILL MANNER</span>
+
+    <!-- Centered mockup + floating cards -->
+    <div class="cover-mockup-wrap" id="mockupWrap">
+      <!-- Floating cards -->
+      <div class="cover-card cover-card--tl" data-depth="0.8">
+        <span class="cover-card-label">Feature</span>
+        <span class="cover-card-title">Mindful Design</span>
+        <span class="cover-card-desc">Calm, intuitive interfaces</span>
+      </div>
+      <div class="cover-card cover-card--tr" data-depth="0.6">
+        <span class="cover-card-label">Experience</span>
+        <span class="cover-card-title">Smooth Flow</span>
+        <span class="cover-card-desc">Seamless navigation</span>
+      </div>
+      <div class="cover-card cover-card--bl" data-depth="0.7">
+        <span class="cover-card-label">Style</span>
+        <span class="cover-card-title">Warm Aesthetic</span>
+        <span class="cover-card-desc">Soft, inviting tones</span>
+      </div>
+      <div class="cover-card cover-card--br" data-depth="0.5">
+        <span class="cover-card-label">Goal</span>
+        <span class="cover-card-title">Everyday Calm</span>
+        <span class="cover-card-desc">Less stress, more joy</span>
+      </div>
+
+      <!-- Mockup device -->
+      <div class="cover-mockup" id="coverMockup">
+        <img src="../assets/images/mock1.png" alt="Chill Manner Mockup">
+      </div>
+    </div>
+
+    <!-- Bottom info bar -->
+    <div class="cover-info">
+      <div class="cover-info-item">
+        <span class="cover-info-label">Project</span>
+        <span class="cover-info-value">Chill Manner</span>
+      </div>
+      <div class="cover-info-item">
+        <span class="cover-info-label">Role</span>
+        <span class="cover-info-value">UX/UI Designer</span>
+      </div>
+      <div class="cover-info-item">
+        <span class="cover-info-label">Year</span>
+        <span class="cover-info-value">2025</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2 — COSMOS ORBIT "TAKE A SPIN"       -->
+  <!-- ============================================ -->
+  <style>
+    .spin-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      perspective: 1200px;
+    }
+
+    /* Cosmos dots */
+    .spin-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(222, 18, 128, 0.08);
+      pointer-events: none;
+    }
+
+    /* Orbit guide ring */
+    .spin-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(222, 18, 128, 0.08);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .spin-ring.visible { opacity: 1; }
+
+    /* Orbit container */
+    .spin-orbit-wrap {
+      position: relative;
+      width: 680px;
+      height: 680px;
+    }
+
+    /* Individual card */
+    .spin-card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 120px;
+      height: 170px;
+      margin-left: -60px;
+      margin-top: -85px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      cursor: pointer;
+      user-select: none;
+      will-change: transform, opacity, filter;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+
+    .spin-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .spin-card-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 6px 8px;
+      background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
+      font-size: 10px;
+      font-weight: 600;
+      color: #555;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    /* Winner CTA inside card */
+    .spin-card-cta {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.04);
+      border-radius: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease 0.5s;
+    }
+    .spin-card.winner .spin-card-cta {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .spin-card-cta-btn {
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: linear-gradient(135deg, #DE1280, #FF4DA6);
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(222,18,128,0.25);
+      transition: transform 0.2s ease;
+    }
+    .spin-card-cta-btn:hover { transform: scale(1.08); }
+
+    /* Center label */
+    .spin-center-label {
+      position: absolute;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(222, 18, 128, 0.35);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .spin-center-label.visible { opacity: 1; }
+
+    /* Buttons */
+    .spin-btn {
+      padding: 14px 44px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #fff;
+      background: linear-gradient(135deg, #DE1280, #FF4DA6);
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(222,18,128,0.2);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.4s ease;
+      user-select: none;
+    }
+    .spin-btn:hover { transform: scale(1.06); box-shadow: 0 14px 45px rgba(222,18,128,0.32); }
+    .spin-btn:active { transform: scale(0.96); }
+
+    .spin-btn--start {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Intro text above button */
+    .spin-intro {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 520px;
+      margin-bottom: 2rem;
+      transition: opacity 0.4s ease;
+    }
+
+    .spin-intro-cn {
+      font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: #555;
+      margin: 0 0 1rem;
+    }
+
+    .spin-intro-en {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: rgba(222, 18, 128, 0.5);
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .spin-click-hint {
+      position: relative;
+      z-index: 10;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: rgba(222, 18, 128, 0.35);
+      margin: 0.6rem 0 0;
+      transition: opacity 0.4s ease;
+    }
+
+    @media (max-width: 768px) {
+      .spin-intro { max-width: 320px; margin-bottom: 1.5rem; }
+      .spin-intro-cn { font-size: 0.9rem; }
+      .spin-intro-en { font-size: 0.7rem; }
+    }
+
+    .spin-btn--action {
+      position: absolute;
+      bottom: 40px;
+      z-index: 10;
+      font-size: 1rem;
+      padding: 12px 36px;
+    }
+
+    /* Winner result below */
+    .spin-result {
+      position: absolute;
+      bottom: 32px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease 0.6s;
+    }
+    .spin-result.visible { opacity: 1; pointer-events: auto; }
+
+    .spin-result-label {
+      font-size: 13px;
+      color: rgba(222,18,128,0.6);
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    .spin-result-cta {
+      padding: 12px 32px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: #fff;
+      background: linear-gradient(135deg, #DE1280, #FF4DA6);
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(222,18,128,0.25);
+      transition: transform 0.2s ease;
+    }
+    .spin-result-cta:hover { transform: scale(1.06); }
+
+    .spin-again {
+      font-size: 11px;
+      background: none;
+      border: none;
+      color: rgba(222,18,128,0.4);
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
+    .spin-again:hover { color: rgba(222,18,128,0.7); }
+
+    /* Backdrop */
+    .spin-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      background: rgba(255,246,241,0.25);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .spin-backdrop.visible { opacity: 1; pointer-events: auto; }
+
+    @media (max-width: 768px) {
+      .spin-orbit-wrap { width: 400px; height: 400px; }
+      .spin-card { width: 80px; height: 115px; margin-left: -40px; margin-top: -57px; border-radius: 12px; }
+      .spin-card-cta { border-radius: 12px; }
+      .spin-card-label { font-size: 8px; padding: 4px 6px; }
+      .spin-btn { padding: 12px 32px; font-size: 1.1rem; }
+      .spin-btn--action { bottom: 24px; padding: 10px 28px; font-size: 0.9rem; }
+    }
+  </style>
+
+  <section class="spin-section snap-section" id="spinSection">
+    <!-- Cosmos dots -->
+    <div id="spinDots"></div>
+
+    <!-- Guide ring -->
+    <div class="spin-ring" id="spinRing" style="width:560px;height:560px;"></div>
+
+    <!-- Center label -->
+    <span class="spin-center-label" id="spinCenterLabel">Spin to explore</span>
+
+    <!-- Intro text -->
+    <div class="spin-intro" id="spinIntro">
+      <p class="spin-intro-cn">Chill Manner是一款以视觉为核心的时尚灵感平台，帮助用户探索风格，表达自我，并于志同道合的人建立连接。</p>
+      <p class="spin-intro-en">Take a spin, find your vibe</p>
+    </div>
+
+    <!-- Start button -->
+    <button class="spin-btn spin-btn--start" id="spinStartBtn" onclick="startOrbit()">Take a Spin</button>
+    <p class="spin-click-hint" id="spinClickHint">(Click to try)</p>
+
+    <!-- Action button (during orbit) -->
+    <button class="spin-btn spin-btn--action" id="spinActionBtn" onclick="triggerSpin()" style="display:none;">Take a Spin</button>
+
+    <!-- Winner result -->
+    <div class="spin-result" id="spinResult">
+      <span class="spin-result-label" id="spinResultLabel"></span>
+      <button class="spin-result-cta" onclick="document.getElementById('refSection').scrollIntoView({behavior:'smooth'})">View styles →</button>
+      <button class="spin-again" onclick="resetOrbit()">Spin Again</button>
+    </div>
+
+    <!-- Backdrop -->
+    <div class="spin-backdrop" id="spinBackdrop" onclick="resetOrbit()"></div>
+
+    <!-- Orbit container -->
+    <div class="spin-orbit-wrap" id="spinOrbitWrap" style="display:none;"></div>
+  </section>
+
+  <script>
+  (function() {
+    var CARDS = [
+      { label: 'Onboarding', img: '../assets/Chill Manner/i/i1.png' },
+      { label: 'Home Feed',  img: '../assets/Chill Manner/i/i2.png' },
+      { label: 'Explore',    img: '../assets/Chill Manner/i/i3.png' },
+      { label: 'Messages',   img: '../assets/Chill Manner/i/i4.png' },
+      { label: 'Profile',    img: '../assets/Chill Manner/i/i5.png' },
+      { label: 'Settings',   img: '../assets/Chill Manner/i/i6.png' },
+      { label: 'Analytics',  img: '../assets/Chill Manner/i/i7.png' },
+      { label: 'Rewards',    img: '../assets/Chill Manner/i/i8.png' },
+    ];
+    var TOTAL = CARDS.length;
+    var RADIUS = 280;
+    var NORMAL_SPEED = (2 * Math.PI) / 18000; // rad/ms
+    var ACCEL_SPEED = (2 * Math.PI) / 3000;
+
+    var orbitWrap = document.getElementById('spinOrbitWrap');
+    var startBtn = document.getElementById('spinStartBtn');
+    var actionBtn = document.getElementById('spinActionBtn');
+    var resultEl = document.getElementById('spinResult');
+    var resultLabel = document.getElementById('spinResultLabel');
+    var backdrop = document.getElementById('spinBackdrop');
+    var ring = document.getElementById('spinRing');
+    var centerLabel = document.getElementById('spinCenterLabel');
+
+    var cardEls = [];
+    var rotationRad = 0;
+    var speed = NORMAL_SPEED;
+    var phase = 'idle'; // idle | orbiting | spinning | stopped
+    var decelerating = false;
+    var winnerIdx = -1;
+    var rafId = null;
+    var spinTimeout = null;
+
+    /* ── Create cosmos dots ── */
+    (function() {
+      var dots = document.getElementById('spinDots');
+      var html = '';
+      for (var i = 0; i < 30; i++) {
+        var w = 2 + Math.random() * 3;
+        html += '<span class="spin-dot" style="width:' + w + 'px;height:' + w + 'px;left:' + (Math.random()*100) + '%;top:' + (Math.random()*100) + '%;"></span>';
+      }
+      dots.innerHTML = html;
+    })();
+
+    /* ── Create card DOM elements ── */
+    function createCards() {
+      orbitWrap.innerHTML = '';
+      cardEls = [];
+      for (var i = 0; i < TOTAL; i++) {
+        var card = document.createElement('div');
+        card.className = 'spin-card';
+        card.innerHTML =
+          '<img src="' + CARDS[i].img + '" alt="' + CARDS[i].label + '" draggable="false">' +
+          '<div class="spin-card-cta"><button class="spin-card-cta-btn" onclick="document.getElementById(\'refSection\').scrollIntoView({behavior:\'smooth\'})">View styles</button></div>';
+        card.addEventListener('click', (function(idx) {
+          return function() { if (phase === 'orbiting') onCardClick(idx); };
+        })(i));
+        card.addEventListener('mouseenter', (function(idx) {
+          return function() {
+            if (phase !== 'orbiting') return;
+            cardEls[idx].style.zIndex = '20';
+          };
+        })(i));
+        card.addEventListener('mouseleave', (function(idx) {
+          return function() {
+            if (phase !== 'orbiting' || winnerIdx === idx) return;
+            cardEls[idx].style.zIndex = '';
+          };
+        })(i));
+        orbitWrap.appendChild(card);
+        cardEls.push(card);
+      }
+    }
+
+    /* ── Depth helpers ── */
+    function depthFactor(worldAngle) {
+      return (Math.cos(worldAngle + Math.PI / 2) + 1) / 2;
+    }
+    function sideFactor(worldAngle) {
+      return Math.sin(worldAngle + Math.PI / 2);
+    }
+
+    /* ── Update card positions ── */
+    function updateCards() {
+      for (var i = 0; i < TOTAL; i++) {
+        var el = cardEls[i];
+        if (!el) continue;
+
+        var baseAngle = (2 * Math.PI * i) / TOTAL - Math.PI / 2;
+        var worldAngle = ((baseAngle + rotationRad) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+
+        // Skip winner card during stopped phase (CSS handles its animation)
+        if (phase === 'stopped' && i === winnerIdx) continue;
+
+        var x = Math.cos(worldAngle) * RADIUS;
+        var y = Math.sin(worldAngle) * RADIUS;
+        var depth = depthFactor(worldAngle);
+        var side = sideFactor(worldAngle);
+
+        var s = 0.6 + depth * 0.4;          // 0.6 → 1
+        var o = 0.35 + depth * 0.65;        // 0.35 → 1
+        var b = (1 - depth) * 4;            // 0 → 4px
+        var ry = side * 35;                 // -35° → 35°
+
+        el.style.transform =
+          'translate3d(' + x.toFixed(1) + 'px, ' + y.toFixed(1) + 'px, 0)' +
+          ' scale(' + s.toFixed(3) + ')' +
+          ' rotateY(' + ry.toFixed(1) + 'deg)';
+        el.style.opacity = o.toFixed(3);
+        el.style.filter = 'blur(' + b.toFixed(1) + 'px)';
+        el.style.zIndex = Math.round(depth * 10);
+      }
+    }
+
+    /* ── RAF loop ── */
+    function loop(now) {
+      if (decelerating) {
+        speed *= 0.97;
+        if (speed < 0.00005) {
+          speed = 0;
+          decelerating = false;
+          pickWinner();
+          rafId = requestAnimationFrame(loop);
+          return;
+        }
+      }
+      rotationRad = (rotationRad + speed * 16) % (2 * Math.PI); // assume ~16ms frame
+      updateCards();
+      rafId = requestAnimationFrame(loop);
+    }
+
+    /* ── Pick winner ── */
+    function pickWinner() {
+      var bestIdx = 0;
+      var bestDepth = -Infinity;
+      for (var i = 0; i < TOTAL; i++) {
+        var baseAngle = (2 * Math.PI * i) / TOTAL - Math.PI / 2;
+        var worldAngle = ((baseAngle + rotationRad) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+        var d = depthFactor(worldAngle);
+        if (d > bestDepth) { bestDepth = d; bestIdx = i; }
+      }
+      winnerIdx = bestIdx;
+
+      // Animate winner to center
+      var el = cardEls[winnerIdx];
+      el.style.transition = 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease, filter 0.4s ease';
+      el.style.transform = 'translate3d(0, 0, 0) scale(1.25) rotateY(0deg)';
+      el.style.opacity = '1';
+      el.style.filter = 'blur(0px)';
+      el.style.zIndex = '50';
+      el.style.boxShadow = '0 30px 70px rgba(222,18,128,0.22), 0 10px 25px rgba(0,0,0,0.07)';
+      el.classList.add('winner');
+
+      // Hide other cards
+      for (var j = 0; j < TOTAL; j++) {
+        if (j !== winnerIdx) {
+          cardEls[j].style.transition = 'opacity 0.3s ease';
+          cardEls[j].style.opacity = '0';
+          cardEls[j].style.pointerEvents = 'none';
+        }
+      }
+
+      // Show result
+      phase = 'stopped';
+      resultLabel.textContent = CARDS[winnerIdx].label;
+      resultEl.classList.add('visible');
+      backdrop.classList.add('visible');
+      actionBtn.style.display = 'none';
+      centerLabel.classList.remove('visible');
+    }
+
+    /* ── Start orbit ── */
+    window.startOrbit = function() {
+      if (phase !== 'idle') return;
+      createCards();
+      phase = 'orbiting';
+      speed = NORMAL_SPEED;
+      rotationRad = 0;
+      decelerating = false;
+      winnerIdx = -1;
+
+      startBtn.style.display = 'none';
+      document.getElementById('spinIntro').style.opacity = '0';
+      document.getElementById('spinClickHint').style.opacity = '0';
+      actionBtn.style.display = '';
+      orbitWrap.style.display = '';
+      ring.classList.add('visible');
+      centerLabel.classList.add('visible');
+      resultEl.classList.remove('visible');
+      backdrop.classList.remove('visible');
+
+      updateCards();
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(loop);
+    };
+
+    /* ── Trigger spin ── */
+    window.triggerSpin = function() {
+      if (phase !== 'orbiting') return;
+      phase = 'spinning';
+      decelerating = false;
+      speed = ACCEL_SPEED;
+      actionBtn.style.display = 'none';
+      centerLabel.classList.remove('visible');
+
+      if (spinTimeout) clearTimeout(spinTimeout);
+      spinTimeout = setTimeout(function() {
+        decelerating = true;
+      }, 3000);
+    };
+
+    /* ── Card click during orbit ── */
+    function onCardClick(idx) {
+      // Not used during normal orbit per spec, but keeping for potential
+    }
+
+    /* ── Reset ── */
+    window.resetOrbit = function() {
+      if (rafId) cancelAnimationFrame(rafId);
+      if (spinTimeout) clearTimeout(spinTimeout);
+      phase = 'idle';
+      speed = NORMAL_SPEED;
+      rotationRad = 0;
+      decelerating = false;
+      winnerIdx = -1;
+
+      startBtn.style.display = '';
+      document.getElementById('spinIntro').style.opacity = '1';
+      document.getElementById('spinClickHint').style.opacity = '1';
+      actionBtn.style.display = 'none';
+      orbitWrap.style.display = 'none';
+      ring.classList.remove('visible');
+      centerLabel.classList.remove('visible');
+      resultEl.classList.remove('visible');
+      backdrop.classList.remove('visible');
+
+      orbitWrap.innerHTML = '';
+      cardEls = [];
+    };
+  })();
+  </script>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3 — REFERENCE STYLES CAROUSEL         -->
+  <!-- ============================================ -->
+  <style>
+    .ref-section {
+      padding: clamp(4rem, 10vh, 8rem) 6vw;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .ref-heading {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .ref-subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #DE1280;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Carousel container */
+    .ref-carousel {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .ref-track {
+      display: flex;
+      gap: 1.25rem;
+      transition: transform 0.55s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .ref-card {
+      flex: 0 0 calc((100% - 2.5rem) / 3);
+      max-width: 280px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ref-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(222,18,128,0.10), 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .ref-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Nav arrows */
+    .ref-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .ref-arrow {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(222,18,128,0.2);
+      background: #fff;
+      color: #DE1280;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+
+    .ref-arrow:hover {
+      background: #DE1280;
+      color: #fff;
+      border-color: #DE1280;
+    }
+
+    .ref-arrow:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .ref-dots {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .ref-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(222,18,128,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+
+    .ref-dot.active {
+      background: #DE1280;
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    /* Feature points */
+    .ref-features {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .ref-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .ref-feature-icon {
+      font-size: 1.2rem;
+    }
+
+    /* Philosophy text */
+    .ref-philosophy {
+      max-width: 560px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+
+    .ref-philosophy p {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: #555;
+      margin: 0;
+    }
+
+    .ref-philosophy p + p {
+      margin-top: 0.4rem;
+    }
+
+    /* Description text */
+    .ref-desc {
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .ref-desc p {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #777;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .ref-card {
+        flex: 0 0 calc((100% - 1.25rem) / 2);
+        border-radius: 22px;
+      }
+      .ref-heading { font-size: 1.5rem; }
+      .ref-desc p { font-size: 0.85rem; }
+    }
+
+    @media (max-width: 480px) {
+      .ref-card {
+        flex: 0 0 85%;
+        border-radius: 22px;
+      }
+    }
+  </style>
+
+  <section class="ref-section snap-section" id="refSection">
+    <h2 class="ref-heading">Reference Styles</h2>
+    <p class="ref-subtitle">Style Inspirations</p>
+
+    <!-- Carousel -->
+    <div class="ref-carousel" id="refCarousel">
+      <div class="ref-track" id="refTrack"></div>
+    </div>
+
+    <!-- Nav -->
+    <div class="ref-nav">
+      <button class="ref-arrow" id="refPrev" aria-label="Previous">←</button>
+      <div class="ref-dots" id="refDots"></div>
+      <button class="ref-arrow" id="refNext" aria-label="Next">→</button>
+    </div>
+
+    <!-- Feature points -->
+    <div class="ref-features">
+      <div class="ref-feature-item">
+        <span class="ref-feature-icon">🎨</span>
+        <span>选择今天的心情颜色</span>
+      </div>
+      <div class="ref-feature-item">
+        <span class="ref-feature-icon">🖼️</span>
+        <span>浏览丰富的风格图集灵感内容</span>
+      </div>
+      <div class="ref-feature-item">
+        <span class="ref-feature-icon">✨</span>
+        <span>激发你的穿搭灵感</span>
+      </div>
+    </div>
+
+    <!-- Philosophy text -->
+    <div class="ref-philosophy">
+      <p>穿搭不仅是外在的表达，更是情绪与审美的体现。</p>
+      <p>Chill Manner 帮助你通过视觉灵感和个性化推荐找到今天的自己。</p>
+    </div>
+
+    <!-- Description -->
+    <div class="ref-desc">
+      <p>卡片轮播「Take A Spin」设计，模拟转盘抽奖的趣味感，让穿搭推荐过程更轻松有趣。</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4 — VISUAL LANGUAGE                   -->
+  <!-- ============================================ -->
+  <style>
+    .visual-section {
+      padding: clamp(4rem, 10vh, 8rem) 6vw;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .visual-heading {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+    }
+
+    .visual-img-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .visual-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .visual-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 4rem;
+      align-items: start;
+    }
+
+    .visual-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .visual-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .visual-keyword {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: #C3498B;
+      border: 1px solid rgba(195, 73, 139, 0.25);
+      padding: 0.5em 1.2em;
+      border-radius: 100px;
+      background: rgba(195, 73, 139, 0.04);
+    }
+
+    .visual-desc {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: #666;
+      margin: 0;
+    }
+
+    .visual-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .visual-swatch {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+
+    .visual-swatch-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .visual-swatch-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .visual-swatch-hex {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .visual-swatch-label {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.72rem;
+      color: #999;
+    }
+
+    @media (max-width: 768px) {
+      .visual-heading { font-size: 1.5rem; margin-bottom: 1.5rem; }
+      .visual-content { grid-template-columns: 1fr; gap: 2rem; margin-top: 2.5rem; }
+    }
+  </style>
+
+  <section class="visual-section snap-section" id="visualSection">
+    <h2 class="visual-heading">Visual Language</h2>
+    <div class="visual-img-wrap">
+      <img src="../assets/Chill Manner/b/icon.png" alt="Visual Language">
+    </div>
+
+    <div class="visual-content">
+      <!-- Left -->
+      <div class="visual-left">
+        <div class="visual-keywords">
+          <span class="visual-keyword">Warm</span>
+          <span class="visual-keyword">Friendly</span>
+          <span class="visual-keyword">Playful</span>
+          <span class="visual-keyword">Comfortable</span>
+        </div>
+        <p class="visual-desc">主色调粉色调 (#C3498B) 营造出亲切友好的氛围，让用户能够自在地表达个人兴趣和情绪。柔和的米色背景 (#FFF6F1) 有助于减少视觉疲劳，为内容探索提供平静的画布。强调色 (#DE1280) 则用于关键操作和发现时刻，强化兴奋感，鼓励用户积极参与。</p>
+      </div>
+
+      <!-- Right: Color swatches -->
+      <div class="visual-right">
+        <div class="visual-swatch">
+          <div class="visual-swatch-dot" style="background:#C3498B;"></div>
+          <div class="visual-swatch-info">
+            <span class="visual-swatch-hex">#C3498B</span>
+            <span class="visual-swatch-label">主色调</span>
+          </div>
+        </div>
+        <div class="visual-swatch">
+          <div class="visual-swatch-dot" style="background:#FFF6F1;"></div>
+          <div class="visual-swatch-info">
+            <span class="visual-swatch-hex">#FFF6F1</span>
+            <span class="visual-swatch-label">辅色调</span>
+          </div>
+        </div>
+        <div class="visual-swatch">
+          <div class="visual-swatch-dot" style="background:#DE1280;"></div>
+          <div class="visual-swatch-info">
+            <span class="visual-swatch-hex">#DE1280</span>
+            <span class="visual-swatch-label">突出字体色</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Font showcase -->
+    <h3 class="visual-subheading">Font Type</h3>
+    <div class="visual-fonts">
+      <div class="visual-font-card">
+        <span class="visual-font-name">Inter</span>
+        <span class="visual-font-sample visual-font-sample--inter">Take a spin</span>
+        <span class="visual-font-aa">Aa</span>
+      </div>
+      <div class="visual-font-card">
+        <span class="visual-font-name">Leckerli One</span>
+        <span class="visual-font-sample visual-font-sample--leckerli">Chill Manner</span>
+        <span class="visual-font-aa">Aa</span>
+      </div>
+    </div>
+
+    <style>
+      .visual-subheading {
+        font-family: 'Noto Serif SC', serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin: 4rem 0 1.5rem;
+      }
+
+      .visual-fonts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .visual-font-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 2.5rem 2rem;
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.03);
+      }
+
+      .visual-font-name {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #DE1280;
+      }
+
+      .visual-font-sample {
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        text-align: center;
+      }
+
+      .visual-font-sample--inter {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+      }
+
+      .visual-font-sample--leckerli {
+        font-family: 'Leckerli One', cursive;
+      }
+
+      .visual-font-aa {
+        font-size: 4rem;
+        font-weight: 400;
+        color: #ddd;
+        line-height: 1;
+        user-select: none;
+      }
+
+      @media (max-width: 768px) {
+        .visual-fonts { grid-template-columns: 1fr; gap: 1rem; }
+        .visual-font-sample { font-size: 1.4rem; }
+        .visual-font-aa { font-size: 3rem; }
+      }
+    </style>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 5 — SEARCH THE WAY YOU THINK          -->
+  <!-- ============================================ -->
+  <style>
+    .search-section {
+      padding: clamp(4rem, 10vh, 8rem) 6vw;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .search-heading {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .search-tagline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: #DE1280;
+      margin-bottom: 1.2rem;
+    }
+
+    .search-desc {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #777;
+      max-width: 580px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Search bar */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      padding: 0.85rem 1.2rem;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 100px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+      gap: 0.7rem;
+    }
+
+    .search-bar-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: #ccc;
+    }
+
+    .search-bar-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+      color: #bbb;
+      letter-spacing: 0.03em;
+      transition: opacity 0.3s ease;
+    }
+
+    .search-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .search-card {
+      flex: 0 0 300px;
+    }
+
+    .search-card-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      margin-bottom: 0.8rem;
+    }
+
+    .search-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.4s ease;
+    }
+
+    .search-card-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #999;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 960px) {
+      .search-grid { gap: 0.8rem; }
+      .search-card { flex: 0 0 220px; }
+    }
+
+    @media (max-width: 768px) {
+      .search-heading { font-size: 1.5rem; }
+      .search-grid { flex-direction: column; align-items: center; }
+      .search-card { flex: 0 0 auto; width: 280px; }
+    }
+  </style>
+
+  <section class="search-section snap-section" id="searchSection">
+    <h2 class="search-heading">Search the way you think.</h2>
+    <p class="search-tagline">Every search opens a new world.</p>
+    <p class="search-desc">审美无需定义，只需发现。探索你喜欢的色彩、设计师与风格灵感，在不断发现中找到与自己品味共鸣的人与事。</p>
+
+    <!-- Search bar -->
+    <div class="search-bar">
+      <svg class="search-bar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.3-4.3"/>
+      </svg>
+      <span class="search-bar-text" id="searchPlaceholder">Color</span>
+    </div>
+
+    <div class="search-grid">
+      <!-- by color: blue ↔ r -->
+      <div class="search-card">
+        <div class="search-card-img" id="cardColor">
+          <img src="../assets/Chill Manner/c/blue.png" alt="by color" id="imgColor">
+        </div>
+        <span class="search-card-label">by color</span>
+      </div>
+
+      <!-- by visual similarity: v1 ↔ v2 -->
+      <div class="search-card">
+        <div class="search-card-img" id="cardVisual">
+          <img src="../assets/Chill Manner/c/v1.png" alt="by visual similarity" id="imgVisual">
+        </div>
+        <span class="search-card-label">by visual similarity</span>
+      </div>
+
+      <!-- by designer: d1 ↔ d2 -->
+      <div class="search-card">
+        <div class="search-card-img" id="cardDesigner">
+          <img src="../assets/Chill Manner/c/d1.png" alt="by designer" id="imgDesigner">
+        </div>
+        <span class="search-card-label">by designer</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function() {
+    var pairs = [
+      { img: document.getElementById('imgColor'),     a: '../assets/Chill Manner/c/blue.png', b: '../assets/Chill Manner/c/r.png',    current: 'a' },
+      { img: document.getElementById('imgVisual'),    a: '../assets/Chill Manner/c/v1.png',   b: '../assets/Chill Manner/c/v2.png',  current: 'a' },
+      { img: document.getElementById('imgDesigner'),  a: '../assets/Chill Manner/c/d1.png',   b: '../assets/Chill Manner/c/d2.png',  current: 'a' },
+    ];
+
+    function swap() {
+      pairs.forEach(function(pair) {
+        pair.current = pair.current === 'a' ? 'b' : 'a';
+        pair.img.style.opacity = '0';
+        setTimeout(function() {
+          pair.img.src = pair.current === 'a' ? pair.a : pair.b;
+          pair.img.style.opacity = '1';
+        }, 200);
+      });
+    }
+
+    setInterval(swap, 1500);
+
+    /* Search bar rotating text */
+    var searchWords = ['Color', 'Visual similarity', 'Designer'];
+    var searchIdx = 0;
+    var searchEl = document.getElementById('searchPlaceholder');
+    setInterval(function() {
+      searchIdx = (searchIdx + 1) % searchWords.length;
+      searchEl.style.opacity = '0';
+      setTimeout(function() {
+        searchEl.textContent = searchWords[searchIdx];
+        searchEl.style.opacity = '1';
+      }, 300);
+    }, 1500);
+  })();
+  </script>
+
+  <!-- ============================================ -->
+  <!-- SECTION 6 — KEY SCREENS SWIPE CAROUSEL        -->
+  <!-- ============================================ -->
+  <style>
+    .keys-section {
+      padding: clamp(4rem, 10vh, 8rem) 6vw;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .keys-heading {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+    }
+
+    .keys-carousel {
+      position: relative;
+      overflow: hidden;
+      cursor: grab;
+      user-select: none;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .keys-carousel:active {
+      cursor: grabbing;
+    }
+
+    .keys-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .keys-card {
+      flex: 0 0 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    }
+
+    .keys-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .keys-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .keys-arrow {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(222,18,128,0.2);
+      background: #fff;
+      color: #DE1280;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+
+    .keys-arrow:hover {
+      background: #DE1280;
+      color: #fff;
+    }
+
+    .keys-arrow:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .keys-dots {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .keys-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(222,18,128,0.2);
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    .keys-dot.active {
+      background: #DE1280;
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    .keys-desc {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #777;
+      max-width: 600px;
+      margin: 2rem auto 0;
+    }
+
+    @media (max-width: 768px) {
+      .keys-heading { font-size: 1.5rem; }
+      .keys-carousel { max-width: 280px; }
+      .keys-card { border-radius: 18px; }
+    }
+  </style>
+
+  <section class="keys-section snap-section" id="keysSection">
+    <h2 class="keys-heading">Key screens</h2>
+
+    <div class="keys-carousel" id="keysCarousel">
+      <div class="keys-track" id="keysTrack"></div>
+    </div>
+
+    <div class="keys-nav">
+      <button class="keys-arrow" id="keysPrev" aria-label="Previous">←</button>
+      <div class="keys-dots" id="keysDots"></div>
+      <button class="keys-arrow" id="keysNext" aria-label="Next">→</button>
+    </div>
+
+    <p class="keys-desc">点赞收藏你喜欢的内容和用户，建立审美共鸣；发现并购买与你风格相匹配的时尚单品，轻松表达自我；展示你的收藏、动态与标签，打造专属的个人风格页。</p>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 7 — SOME OF MY THOUGHTS               -->
+  <!-- ============================================ -->
+  <style>
+    .thoughts-section {
+      padding: clamp(5rem, 12vh, 9rem) 6vw;
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    .thoughts-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 3.5rem;
+    }
+
+    .thoughts-title-em {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-weight: 300;
+      font-size: 0.5em;
+      color: #DE1280;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Market Observation block */
+    .thoughts-block {
+      margin-bottom: 4rem;
+    }
+
+    .thoughts-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #DE1280;
+      margin-bottom: 0.5rem;
+    }
+
+    .thoughts-kicker {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+    }
+
+    .thoughts-body {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: #666;
+      max-width: 600px;
+    }
+
+    /* Two-column: text + image placeholder */
+    .thoughts-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+
+    .thoughts-real-img {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      aspect-ratio: 4 / 3;
+    }
+
+    .thoughts-real-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thoughts-img-placeholder {
+      aspect-ratio: 4 / 3;
+      background: #faf5f2;
+      border: 1px dashed rgba(222,18,128,0.15);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      color: rgba(222,18,128,0.3);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+    }
+
+    .thoughts-img-placeholder span:first-child {
+      font-size: 1.8rem;
+    }
+
+    .thoughts-img-hint {
+      font-size: 0.65rem;
+      color: rgba(0,0,0,0.2);
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    /* Behavioral Insights */
+    .thoughts-section-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #DE1280;
+      margin-bottom: 1.5rem;
+    }
+
+    .thoughts-insight-label {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+    }
+
+    .insight-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .insight-card:first-of-type {
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .insight-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #DE1280;
+      letter-spacing: 0.1em;
+      padding-top: 0.15rem;
+    }
+
+    .insight-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .insight-desc {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: #888;
+    }
+
+    /* Closing */
+    .thoughts-closing {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 2px solid rgba(222,18,128,0.12);
+    }
+
+    .thoughts-closing-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #DE1280;
+      margin-bottom: 0.8rem;
+    }
+
+    .thoughts-closing-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+    }
+
+    .thoughts-closing-body {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: #666;
+      max-width: 620px;
+    }
+
+    @media (max-width: 768px) {
+      .thoughts-row { grid-template-columns: 1fr; gap: 1.5rem; }
+      .thoughts-title { font-size: 1.8rem; }
+      .insight-card { gap: 1rem; }
+    }
+  </style>
+
+  <section class="thoughts-section snap-section" id="thoughtsSection">
+    <h2 class="thoughts-title">
+      <span class="thoughts-title-em">Some of my</span>
+      thoughts
+    </h2>
+
+    <!-- Market Observation -->
+    <div class="thoughts-block">
+      <span class="thoughts-label">Market Observation</span>
+      <p class="thoughts-body">年轻用户获取时尚灵感的方式正在发生变化。相比过去依赖杂志、品牌或意见领袖，人们更倾向于通过收藏、浏览与整理视觉内容来构建个人风格。审美偏好正在成为一种新的自我表达方式。</p>
+    </div>
+
+    <!-- Image row -->
+    <div class="thoughts-row">
+      <div class="thoughts-real-img">
+        <img src="../assets/Chill Manner/last/1.png" alt="Fashion inspiration browsing">
+      </div>
+      <div class="thoughts-real-img">
+        <img src="../assets/Chill Manner/last/2.png" alt="Inspiration channel trends">
+      </div>
+    </div>
+
+    <!-- Behavioral Insights -->
+    <div class="thoughts-block">
+      <span class="thoughts-section-label">Behavioral Insights</span>
+
+      <div class="insight-card">
+        <span class="insight-num">01</span>
+        <div>
+          <h3 class="insight-title">Inspiration Is Fragmented</h3>
+          <p class="insight-desc">用户的灵感分散在多个平台，例如小红书、Ins、抖音、Pinterest——建立统一的审美发现体验。</p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <span class="insight-num">02</span>
+        <div>
+          <h3 class="insight-title">People Follow Aesthetics, Not Products</h3>
+          <p class="insight-desc">很多用户收藏的不是商品，而是色彩、氛围、搭配方式、生活方式。</p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <span class="insight-num">03</span>
+        <div>
+          <h3 class="insight-title">Discovery Is More Exciting Than Search</h3>
+          <p class="insight-desc">用户经常不知道想找什么，但热衷于想获得灵感，让探索成为体验核心而非搜索。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video -->
+    <div class="thoughts-video" style="margin:3rem 0;">
+      <video src="../assets/Chill Manner/video.mp4" autoplay muted loop playsinline style="width:100%;display:block;border-radius:16px;"></video>
+    </div>
+
+    <!-- Closing — 这也是为什么 Take A Spin -->
+    <div class="thoughts-closing">
+      <span class="thoughts-closing-label">Why We Built This</span>
+      <h3 class="thoughts-closing-title">这也是为什么 Take A Spin</h3>
+      <p class="thoughts-closing-body">传统搜索假定用户知道自己想要寻找什么。但实际上，许多人在探索时尚和美学时并没有明确的目标。"Take a Spin" 旨在将发现之旅变成一种趣味体验，帮助用户通过偶然的探索发现意想不到的风格、潮流和灵感。</p>
+    </div>
+  </section>
+
+  <script>
+  (function() {
+    var IMAGES = [
+      'k/1.png',
+      'k/2.png',
+      'k/3.png',
+      'k/Free Transparent iPhone 17e Mockup (Mockuuups Studio)-1.png',
+      'k/Free Transparent iPhone 17e Mockup (Mockuuups Studio)-2.png',
+      'k/Free Transparent iPhone 17e Mockup (Mockuuups Studio)-3.png',
+    ];
+    var BASE = '../assets/Chill Manner/';
+    var currentIndex = 0;
+    var totalSlides = IMAGES.length;
+
+    var track = document.getElementById('keysTrack');
+    var dotsContainer = document.getElementById('keysDots');
+    var prevBtn = document.getElementById('keysPrev');
+    var nextBtn = document.getElementById('keysNext');
+    var carousel = document.getElementById('keysCarousel');
+
+    /* Build slides */
+    IMAGES.forEach(function(img, i) {
+      var card = document.createElement('div');
+      card.className = 'keys-card';
+      card.innerHTML = '<img src="' + BASE + encodeURI(img) + '" alt="Screen ' + (i + 1) + '" draggable="false">';
+      track.appendChild(card);
+
+      var dot = document.createElement('button');
+      dot.className = 'keys-dot';
+      dot.setAttribute('aria-label', 'Go to screen ' + (i + 1));
+      dot.addEventListener('click', (function(idx) { return function() { goTo(idx); }; })(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    var dots = dotsContainer.querySelectorAll('.keys-dot');
+
+    function goTo(index) {
+      if (index < 0) index = 0;
+      if (index > totalSlides - 1) index = totalSlides - 1;
+      currentIndex = index;
+
+      var containerWidth = carousel.getBoundingClientRect().width;
+      var offset = currentIndex * containerWidth;
+      track.style.transform = 'translateX(-' + offset + 'px)';
+
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === currentIndex); });
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= totalSlides - 1;
+    }
+
+    prevBtn.addEventListener('click', function() { goTo(currentIndex - 1); });
+    nextBtn.addEventListener('click', function() { goTo(currentIndex + 1); });
+
+    /* Touch swipe */
+    var startX = 0, startY = 0, isDragging = false, startOffset = 0;
+    carousel.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      isDragging = true;
+      startOffset = currentIndex * carousel.getBoundingClientRect().width;
+      track.style.transition = 'none';
+    });
+    carousel.addEventListener('touchmove', function(e) {
+      if (!isDragging) return;
+      var dx = e.touches[0].clientX - startX;
+      track.style.transform = 'translateX(' + (-startOffset + dx) + 'px)';
+    });
+    carousel.addEventListener('touchend', function(e) {
+      isDragging = false;
+      track.style.transition = '';
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) {
+        goTo(dx < 0 ? currentIndex + 1 : currentIndex - 1);
+      } else {
+        goTo(currentIndex);
+      }
+    });
+
+    /* Mouse drag */
+    var mouseDown = false, mouseStartX = 0, mouseStartOffset = 0;
+    carousel.addEventListener('mousedown', function(e) {
+      mouseDown = true;
+      mouseStartX = e.clientX;
+      mouseStartOffset = currentIndex * carousel.getBoundingClientRect().width;
+      track.style.transition = 'none';
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', function(e) {
+      if (!mouseDown) return;
+      var dx = e.clientX - mouseStartX;
+      track.style.transform = 'translateX(' + (-mouseStartOffset + dx) + 'px)';
+    });
+    window.addEventListener('mouseup', function(e) {
+      if (!mouseDown) return;
+      mouseDown = false;
+      track.style.transition = '';
+      var dx = e.clientX - mouseStartX;
+      if (Math.abs(dx) > 50) {
+        goTo(dx < 0 ? currentIndex + 1 : currentIndex - 1);
+      } else {
+        goTo(currentIndex);
+      }
+    });
+
+    goTo(0);
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var IMAGES = [
+      'b/iPhone 14 & 15 Pro Max - 1.png',
+      'b/iPhone 14 & 15 Pro Max - 2.png',
+      'b/iPhone 14 & 15 Pro Max - 3.png',
+      'b/iPhone 14 & 15 Pro Max - 4.png',
+      'b/iPhone 14 & 15 Pro Max - 5.png',
+      'b/iPhone 14 & 15 Pro Max - 6.png',
+      'b/iPhone 14 & 15 Pro Max - 7.png',
+      'b/iPhone 14 & 15 Pro Max - 8.png',
+      'b/iPhone 14 & 15 Pro Max - 17.png',
+    ];
+    var BASE = '../assets/Chill Manner/';
+    var currentIndex = 0;
+    var totalSlides = IMAGES.length;
+
+    var track = document.getElementById('refTrack');
+    var dotsContainer = document.getElementById('refDots');
+    var prevBtn = document.getElementById('refPrev');
+    var nextBtn = document.getElementById('refNext');
+    var carousel = document.getElementById('refCarousel');
+
+    /* ── Build slides ── */
+    IMAGES.forEach(function(img, i) {
+      var card = document.createElement('div');
+      card.className = 'ref-card';
+      card.innerHTML = '<img src="' + BASE + encodeURI(img) + '" alt="Style ' + (i + 1) + '" loading="lazy">';
+      track.appendChild(card);
+
+      var dot = document.createElement('button');
+      dot.className = 'ref-dot';
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', (function(idx) { return function() { goTo(idx); }; })(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    var dots = dotsContainer.querySelectorAll('.ref-dot');
+
+    /* ── Get visible count based on screen ── */
+    function getVisible() {
+      if (window.innerWidth <= 480) return 1;
+      if (window.innerWidth <= 768) return 2;
+      return 3;
+    }
+
+    /* ── Go to index ── */
+    function goTo(index) {
+      var visible = getVisible();
+      var maxIndex = totalSlides - visible;
+      if (index < 0) index = 0;
+      if (index > maxIndex) index = maxIndex;
+      currentIndex = index;
+
+      var cardWidth = track.querySelector('.ref-card').getBoundingClientRect().width;
+      var gapPx = 20;
+      var offset = currentIndex * (cardWidth + gapPx);
+      track.style.transform = 'translateX(-' + offset + 'px)';
+
+      /* Update dots */
+      dots.forEach(function(d, i) { d.classList.remove('active'); });
+      if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+
+      /* Update arrows */
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= maxIndex;
+    }
+
+    /* ── Events ── */
+    prevBtn.addEventListener('click', function() { goTo(currentIndex - 1); });
+    nextBtn.addEventListener('click', function() { goTo(currentIndex + 1); });
+
+    /* Touch swipe */
+    var touchStartX = 0;
+    carousel.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; });
+    carousel.addEventListener('touchend', function(e) {
+      var diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        goTo(diff > 0 ? currentIndex + 1 : currentIndex - 1);
+      }
+    });
+
+    /* Resize recalc */
+    var resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        var visible = getVisible();
+        var maxIndex = totalSlides - visible;
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+        goTo(currentIndex);
+      }, 200);
+    });
+
+    /* Init */
+    goTo(0);
+  })();
+  </script>
+
+
+
+  <!-- ============ BOTTOM NAV ============ -->
+  <section class="proj-nav-bottom">
+    <a href="../index.html" class="proj-back-link">← Back to Works</a>
+    <span class="proj-next-link" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to Top</span>
+  </section>
+
+  <footer class="proj-footer">
+    <p>&copy; 2026 Wilton Wei</p>
+  </footer>
+
+  <!-- Cursor Script -->
+  <script>
+  (function() {
+    if ('ontouchstart' in window || window.matchMedia('(pointer: coarse)').matches) return;
+
+    var ring = document.querySelector('.cursor-ring');
+    var dot = document.querySelector('.cursor-dot');
+    if (!ring || !dot) return;
+
+    var mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', function(e) {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top = my + 'px';
+    });
+
+    function follow() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(follow);
+    }
+    requestAnimationFrame(follow);
+
+    document.querySelectorAll('a, button').forEach(function(el) {
+      el.addEventListener('mouseenter', function() { ring.classList.add('hover-link'); dot.classList.add('hover-link'); });
+      el.addEventListener('mouseleave', function() { ring.classList.remove('hover-link'); dot.classList.remove('hover-link'); });
+    });
+  })();
+  </script>
+
+  <!-- Cover Section Interactive Script -->
+  <script>
+  (function() {
+    var section = document.getElementById('coverSection');
+    var mockup = document.getElementById('coverMockup');
+    var bgText = document.getElementById('coverBgText');
+    var cards = document.querySelectorAll('.cover-card');
+    var wrap = document.getElementById('mockupWrap');
+    if (!section || !mockup) return;
+
+    var mx = 0, my = 0;
+    var ticking = false;
+
+    section.addEventListener('mousemove', function(e) {
+      mx = e.clientX;
+      my = e.clientY;
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    });
+
+    section.addEventListener('mouseleave', function() {
+      mockup.style.transform = '';
+      mockup.style.boxShadow = '';
+      cards.forEach(function(c) { c.style.transform = ''; });
+    });
+
+    function update() {
+      ticking = false;
+
+      var rect = section.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+
+      // Normalize mouse position relative to section center
+      var nx = (mx - cx) / (rect.width / 2);
+      var ny = (my - cy) / (rect.height / 2);
+
+      // --- Mockup 3D tilt ---
+      var maxTilt = 12;
+      var rotateY = nx * maxTilt;
+      var rotateX = -ny * maxTilt;
+      mockup.style.transform = 'rotateY(' + rotateY.toFixed(2) + 'deg) rotateX(' + rotateX.toFixed(2) + 'deg)';
+
+      // --- Background text parallax ---
+      if (bgText) {
+        bgText.style.transform = 'translate(calc(-50% + ' + (nx * 20).toFixed(1) + 'px), calc(-50% + ' + (ny * 20).toFixed(1) + 'px))';
+      }
+
+      // --- Floating cards parallax ---
+      cards.forEach(function(card) {
+        var depth = parseFloat(card.getAttribute('data-depth')) || 0.5;
+        var tx = nx * 30 * depth;
+        var ty = ny * 30 * depth;
+        card.style.transform = 'translate3d(' + tx.toFixed(1) + 'px, ' + ty.toFixed(1) + 'px, 0)';
+      });
+    }
+
+    // --- Card hover: lift + slight scale ---
+    cards.forEach(function(card) {
+      card.addEventListener('mouseenter', function() {
+        // Stop parallax and lift
+        var depth = parseFloat(card.getAttribute('data-depth')) || 0.5;
+        var tx = (mx - section.getBoundingClientRect().left - section.getBoundingClientRect().width/2) / (section.getBoundingClientRect().width/2) * 30 * depth;
+        var ty = (my - section.getBoundingClientRect().top - section.getBoundingClientRect().height/2) / (section.getBoundingClientRect().height/2) * 30 * depth;
+        card.style.transform = 'translate3d(' + tx.toFixed(1) + 'px, ' + ty.toFixed(1) + 'px, 20px) scale(1.05)';
+        card.style.boxShadow = '0 20px 50px rgba(222,18,128,0.12)';
+        card.style.zIndex = '10';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.boxShadow = '';
+        card.style.zIndex = '';
+        card.style.transform = card.style.transform.replace(' scale(1.05)', '');
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
