@@ -131,8 +131,8 @@ const CHARACTERS = {
     skills: [
       { name:'打杂', desc:'回合开始时，可以弃置一张牌，本回合每使用一张基本牌，摸一张牌。',
         trigger:'ON_TURN_START', optional:true },
-      { name:'转正', desc:'仅当身份为大厂实习生时获得。进入与CEO单挑状态时，立即回复1点体力并摸两张牌。',
-        trigger:'ON_DUEL_STATE', optional:false, conditionIdentity:'大厂实习生' },
+      { name:'转正', desc:'仅当身份为合伙人时获得。进入与CEO单挑状态时，立即回复1点体力并摸两张牌。',
+        trigger:'ON_DUEL_STATE', optional:false, conditionIdentity:'合伙人' },
     ]
   },
 };
@@ -141,24 +141,24 @@ const CHARACTERS = {
 const IDENTITY_CONFIG = {
   4: [
     { identity:'CEO', displayName:'CEO', team:'lord' },
-    { identity:'合伙人', displayName:'合伙人', team:'loyalist' },
+    { identity:'秘书长', displayName:'秘书长', team:'loyalist' },
     { identity:'部门总监', displayName:'部门总监', team:'rebel' },
-    { identity:'大厂实习生', displayName:'大厂实习生', team:'traitor' },
+    { identity:'合伙人', displayName:'合伙人', team:'traitor' },
   ],
   5: [
     { identity:'CEO', displayName:'CEO', team:'lord' },
-    { identity:'合伙人', displayName:'合伙人', team:'loyalist' },
+    { identity:'秘书长', displayName:'秘书长', team:'loyalist' },
     { identity:'部门总监', displayName:'部门总监', team:'rebel' },
     { identity:'部门总监', displayName:'部门总监', team:'rebel' },
-    { identity:'大厂实习生', displayName:'大厂实习生', team:'traitor' },
+    { identity:'合伙人', displayName:'合伙人', team:'traitor' },
   ],
   6: [
     { identity:'CEO', displayName:'CEO', team:'lord' },
-    { identity:'合伙人', displayName:'合伙人', team:'loyalist' },
+    { identity:'秘书长', displayName:'秘书长', team:'loyalist' },
     { identity:'部门总监', displayName:'部门总监', team:'rebel' },
     { identity:'部门总监', displayName:'部门总监', team:'rebel' },
     { identity:'部门总监', displayName:'部门总监', team:'rebel' },
-    { identity:'大厂实习生', displayName:'大厂实习生', team:'traitor' },
+    { identity:'合伙人', displayName:'合伙人', team:'traitor' },
   ],
 };
 
@@ -507,14 +507,14 @@ class GameEngine {
       if (rebels.length > 0) {
         return { over: true, winner: '部门总监', text: 'CEO已被拿下！部门总监（反贼）胜利！🎉' };
       } else if (traitor) {
-        return { over: true, winner: '大厂实习生', text: '内奸笑到最后！大厂实习生单挑成功！🕵️' };
+        return { over: true, winner: '合伙人', text: '内奸笑到最后！合伙人单挑成功！🕵️' };
       } else {
         return { over: true, winner: '部门总监', text: 'CEO死亡！反贼胜利！（理论上不会出现此情况）' };
       }
     }
 
     if (rebels.length === 0 && !traitor) {
-      return { over: true, winner: 'CEO & 合伙人', text: '所有反贼和内奸已清除！CEO和合伙人共同胜利！🏆' };
+      return { over: true, winner: 'CEO & 秘书长', text: '所有反贼和内奸已清除！CEO和秘书长共同胜利！🏆' };
     }
 
     return { over: false };
@@ -974,6 +974,8 @@ class UIController {
       const cardEl = this._createCardElement(card, false);
       cardEl.style.zIndex = i; // rightmost cards on top
       cardEl.addEventListener('click', () => this._onHandCardClick(card, cardEl));
+      cardEl.addEventListener('mouseenter', (e) => this._showCardTooltip(card, e));
+      cardEl.addEventListener('mouseleave', () => this._hideCardTooltip());
       container.appendChild(cardEl);
     }
   }
@@ -1094,6 +1096,42 @@ class UIController {
   }
 
   _hideCharTooltip() {
+    document.getElementById('card-tooltip').classList.add('hidden');
+  }
+
+  _showCardTooltip(card, event) {
+    const tt = document.getElementById('card-tooltip');
+    const content = tt.querySelector('.tooltip-card');
+
+    const typeLabel = { basic:'基本牌', trick:'锦囊牌', equipment:'装备牌' };
+    const subtypeLabel = { weapon:'武器', armor:'防具', plusHorse:'+1坐骑', minusHorse:'-1坐骑', delay:'延时' };
+
+    content.innerHTML = `
+      <div class="tooltip-card-detail">
+        <div class="tooltip-card-header">
+          <div class="tooltip-card-emoji">${card.emoji}</div>
+          <div>
+            <div class="tooltip-card-title">${card.name}</div>
+            <div class="tooltip-card-meta">${card.suitSymbol} ${card.value}</div>
+          </div>
+        </div>
+        <div class="tooltip-card-desc">${card.description}</div>
+        <div class="tooltip-card-tags">
+          <span class="tooltip-card-tag type-${card.type}">${typeLabel[card.type] || card.type}</span>
+          ${card.subtype ? `<span class="tooltip-card-tag">${subtypeLabel[card.subtype] || card.subtype}</span>` : ''}
+          ${card.range ? `<span class="tooltip-card-tag">范围 ${card.range}</span>` : ''}
+        </div>
+      </div>
+    `;
+
+    tt.classList.remove('hidden');
+    const x = Math.min(event.clientX + 16, window.innerWidth - 240);
+    const y = Math.max(10, event.clientY - 100);
+    tt.style.left = x + 'px';
+    tt.style.top = y + 'px';
+  }
+
+  _hideCardTooltip() {
     document.getElementById('card-tooltip').classList.add('hidden');
   }
 

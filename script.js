@@ -226,55 +226,8 @@ document.title = CONFIG.name + ' — Portfolio';
   gsap.registerPlugin(ScrollTrigger);
 
   // --- Hero load animation ---
-  // Split hero text into individual characters for staggered reveal
-  var heroLine = document.querySelector('.hero-line');
-  if (heroLine) {
-    var text = heroLine.textContent;
-    heroLine.textContent = '';
-    heroLine.innerHTML = text.split('').map(function (char) {
-      return '<span class="hero-char">' + (char === ' ' ? '&nbsp;' : char) + '</span>';
-    }).join('');
-  }
-
-  var heroTL = gsap.timeline({ delay: 0.4 });
-  heroTL
-    .fromTo('.hero-char', {
-      y: 80,
-      opacity: 0,
-      rotateX: -40,
-      scale: 1.2,
-    }, {
-      y: 0,
-      opacity: 1,
-      rotateX: 0,
-      scale: 1,
-      duration: 0.8,
-      stagger: 0.04,
-      ease: 'back.out(1.2)',
-    })
-    .fromTo('.hero-subtitle', {
-      y: 30,
-      opacity: 0,
-    }, {
-      y: 0,
-      opacity: 1,
-      duration: 0.7,
-      ease: 'power3.out',
-    }, '-=0.3')
-    .fromTo('.hero-tagline', {
-      y: 20,
-      opacity: 0,
-    }, {
-      y: 0,
-      opacity: 1,
-      duration: 0.7,
-      ease: 'power3.out',
-    }, '-=0.4')
-    .to('.scroll-indicator', {
-      opacity: 1,
-      duration: 0.6,
-      ease: 'power3.out',
-    }, '-=0.2');
+  // Hero content uses CSS fadeSlideUp keyframes for staggered entrance.
+  // Refresh ScrollTrigger after fonts/video load to recalc positions.
 
   // --- Section headings ---
   document.querySelectorAll('.section-heading').forEach(function (heading) {

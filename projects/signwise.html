@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>签明（SignWise）</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: #000;
+      overflow-x: hidden;
+    }
+
+    /* ---- Video Background ---- */
+    .hero-video-wrapper {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 115%;
+      height: 115%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* ---- Page Content Overlay ---- */
+    .page-content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Navigation Bar ---- */
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 120px;
+      position: relative;
+      z-index: 2;
+    }
+    .nav-logo {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -1.44px;
+      color: #000;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .nav-menu a {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: #000;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-menu a:hover { opacity: 0.7; }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .btn-login {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: #fff;
+      background: #000;
+      border: none;
+      padding: 0 20px;
+      height: 40px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .btn-login:hover { opacity: 0.85; }
+
+    /* ---- Hero Content ---- */
+    .hero-content-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      margin-top: -50px;
+      padding: 0 120px;
+      transition: flex 0.4s ease, margin 0.4s ease, padding 0.4s ease;
+    }
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 34px;
+      max-width: 900px;
+      width: 100%;
+      transition: gap 0.4s ease;
+    }
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 34px;
+      transition: opacity 0.35s ease, max-height 0.4s ease;
+      overflow: hidden;
+    }
+
+    /* ---- Results Active State: compact hero ---- */
+    .page-content.has-results .hero-content-wrap {
+      flex: 0;
+      margin-top: 0;
+      padding-top: 24px;
+      padding-bottom: 0;
+      justify-content: flex-start;
+    }
+    .page-content.has-results .hero-inner { gap: 0; }
+    .page-content.has-results .hero-text {
+      opacity: 0;
+      max-height: 0;
+      pointer-events: none;
+    }
+    .page-content.has-results .search-box { margin-top: 0; }
+
+    /* ---- Badge ---- */
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .badge-new {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #0e1311;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+    .badge-star {
+      width: 14px;
+      height: 14px;
+    }
+    .badge-discover {
+      display: inline-flex;
+      align-items: center;
+      background: #f8f8f8;
+      color: #000;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* ---- Headline ---- */
+    .hero-headline {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 700;
+      font-size: 80px;
+      letter-spacing: -4.8px;
+      line-height: 1;
+      color: #000;
+      text-align: center;
+    }
+
+    /* ---- Subtitle ---- */
+    .hero-subtitle {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: -0.4px;
+      color: #505050;
+      text-align: center;
+      max-width: 736px;
+      width: 542px;
+      line-height: 1.5;
+    }
+
+    /* ---- Search Box ---- */
+    .search-box {
+      margin-top: 10px;
+      max-width: 728px;
+      width: 100%;
+      background: rgba(0,0,0,0.24);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 18px;
+      padding: 16px 20px 12px;
+      color: #fff;
+    }
+    .search-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .search-credits {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      color: #fff;
+    }
+    .btn-upgrade {
+      background: rgba(90,225,76,0.89);
+      color: #000;
+      border: none;
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .search-powered {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      color: #fff;
+    }
+    .ai-sparkle {
+      width: 16px;
+      height: 16px;
+    }
+    .search-input-row {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 12px;
+      padding: 6px 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .search-input-row input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #000;
+      padding: 8px 6px;
+      background: transparent;
+    }
+    .search-input-row input::placeholder {
+      color: rgba(0,0,0,0.6);
+    }
+    .btn-submit {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #000;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+    .btn-submit:hover { opacity: 0.8; }
+    .submit-arrow {
+      width: 16px;
+      height: 16px;
+      color: #fff;
+    }
+    .search-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .search-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .search-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-action-btn:hover { background: rgba(255,255,255,0.25); }
+    .search-action-icon {
+      width: 14px;
+      height: 14px;
+    }
+    .search-char-count {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ---- Results Section ---- */
+    .results-section {
+      display: none;
+      width: 100%;
+      padding: 40px 120px 80px;
+    }
+    .results-section.is-visible { display: block; }
+
+    .results-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .results-panel {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 18px;
+      padding: 28px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .results-panel-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: #000;
+      margin-bottom: 18px;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .results-panel-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .panel-original .results-panel-title::before { background: #e8a440; }
+    .panel-explain .results-panel-title::before { background: #4a90d9; }
+
+    .panel-original .original-text {
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 16px;
+      line-height: 2.2;
+      color: #1a1a1a;
+      white-space: pre-wrap;
+    }
+    .highlight-risk {
+      background: #ffe082;
+      border-bottom: 2.5px solid #e8a440;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-weight: 600;
+      color: #000;
+      cursor: default;
+      transition: background 0.2s;
+    }
+    .highlight-risk:hover { background: #ffcc02; }
+
+    .analysis-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .analysis-section {
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .analysis-section:last-child { border-bottom: none; padding-bottom: 0; }
+    .analysis-section-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+    }
+    .analysis-section-body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #222;
+      white-space: pre-wrap;
+    }
+    .risk-badge {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 2px 0;
+    }
+    .risk-low { color: #2e7d32; }
+    .risk-medium { color: #e67e00; }
+    .risk-high { color: #c62828; }
+
+    .results-loading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: #505050;
+      padding: 40px 0;
+      justify-content: center;
+    }
+    .loading-dots {
+      display: flex;
+      gap: 4px;
+    }
+    .loading-dots span {
+      width: 6px;
+      height: 6px;
+      background: #000;
+      border-radius: 50%;
+      animation: dotBounce 1.4s infinite ease-in-out both;
+    }
+    .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+    .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes dotBounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1); }
+    }
+    .results-error {
+      color: #c44;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 16px 0;
+      text-align: center;
+    }
+
+    /* ---- Contact Section ---- */
+    .contact-section {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+      padding: 100px 120px 0;
+      overflow: hidden;
+    }
+    .contact-bg-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .contact-bg-glow::before {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 50%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(200,210,255,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .contact-bg-glow::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      right: -5%;
+      width: 45%;
+      height: 55%;
+      background: radial-gradient(ellipse, rgba(220,200,255,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .contact-container {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .contact-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .contact-header-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      letter-spacing: -1.6px;
+      color: #1a1a1a;
+      margin-bottom: 14px;
+    }
+    .contact-header-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #777;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .contact-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-card {
+      background: #fafaf9;
+      border: 1px solid #eee;
+      border-radius: 18px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+    .contact-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #f0f0ec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #555;
+    }
+    .contact-card-icon svg { width: 20px; height: 20px; }
+    .contact-card-info { flex: 1; min-width: 0; }
+    .contact-card-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 2px;
+    }
+    .contact-card-value {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: #1a1a1a;
+      letter-spacing: -0.2px;
+      margin-bottom: 2px;
+    }
+    .contact-card-hint {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #aaa;
+    }
+    .btn-contact-card {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      padding: 7px 16px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-contact-card:hover {
+      background: #1a1a1a;
+      color: #fff;
+      border-color: #1a1a1a;
+      transform: scale(1.03);
+    }
+
+    /* AI Card */
+    .ai-card {
+      background: #fafaf9;
+      border: 1px solid #eee;
+      border-radius: 24px;
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      height: 100%;
+    }
+    .ai-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+    .ai-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #fff;
+      transition: transform 0.4s ease;
+    }
+    .ai-card:hover .ai-avatar {
+      animation: aiFloat 0.8s ease-in-out;
+    }
+    @keyframes aiFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .ai-avatar svg { width: 32px; height: 32px; }
+    .ai-card-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: #1a1a1a;
+      letter-spacing: -0.4px;
+      margin-bottom: 6px;
+    }
+    .ai-card-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #5a9e6f;
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+    .ai-card-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #777;
+      line-height: 1.7;
+      max-width: 280px;
+      margin-bottom: 24px;
+    }
+    .ai-card-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-ai-primary {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 10px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .btn-ai-primary:hover { transform: scale(1.03); opacity: 0.9; }
+    .btn-ai-secondary {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 10px;
+      background: #fff;
+      color: #555;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+    .btn-ai-secondary:hover { transform: scale(1.03); background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+
+    /* Quick Links */
+    .contact-quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 60px;
+    }
+    .pill-link {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #666;
+      background: #f5f5f3;
+      padding: 8px 18px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .pill-link:hover { background: #1a1a1a; color: #fff; }
+
+    /* Footer */
+    .contact-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 32px 0 40px;
+      border-top: 1px solid #f0f0ec;
+    }
+    .footer-left { display: flex; flex-direction: column; gap: 4px; }
+    .footer-brand { font-family: 'Fustat', sans-serif; font-weight: 600; font-size: 15px; color: #aaa; }
+    .footer-tagline { font-family: 'Inter', sans-serif; font-size: 13px; color: #ccc; }
+    .footer-right { display: flex; gap: 28px; }
+    .footer-right a {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-right a:hover { color: #1a1a1a; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) {
+      .nav-bar { padding: 16px 40px; }
+      .hero-content-wrap { padding: 0 40px; }
+      .hero-headline { font-size: 48px; letter-spacing: -2.4px; }
+      .hero-subtitle { width: 100%; font-size: 16px; }
+      .search-box { max-width: 100%; }
+      .results-section { padding: 0 40px 60px; }
+    }
+    @media (max-width: 768px) {
+      .nav-bar { padding: 12px 20px; }
+      .nav-menu { display: none; }
+      .hero-content-wrap { padding: 0 20px; margin-top: -30px; }
+      .hero-headline { font-size: 36px; letter-spacing: -1.8px; }
+      .hero-subtitle { width: 100%; font-size: 15px; max-width: 100%; }
+      .search-box { padding: 12px 14px 10px; border-radius: 14px; }
+      .search-top { flex-direction: column; gap: 6px; align-items: flex-start; }
+      .results-section { padding: 0 20px 60px; }
+      .results-compare { grid-template-columns: 1fr; }
+      .results-panel { padding: 20px; }
+      .results-suggestion { padding: 20px; }
+      .contact-section { padding: 60px 20px 0; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-footer { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-right { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Background -->
+  <div class="hero-video-wrapper">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260302_085640_276ea93b-d7da-4418-a09b-2aa5b490e838.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <!-- Navigation -->
+    <nav class="nav-bar">
+      <a href="#" class="nav-logo">SignWise签明</a>
+      <ul class="nav-menu">
+        <li><a href="signwise.html">合同解析</a></li>
+        <li><a href="signwise-about.html">关于签明</a></li>
+        <li><a href="signwise-cases.html">案例分析</a></li>
+        <li><a href="#contact">联系我们</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-login" onclick="location.href='../index.html'">返回首页</button>
+      </div>
+    </nav>
+
+    <!-- Hero Content -->
+    <div class="hero-content-wrap">
+      <div class="hero-inner">
+        <!-- Hero Text (hidden when results shown) -->
+        <div class="hero-text">
+          <div class="badge-row">
+            <span class="badge-new">
+              <svg class="badge-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg>
+              Clause＆Contract
+            </span>
+            <span class="badge-discover">VibeCoding Product</span>
+          </div>
+          <h1 class="hero-headline">签之前，先看明白</h1>
+          <p class="hero-subtitle">让您的合同条款讲"人话"<br>AI 智能识别合同条款每一处坑，让每一份合同都清晰可控</p>
+        </div>
+
+        <!-- Search Input Box -->
+        <div class="search-box">
+          <div class="search-top">
+            <div class="search-credits">
+              60/450 credits
+              <button class="btn-upgrade">Upgrade</button>
+            </div>
+            <div class="search-powered">
+              <svg class="ai-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5z"/><path d="M5 3l.8 2.2L8 6l-2.2.8L5 9l-.8-2.2L2 6l2.2-.8z"/></svg>
+              搭载deepseek-v4-pro
+            </div>
+          </div>
+          <div class="search-input-row">
+            <input type="text" placeholder="输入合同条款信息...">
+            <button class="btn-submit">
+              <svg class="submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+            </button>
+          </div>
+          <div class="search-bottom">
+            <div class="search-actions">
+              <input type="file" id="fileInput" accept=".txt,.pdf,.doc,.docx" style="display:none;">
+              <button class="search-action-btn" id="attachBtn">
+                <svg class="search-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                附件
+              </button>
+              <button class="search-action-btn">
+                <svg class="search-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                语音输入
+              </button>
+            </div>
+            <span class="search-char-count">0/3,000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div class="results-section" id="resultsSection">
+        <div class="results-loading" id="resultsLoading">
+          <div class="loading-dots">
+            <span></span><span></span><span></span>
+          </div>
+          SignWise 正在分析合同条款...
+        </div>
+        <div id="resultsError" class="results-error" style="display:none;"></div>
+        <div id="resultsContent" style="display:none;">
+          <div class="results-compare">
+            <div class="results-panel panel-original">
+              <div class="results-panel-title">原文对照</div>
+              <div class="original-text" id="originalText"></div>
+            </div>
+            <div class="results-panel panel-explain">
+              <div class="results-panel-title">条款解读</div>
+              <div class="analysis-content" id="analysisContent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="contact-bg-glow"></div>
+    <div class="contact-container">
+
+      <div class="contact-header">
+        <h2 class="contact-header-title">联系我们</h2>
+        <p class="contact-header-sub">无论是产品咨询、商务合作、功能建议，还是遇到使用问题，我们都希望听到你的声音。</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Left: Contact Cards -->
+        <div class="contact-left">
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="contact-card-info">
+              <div class="contact-card-label">邮箱</div>
+              <div class="contact-card-value">996879702@qq.com</div>
+              <div class="contact-card-hint">商务合作 / 产品咨询</div>
+            </div>
+            <button class="btn-contact-card" id="btnCopyEmail">复制邮箱</button>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="contact-card-info">
+              <div class="contact-card-label">联系电话</div>
+              <div class="contact-card-value">+86 199 2411 5435</div>
+              <div class="contact-card-hint">工作日 09:00 - 18:00</div>
+            </div>
+            <button class="btn-contact-card" onclick="location.href='tel:+8619924115435'">立即拨打</button>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="contact-card-info">
+              <div class="contact-card-label">办公时间</div>
+              <div class="contact-card-value">周一至周五</div>
+              <div class="contact-card-hint">09:00 - 18:00 / 节假日除外</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: AI Card -->
+        <div class="ai-card">
+          <div class="ai-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><circle cx="15.5" cy="8.5" r="1.5"/><path d="M8 14h8"/><path d="m9 18 3-3 3 3"/></svg>
+          </div>
+          <h3 class="ai-card-title">在线 AI 客服</h3>
+          <p class="ai-card-sub">7x24 小时在线</p>
+          <p class="ai-card-desc">快速解答产品功能、合同解析、账户问题及常见疑问。</p>
+          <div class="ai-card-actions">
+            <button class="btn-ai-primary">立即咨询 AI</button>
+            <button class="btn-ai-secondary">帮助中心</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="contact-quick-links">
+        <a href="#" class="pill-link">产品反馈</a>
+        <a href="#" class="pill-link">Bug 反馈</a>
+        <a href="#" class="pill-link">商务合作</a>
+        <a href="#" class="pill-link">投诉建议</a>
+        <a href="#" class="pill-link">隐私政策</a>
+        <a href="#" class="pill-link">用户协议</a>
+      </div>
+
+      <!-- Footer -->
+      <div class="contact-footer">
+        <div class="footer-left">
+          <span class="footer-brand">2026 SignWise</span>
+          <span class="footer-tagline">让每一次签署，都更安心。</span>
+        </div>
+        <div class="footer-right">
+          <a href="#">关于产品</a>
+          <a href="#">案例分析</a>
+          <a href="#">联系我们</a>
+          <a href="#">隐私政策</a>
+          <a href="#">用户协议</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      const input = document.querySelector('.search-input-row input');
+      const submitBtn = document.querySelector('.btn-submit');
+      const pageContent = document.querySelector('.page-content');
+      const resultsSection = document.getElementById('resultsSection');
+      const resultsLoading = document.getElementById('resultsLoading');
+      const resultsContent = document.getElementById('resultsContent');
+      const resultsError = document.getElementById('resultsError');
+      const originalText = document.getElementById('originalText');
+      const analysisContent = document.getElementById('analysisContent');
+      const charCount = document.querySelector('.search-char-count');
+
+      input.addEventListener('input', function() {
+        charCount.textContent = input.value.length + '/3,000';
+      });
+
+      function parseAnalysis(raw) {
+        var sections = {};
+        var currentKey = null;
+        var lines = raw.replace(/\r/g, '').split('\n');
+        var currentBody = [];
+
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i];
+          var headingMatch = line.match(/^##\s+(.+)/);
+          if (headingMatch) {
+            if (currentKey) {
+              sections[currentKey] = currentBody.join('\n').replace(/\n*---\s*$/, '').trim();
+            }
+            currentKey = headingMatch[1].trim();
+            currentBody = [];
+          } else if (currentKey) {
+            currentBody.push(line);
+          }
+        }
+        if (currentKey) {
+          sections[currentKey] = currentBody.join('\n').replace(/\n*---\s*$/, '').trim();
+        }
+        return sections;
+      }
+
+      function renderAnalysis(sections) {
+        var html = '';
+
+        var order = ['条款摘要', '大白话解释', '会影响什么？', '风险等级', '建议'];
+        order.forEach(function(key) {
+          var body = sections[key];
+          if (!body || !body.trim()) return;
+
+          body = body.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+          if (key === '风险等级') {
+            var riskClass = '';
+            if (body.includes('🔴') || body.includes('高风险')) riskClass = 'risk-high';
+            else if (body.includes('🟡') || body.includes('需要关注')) riskClass = 'risk-medium';
+            else if (body.includes('🟢') || body.includes('低风险')) riskClass = 'risk-low';
+            html += '<div class="analysis-section">';
+            html += '<div class="analysis-section-title">' + key + '</div>';
+            html += '<div class="analysis-section-body risk-badge ' + riskClass + '">' + body.replace(/\n/g, '<br>') + '</div>';
+            html += '</div>';
+          } else {
+            html += '<div class="analysis-section">';
+            html += '<div class="analysis-section-title">' + key + '</div>';
+            html += '<div class="analysis-section-body">' + body.replace(/\n/g, '<br>') + '</div>';
+            html += '</div>';
+          }
+        });
+
+        return html || '<div class="analysis-section-body">未能解析分析结果</div>';
+      }
+
+      function showLoading() {
+        pageContent.classList.add('has-results');
+        resultsSection.classList.add('is-visible');
+        resultsLoading.style.display = 'flex';
+        resultsContent.style.display = 'none';
+        resultsError.style.display = 'none';
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      function showResult(raw) {
+        pageContent.classList.add('has-results');
+        resultsLoading.style.display = 'none';
+        resultsContent.style.display = 'block';
+        resultsError.style.display = 'none';
+
+        originalText.textContent = input.value.trim();
+
+        var sections = parseAnalysis(raw);
+        analysisContent.innerHTML = renderAnalysis(sections);
+
+        setTimeout(function() {
+          resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+
+      function showError(msg) {
+        pageContent.classList.add('has-results');
+        resultsSection.classList.add('is-visible');
+        resultsLoading.style.display = 'none';
+        resultsContent.style.display = 'none';
+        resultsError.style.display = 'block';
+        resultsError.textContent = msg;
+      }
+
+      async function analyze() {
+        var clause = input.value.trim();
+        if (!clause) return;
+
+        showLoading();
+
+        try {
+          var res = await fetch('/api/analyze', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ clause: clause }),
+          });
+          var data = await res.json();
+          if (data.error) {
+            showError(data.error);
+          } else {
+            showResult(data.result);
+          }
+        } catch (e) {
+          showError('网络请求失败，请确保后端服务已启动: ' + e.message);
+        }
+      }
+
+      submitBtn.addEventListener('click', analyze);
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') analyze();
+      });
+
+      // File attachment
+      const fileInput = document.getElementById('fileInput');
+      const attachBtn = document.getElementById('attachBtn');
+      attachBtn.addEventListener('click', function() { fileInput.click(); });
+      fileInput.addEventListener('change', function() {
+        var file = fileInput.files[0];
+        if (!file) return;
+        if (file.type === 'text/plain' || file.name.endsWith('.txt')) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            input.value = e.target.result;
+            charCount.textContent = input.value.length + '/3,000';
+          };
+          reader.readAsText(file);
+        } else {
+          input.value = '[已选择文件: ' + file.name + ' — 暂支持 .txt 文本读取，PDF/DOC 请复制粘贴]';
+          charCount.textContent = input.value.length + '/3,000';
+        }
+      });
+
+      // Copy email
+      var btnCopy = document.getElementById('btnCopyEmail');
+      if (btnCopy) {
+        btnCopy.addEventListener('click', function() {
+          navigator.clipboard.writeText('996879702@qq.com').then(function() {
+            var orig = btnCopy.textContent;
+            btnCopy.textContent = '已复制';
+            btnCopy.style.background = '#1a1a1a';
+            btnCopy.style.color = '#fff';
+            btnCopy.style.borderColor = '#1a1a1a';
+            setTimeout(function() {
+              btnCopy.textContent = orig;
+              btnCopy.style.background = '#fff';
+              btnCopy.style.color = '#555';
+              btnCopy.style.borderColor = '#ddd';
+            }, 1500);
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

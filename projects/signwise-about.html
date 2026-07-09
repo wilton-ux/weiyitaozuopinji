@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于签明 — 签明（SignWise）</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: #fafaf8;
+      overflow-x: hidden;
+    }
+
+    /* ---- Page Content ---- */
+    .page-content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+    }
+
+    /* ---- Navigation Bar ---- */
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 120px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(250,250,248,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -1.44px;
+      color: #000;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .nav-menu a {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: #000;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-menu a:hover { opacity: 0.7; }
+    .nav-menu a.active { font-weight: 600; }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .btn-login {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: #fff;
+      background: #000;
+      border: none;
+      padding: 0 20px;
+      height: 40px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .btn-login:hover { opacity: 0.85; }
+
+    /* ---- Main Content ---- */
+    .main-content {
+      padding: 60px 120px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ---- Product Overview ---- */
+    .overview-section {
+      margin-bottom: 80px;
+    }
+    .overview-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -2.4px;
+      color: #000;
+      margin-bottom: 28px;
+    }
+    .overview-body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      font-size: 17px;
+      line-height: 1.9;
+      color: #333;
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+    .overview-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .overview-checklist li {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      font-size: 16px;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .check-icon {
+      color: #2e7d32;
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ---- Insight Card ---- */
+    .insight-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 24px 28px;
+      border: 1px solid rgba(0,0,0,0.05);
+      margin-top: 32px;
+      max-width: 800px;
+    }
+    .insight-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #fff3e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #e67e00;
+    }
+    .insight-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+    .insight-text {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #333;
+    }
+    .insight-text strong {
+      color: #000;
+      font-weight: 600;
+    }
+
+    /* ---- Pain Points ---- */
+    .pain-section {
+      margin-bottom: 80px;
+    }
+    .pain-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -2px;
+      color: #000;
+      margin-bottom: 12px;
+    }
+    .pain-subtitle {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 36px;
+    }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .pain-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 14px;
+      padding: 24px 22px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .pain-card-num {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+    .pain-card-text {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+    }
+    .pain-extra {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    /* ---- Flow Section ---- */
+    .flow-section {
+      margin-top: 80px;
+      margin-bottom: 80px;
+    }
+    .flow-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -1.4px;
+      color: #000;
+      margin-bottom: 48px;
+    }
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .flow-step {
+      text-align: center;
+    }
+    .flow-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: #000;
+      background: #f0f0ea;
+      margin-bottom: 16px;
+    }
+    .flow-step-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 17px;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .flow-step-desc {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      font-size: 13px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* ---- Comparison Table ---- */
+    .compare-section {
+      margin-top: 80px;
+      margin-bottom: 80px;
+    }
+    .compare-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -1.4px;
+      color: #000;
+      margin-bottom: 40px;
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    .compare-table thead th {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 17px;
+      letter-spacing: -0.3px;
+      color: #1a1a1a;
+      padding: 18px 32px;
+      text-align: center;
+      border-bottom: 2px solid #e8e8e4;
+      width: 50%;
+    }
+    .compare-table tbody td {
+      padding: 18px 32px;
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      font-size: 15px;
+      color: #555;
+      border-bottom: 1px solid #f0f0ec;
+      vertical-align: middle;
+      text-align: center;
+    }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .col-need td:first-child::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #d4a574;
+      margin-right: 10px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+    .col-provide td:last-child::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #5a9e6f;
+      margin-right: 10px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+
+    /* ---- Target Users ---- */
+    .target-section {
+      margin-top: 80px;
+      margin-bottom: 80px;
+    }
+    .target-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -2px;
+      color: #000;
+      margin-bottom: 36px;
+    }
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .target-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 32px 24px;
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: transform 0.25s ease;
+    }
+    .target-card:hover { transform: translateY(-4px); }
+    .target-card-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 17px;
+      color: #000;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .target-card-desc {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.65;
+      color: #555;
+    }
+
+    /* ---- Core Value Cards ---- */
+    .values-section { margin-top: 0; }
+    .values-subtitle {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: #000;
+      margin-bottom: 36px;
+      letter-spacing: -0.4px;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .value-card {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 18px;
+      padding: 36px 28px;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .value-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #000;
+    }
+    .value-icon.insight { background: transparent; }
+    .value-icon.safety  { background: transparent; }
+    .value-icon.decision { background: transparent; }
+    .value-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+    .value-card-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: #000;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .value-card-desc {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) {
+      .nav-bar { padding: 16px 40px; }
+      .main-content { padding: 40px 40px 60px; }
+      .overview-title { font-size: 36px; }
+    }
+    @media (max-width: 768px) {
+      .nav-bar { padding: 12px 20px; }
+      .nav-menu { display: none; }
+      .main-content { padding: 30px 20px 50px; }
+      .overview-title { font-size: 28px; letter-spacing: -1.4px; }
+      .overview-body { font-size: 15px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .value-card { padding: 28px 24px; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .pain-extra { grid-template-columns: 1fr; }
+      .target-grid { grid-template-columns: 1fr 1fr; }
+      .compare-table thead th, .compare-table tbody td { padding: 14px 16px; font-size: 14px; }
+      .flow-steps { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <!-- Navigation -->
+    <nav class="nav-bar">
+      <a href="signwise.html" class="nav-logo">SignWise签明</a>
+      <ul class="nav-menu">
+        <li><a href="signwise.html">合同解析</a></li>
+        <li><a href="signwise-about.html" class="active">关于签明</a></li>
+        <li><a href="signwise-cases.html">案例分析</a></li>
+        <li><a href="signwise.html#contact">联系我们</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-login" onclick="location.href='../index.html'">返回首页</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+      <!-- Product Overview -->
+      <section class="overview-section">
+        <h1 class="overview-title">产品概述</h1>
+        <p class="overview-body">
+          签明（SignWise）是一款 AI 合同解析助手。<br>
+          它能够帮助用户快速理解租房合同、劳动合同、服务协议、保密协议、隐私政策等法律文件，将复杂晦涩的法律语言转化为通俗易懂的大白话，并自动识别潜在风险与关键条款。
+        </p>
+        <p class="overview-body">
+          用户无需逐页阅读长篇合同，也无需具备法律背景，即可快速了解：
+        </p>
+        <ul class="overview-checklist">
+          <li><span class="check-icon">✓</span> 合同在说什么</li>
+          <li><span class="check-icon">✓</span> 哪些条款需要特别注意</li>
+          <li><span class="check-icon">✓</span> 哪些内容可能影响自身权益</li>
+          <li><span class="check-icon">✓</span> 签署前应该确认什么</li>
+        </ul>
+
+        <div class="insight-card">
+          <div class="insight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a7 7 0 0 0-7 7c0 2.4 1.2 4.5 3 5.7V17c0 .6.4 1 1 1h6c.6 0 1-.4 1-1v-2.3c1.8-1.3 3-3.3 3-5.7a7 7 0 0 0-7-7z"/>
+              <line x1="9" y1="20" x2="15" y2="20"/>
+              <line x1="10" y1="22" x2="14" y2="22"/>
+            </svg>
+          </div>
+          <div class="insight-text">
+            <strong>核心洞察</strong><br>
+            用户真正需要的不是一份复杂法律分析，而是：<br>
+            "<strong>这条对我有什么影响？有没有风险？签之前要注意什么？</strong>"
+          </div>
+        </div>
+      </section>
+
+      <!-- Pain Points -->
+      <section class="pain-section">
+        <h2 class="pain-title">为什么需要签明？</h2>
+        <p class="pain-subtitle">大多数人签合同时，其实并不知道自己签了什么</p>
+
+        <div class="pain-grid">
+          <div class="pain-card">
+            <div class="pain-card-num">01</div>
+            <p class="pain-card-text">合同太长、术语太专业，看不懂。</p>
+          </div>
+          <div class="pain-card">
+            <div class="pain-card-num">02</div>
+            <p class="pain-card-text">担心提前解约、违约金、责任划分等隐藏风险。</p>
+          </div>
+          <div class="pain-card">
+            <div class="pain-card-num">03</div>
+            <p class="pain-card-text">不知道哪些条款需要重点关注。</p>
+          </div>
+        </div>
+
+        <div class="pain-extra">
+          <div class="pain-card">
+            <div class="pain-card-num">04</div>
+            <p class="pain-card-text">没有法律背景，也不想逐字研究合同。</p>
+          </div>
+          <div class="pain-card">
+            <div class="pain-card-num">05</div>
+            <p class="pain-card-text">签字前缺少一个快捷、可信的判断工具。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Values -->
+      <section class="values-section">
+        <p class="values-subtitle">签明的核心价值</p>
+        <div class="values-grid">
+
+          <!-- Card 1: Insight -->
+          <div class="value-card">
+            <div class="value-icon insight">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h3 class="value-card-title">看懂合同</h3>
+            <p class="value-card-desc">把法律术语翻译成普通人能理解的话。</p>
+          </div>
+
+          <!-- Card 2: Safety -->
+          <div class="value-card">
+            <div class="value-icon safety">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 class="value-card-title">识别风险</h3>
+            <p class="value-card-desc">自动标记高风险、模糊或不公平条款。</p>
+          </div>
+
+          <!-- Card 3: Decision -->
+          <div class="value-card">
+            <div class="value-icon decision">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12l2 2 4-4"/>
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/>
+              </svg>
+            </div>
+            <h3 class="value-card-title">辅助决策</h3>
+            <p class="value-card-desc">帮助用户知道哪些地方需要重点确认。</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Target Users -->
+      <section class="target-section">
+        <img src="../assets/签明Wisesign/图片1.jpg" alt="目标用户" style="width:100%; max-width:100%; border-radius:14px; margin-bottom:28px; display:block;">
+        <h2 class="target-title">目标用户</h2>
+        <div class="target-grid">
+
+          <div class="target-card">
+            <h3 class="target-card-title">租房用户</h3>
+            <p class="target-card-desc">关注押金、提前退租、维修责任等条款。</p>
+          </div>
+
+          <div class="target-card">
+            <h3 class="target-card-title">求职者</h3>
+            <p class="target-card-desc">关注劳动合同、试用期、竞业限制、违约责任。</p>
+          </div>
+
+          <div class="target-card">
+            <h3 class="target-card-title">自由职业者、小企业</h3>
+            <p class="target-card-desc">关注合作协议、供应商协议、付款条款、知识产权归属。</p>
+          </div>
+
+          <div class="target-card">
+            <h3 class="target-card-title">普通消费者</h3>
+            <p class="target-card-desc">关注服务协议、会员条款、隐私政策。</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Comparison Table -->
+      <section class="compare-section">
+        <h2 class="compare-title">需求解析</h2>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>用户需求</th>
+              <th>签明提供</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="col-need col-provide">
+              <td>合同看不懂</td>
+              <td>大白话解释</td>
+            </tr>
+            <tr class="col-need col-provide">
+              <td>担心有坑</td>
+              <td>风险识别</td>
+            </tr>
+            <tr class="col-need col-provide">
+              <td>不知道重点</td>
+              <td>关键条款高亮</td>
+            </tr>
+            <tr class="col-need col-provide">
+              <td>不知道问什么</td>
+              <td>确认建议</td>
+            </tr>
+            <tr class="col-need col-provide">
+              <td>不想花太多时间看</td>
+              <td>快速摘要</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Flow -->
+      <section class="flow-section">
+        <h2 class="flow-title">使用流程</h2>
+        <div class="flow-steps">
+
+          <div class="flow-step">
+            <div class="flow-step-num">1</div>
+            <h3 class="flow-step-title">上传合同条款</h3>
+            <p class="flow-step-desc">PDF / DOCX / 图片 / 文本</p>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-step-num">2</div>
+            <h3 class="flow-step-title">AI 解析</h3>
+            <p class="flow-step-desc">识别条款与风险</p>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-step-num">3</div>
+            <h3 class="flow-step-title">看懂重点</h3>
+            <p class="flow-step-desc">大白话解释</p>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-step-num">4</div>
+            <h3 class="flow-step-title">安心决策</h3>
+            <p class="flow-step-desc">知道是否需要确认</p>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>

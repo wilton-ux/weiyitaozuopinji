@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-30T13:40:00.000Z",
+  "title": "Design System: Wilton Wei Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "candlelight": {
+        "role": "primary",
+        "displayName": "烛光 Candlelight",
+        "canonical": "oklch(98.5% 0.013 105)",
+        "tonalRamp": [
+          "oklch(15% 0.013 105)",
+          "oklch(25% 0.013 105)",
+          "oklch(35% 0.013 105)",
+          "oklch(50% 0.013 105)",
+          "oklch(65% 0.013 105)",
+          "oklch(80% 0.013 105)",
+          "oklch(90% 0.013 105)",
+          "oklch(98.5% 0.013 105)"
+        ]
+      },
+      "pure-black": {
+        "role": "neutral",
+        "displayName": "纯黑 Pure Black",
+        "canonical": "oklch(0% 0 0)",
+        "tonalRamp": [
+          "oklch(0% 0 0)",
+          "oklch(2% 0 0)",
+          "oklch(4% 0 0)",
+          "oklch(8% 0 0)",
+          "oklch(12% 0 0)",
+          "oklch(20% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(55% 0 0)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "白 White",
+        "canonical": "oklch(100% 0 0)"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero 标题，仅首页姓名和 Let's Work Together" },
+      "headline": { "displayName": "Headline", "purpose": "区域标题 (Selected Works, About Me)" },
+      "body": { "displayName": "Body", "purpose": "正文，max-width 480px / ~60ch" },
+      "label": { "displayName": "Label", "purpose": "分类标签、导航项、scroll 指示器，uppercase + wide tracking" }
+    },
+    "shadows": [
+      { "name": "hover-preview-shadow", "value": "0 20px 50px rgba(0, 0, 0, 0.6)", "purpose": "Hover 项目预览浮层专用。大偏移 + 深色确保在黑底上可见" }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.25, 0.1, 0.25, 1)", "purpose": "卡片 hover scale、文字位移等标准交互" },
+      { "name": "ease-underline", "value": "cubic-bezier(0.25, 0.1, 0.25, 1) 0.4s", "purpose": "导航和联系链接 hover 下划线 scaleX 动画" },
+      { "name": "ease-fade", "value": "0.3s ease", "purpose": "简单的 opacity/color 过渡" },
+      { "name": "scroll-pulse", "value": "2s ease-in-out infinite", "purpose": "scroll 指示器竖线脉冲动画" }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "1024px" },
+      { "name": "mobile", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Resume Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "导航栏右上角的简历下载按钮——细边框 + 尖角，hover 时边框和文字变烛光色。",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Resume</a>",
+      "css": ".ds-btn-outline {\n  font-family: Poppins, 'Noto Sans SC', Inter, sans-serif;\n  font-size: 0.85rem;\n  font-weight: 400;\n  letter-spacing: 0.05em;\n  color: rgba(255, 255, 255, 0.55);\n  border: 1px solid rgba(255, 255, 227, 0.3);\n  padding: 0.3em 0.9em;\n  border-radius: 2px;\n  text-decoration: none;\n  transition: border-color 0.3s ease, color 0.3s ease;\n  background: transparent;\n  cursor: pointer;\n}\n.ds-btn-outline:hover {\n  border-color: #FFFFE3;\n  color: #FFFFE3;\n}"
+    },
+    {
+      "name": "Service Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "About 区域底部的技能标签——全圆角 pill，透明底 + 烛光色边框，hover 反色。",
+      "html": "<span class=\"ds-tag\">UI/UX Design</span>",
+      "css": ".ds-tag {\n  font-family: Poppins, 'Noto Sans SC', Inter, sans-serif;\n  font-size: 0.75rem;\n  letter-spacing: 0.08em;\n  color: #FFFFE3;\n  border: 1px solid rgba(255, 255, 227, 0.25);\n  padding: 0.5em 1.2em;\n  border-radius: 100px;\n  background: transparent;\n  transition: background 0.3s ease, color 0.3s ease;\n  cursor: default;\n}\n.ds-tag:hover {\n  background: #FFFFE3;\n  color: #000000;\n}"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Works 区域的 2 列网格项目卡片——2px 尖角、深灰底、hover 时图片微缩放 + overlay 渐显。",
+      "html": "<article class=\"ds-card\">\n  <div class=\"ds-card-image\">\n    <img src=\"\" alt=\"\">\n  </div>\n  <div class=\"ds-card-overlay\">\n    <span class=\"ds-card-category\">APP UI/UX Design</span>\n    <h3 class=\"ds-card-title\">Project Name</h3>\n  </div>\n</article>",
+      "css": ".ds-card {\n  position: relative;\n  overflow: hidden;\n  border-radius: 2px;\n  background: #0a0a0a;\n  cursor: pointer;\n}\n.ds-card-image {\n  width: 100%;\n  height: 100%;\n  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);\n}\n.ds-card-image img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  display: block;\n}\n.ds-card:hover .ds-card-image {\n  transform: scale(1.03);\n}\n.ds-card-overlay {\n  position: absolute;\n  inset: 0;\n  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  padding: 1.8rem;\n  opacity: 0;\n  transition: opacity 0.4s ease;\n}\n.ds-card:hover .ds-card-overlay {\n  opacity: 1;\n}\n.ds-card-category {\n  font-family: Poppins, 'Noto Sans SC', Inter, sans-serif;\n  font-size: 0.7rem;\n  font-weight: 500;\n  letter-spacing: 0.15em;\n  text-transform: uppercase;\n  color: #FFFFE3;\n  display: block;\n  margin-bottom: 0.35rem;\n}\n.ds-card-title {\n  font-family: 'Noto Serif SC', 'Playfair Display', 'Times New Roman', serif;\n  font-size: 1.3rem;\n  font-weight: 700;\n  color: #FFFFFF;\n  line-height: 1.2;\n  margin: 0;\n}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "固定顶部导航栏——透明 → scroll 后半透明黑 + 模糊。链接 hover 时烛光色下划线。",
+      "html": "<nav class=\"ds-nav\">\n  <a class=\"ds-nav-logo\" href=\"#\">WILTON PORTFOLIO</a>\n  <ul class=\"ds-nav-links\">\n    <li><a class=\"ds-nav-link\" href=\"#\">Works</a></li>\n    <li><a class=\"ds-nav-link\" href=\"#\">About</a></li>\n    <li><a class=\"ds-nav-link\" href=\"#\">Contact</a></li>\n  </ul>\n</nav>",
+      "css": ".ds-nav {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 100;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 1.5rem 3rem;\n  transition: background 0.4s ease, backdrop-filter 0.4s ease;\n}\n.ds-nav-logo {\n  font-family: Poppins, 'Noto Sans SC', Inter, sans-serif;\n  font-size: 0.8rem;\n  font-weight: 500;\n  letter-spacing: 0.2em;\n  color: #FFFFFF;\n  text-decoration: none;\n  transition: color 0.3s ease;\n}\n.ds-nav-logo:hover {\n  color: #FFFFE3;\n}\n.ds-nav-links {\n  list-style: none;\n  display: flex;\n  gap: 2.5rem;\n  margin: 0;\n  padding: 0;\n}\n.ds-nav-link {\n  font-family: Poppins, 'Noto Sans SC', Inter, sans-serif;\n  font-size: 0.85rem;\n  font-weight: 400;\n  letter-spacing: 0.05em;\n  color: rgba(255, 255, 255, 0.55);\n  text-decoration: none;\n  position: relative;\n  padding: 0.3em 0;\n  transition: color 0.3s ease;\n}\n.ds-nav-link::after {\n  content: '';\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 1px;\n  background: #FFFFE3;\n  transform: scaleX(0);\n  transform-origin: right;\n  transition: transform 0.35s ease;\n}\n.ds-nav-link:hover {\n  color: #FFFFFF;\n}\n.ds-nav-link:hover::after {\n  transform: scaleX(1);\n  transform-origin: left;\n}"
+    },
+    {
+      "name": "Contact Link",
+      "kind": "custom",
+      "refersTo": "contact-link",
+      "description": "联系区域链接——label + value 纵向排列，hover 烛光色下划线 + 文字变色。",
+      "html": "<a class=\"ds-contact-link\" href=\"#\">\n  <span class=\"ds-contact-label\">Email</span>\n  <span class=\"ds-contact-value\">hello@example.com</span>\n</a>",
+      "css": ".ds-contact-link {\n  text-decoration: none;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 0.4rem;\n  padding: 0.8rem 0;\n  position: relative;\n  transition: transform 0.25s ease;\n}\n.ds-contact-link::after {\n  content: '';\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 1px;\n  background: #FFFFE3;\n  transform: scaleX(0);\n  transform-origin: right;\n  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);\n}\n.ds-contact-link:hover::after {\n  transform: scaleX(1);\n  transform-origin: left;\n}\n.ds-contact-label {\n  font-size: 0.7rem;\n  font-weight: 500;\n  letter-spacing: 0.15em;\n  text-transform: uppercase;\n  color: rgba(255, 255, 255, 0.55);\n}\n.ds-contact-value {\n  font-family: 'Noto Serif SC', 'Playfair Display', 'Times New Roman', serif;\n  font-size: 1.2rem;\n  color: #FFFFFF;\n  transition: color 0.3s ease;\n}\n.ds-contact-link:hover .ds-contact-value {\n  color: #FFFFE3;\n}"
+    }
+  ],
+  "narrative": {
+    "northStar": "暗房 (The Darkroom)",
+    "overview": "暗房是摄影师的工作室——只有安全灯的微光透过全黑的空间。构图、光线、颗粒感，一切都在显影液中慢慢浮现。这个设计系统以此为隐喻：黑底是暗房的绝对黑暗，#FFFFE3 强调色是那盏安全灯，每一个 UI 元素都是被精心显影的底片。\n\n它不是冰冷的科技黑，而是有温度、有纹理的暗。胶片颗粒叠加层模拟银盐质感；自定义光标像放大镜在底片上移动。信息不是\"展示\"出来的，而是\"浮现\"出来的——hover 时才显露的卡片文字、scroll 驱动的渐入动画、magnetic 跟随的链接交互。",
+    "keyCharacteristics": [
+      "单色系统：一种强调色覆盖 ≤10% 表面，其余靠明度分层",
+      "编辑级排版：衬线标题 + 无衬线正文，字重对比是首要装饰",
+      "暗房式浮现：内容通过 hover/scroll 交互逐层揭示",
+      "颗粒感纹理：轻微噪声叠加和几何碎片，在纯黑中创造材质差异",
+      "锐利但呼吸：2px 边角保持精确感，hover 微动提供柔软反馈"
+    ],
+    "rules": [
+      { "name": "The Candlelight Rule", "body": "烛光色占据任何屏幕表面 ≤10%。它的稀缺性即是它的力量。如果一屏中有超过三个元素同时使用烛光色，说明强调失去了意义。", "section": "colors" },
+      { "name": "The Tinted Border Rule", "body": "所有边框和分割线必须带有品牌色相——使用 rgba(255, 255, 227, X)，绝不用中性灰。透明度控制深浅，色相保持品牌一致性。", "section": "colors" },
+      { "name": "The Weight Contrast Rule", "body": "页面只有 300 和 700 两个 weight。不用 400/500/600 的中间值做对比——对比必须是确定的。", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "所有表面在静止状态下都是平的。阴影只作为状态响应出现（hover、滚动、浮层），不是装饰。", "section": "elevation" }
+    ],
+    "dos": [
+      "用明度差区分层次（#000 → #0a0a0a → 边框透明度），不依赖阴影",
+      "烛光色仅用于交互信号：hover、焦点、强调文字、光标。单屏 ≤10% 表面",
+      "保持 2px 尖角在卡片和图片上——这是暗房的\"底片边缘\"特征",
+      "用负 letter-spacing (-0.02em) 收紧大标题，使字间距紧凑但字母不接触",
+      "衬线仅用于标题（≥1.2rem），正文始终无衬线 300 weight",
+      "所有动画提供 prefers-reduced-motion: reduce 降级方案",
+      "边框色必须带烛光色相：rgba(255, 255, 227, X)，X 控制深浅"
+    ],
+    "donts": [
+      "使用渐变字体（background-clip: text + gradient）",
+      "使用 AI 商业模板化布局：hero metric → logo wall → 同尺寸卡片阵列 → CTA",
+      "引入第二种强调色。烛光色是唯一信号色",
+      "使用花哨的彩色图案、几何装饰条纹、彩虹渐变背景",
+      "在卡片上同时使用 1px 边框 + 大模糊阴影（幽灵卡片模式）",
+      "圆角超过 3px 在卡片/图片/输入框上。pill 形状（100px）仅用于标签",
+      "使用 Glassmorphism 作为默认风格",
+      "在 section heading 前加编号标记（01 / 02 / 03）或 tiny uppercase eyebrow",
+      "使用 border-left 或 border-right 大于 1px 作为彩色侧边装饰条纹"
+    ]
+  }
+}

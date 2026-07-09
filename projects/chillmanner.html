@@ -242,8 +242,8 @@
         <span class="cover-info-value">UX/UI Designer</span>
       </div>
       <div class="cover-info-item">
-        <span class="cover-info-label">Year</span>
-        <span class="cover-info-value">2025</span>
+        <span class="cover-info-label">Tool</span>
+        <span class="cover-info-value">Figma</span>
       </div>
     </div>
   </section>
@@ -1593,12 +1593,15 @@
     }
 
     .keys-desc {
+      max-width: 600px;
+      margin: 2rem auto 0;
+    }
+    .keys-desc p {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.95rem;
       line-height: 1.85;
       color: #777;
-      max-width: 600px;
-      margin: 2rem auto 0;
+      margin: 0 0 0.5rem;
     }
 
     @media (max-width: 768px) {
@@ -1621,7 +1624,11 @@
       <button class="keys-arrow" id="keysNext" aria-label="Next">→</button>
     </div>
 
-    <p class="keys-desc">点赞收藏你喜欢的内容和用户，建立审美共鸣；发现并购买与你风格相匹配的时尚单品，轻松表达自我；展示你的收藏、动态与标签，打造专属的个人风格页。</p>
+    <div class="keys-desc">
+      <p>点赞收藏你喜欢的内容和用户，建立审美共鸣；</p>
+      <p>发现并购买与你风格相匹配的时尚单品，轻松表达自我；</p>
+      <p>展示你的收藏、动态与标签，打造专属的个人风格页。</p>
+    </div>
   </section>
 
   <!-- ============================================ -->
@@ -1647,7 +1654,7 @@
 
     .thoughts-title-em {
       font-family: 'Noto Sans SC', sans-serif;
-      font-weight: 300;
+      font-weight: 500;
       font-size: 0.5em;
       color: #DE1280;
       display: block;
@@ -1918,7 +1925,7 @@
       var dot = document.createElement('button');
       dot.className = 'keys-dot';
       dot.setAttribute('aria-label', 'Go to screen ' + (i + 1));
-      dot.addEventListener('click', (function(idx) { return function() { goTo(idx); }; })(i));
+      dot.addEventListener('click', (function(idx) { return function() { goTo(idx); resetAutoRotate(); }; })(i));
       dotsContainer.appendChild(dot);
     });
 
@@ -1938,12 +1945,37 @@
       nextBtn.disabled = currentIndex >= totalSlides - 1;
     }
 
-    prevBtn.addEventListener('click', function() { goTo(currentIndex - 1); });
-    nextBtn.addEventListener('click', function() { goTo(currentIndex + 1); });
+    prevBtn.addEventListener('click', function() { goTo(currentIndex - 1); resetAutoRotate(); });
+    nextBtn.addEventListener('click', function() { goTo(currentIndex + 1); resetAutoRotate(); });
+
+    /* Auto-rotate */
+    var autoInterval = null;
+    var AUTO_DELAY = 1500;
+
+    function startAutoRotate() {
+      stopAutoRotate();
+      autoInterval = setInterval(function() {
+        var next = currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1;
+        goTo(next);
+      }, AUTO_DELAY);
+    }
+
+    function stopAutoRotate() {
+      if (autoInterval) { clearInterval(autoInterval); autoInterval = null; }
+    }
+
+    function resetAutoRotate() {
+      stopAutoRotate();
+      startAutoRotate();
+    }
+
+    carousel.addEventListener('mouseenter', stopAutoRotate);
+    carousel.addEventListener('mouseleave', startAutoRotate);
 
     /* Touch swipe */
     var startX = 0, startY = 0, isDragging = false, startOffset = 0;
     carousel.addEventListener('touchstart', function(e) {
+      stopAutoRotate();
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
       isDragging = true;
@@ -1964,11 +1996,13 @@
       } else {
         goTo(currentIndex);
       }
+      startAutoRotate();
     });
 
     /* Mouse drag */
     var mouseDown = false, mouseStartX = 0, mouseStartOffset = 0;
     carousel.addEventListener('mousedown', function(e) {
+      stopAutoRotate();
       mouseDown = true;
       mouseStartX = e.clientX;
       mouseStartOffset = currentIndex * carousel.getBoundingClientRect().width;
@@ -1990,9 +2024,11 @@
       } else {
         goTo(currentIndex);
       }
+      startAutoRotate();
     });
 
     goTo(0);
+    startAutoRotate();
   })();
   </script>
 

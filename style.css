@@ -279,15 +279,44 @@ body {
   color: var(--color-accent);
 }
 
+/* ----- fadeSlideUp Keyframes ----- */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ----- Hero Section ----- */
 .hero {
   position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--section-padding);
+  height: 100vh;
+  width: 100%;
   overflow: hidden;
+  background: #000;
+}
+
+/* Background video */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+  z-index: 0;
+}
+
+/* Dark overlay for text contrast */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
 }
 
 /* Antigravity particle canvas */
@@ -296,10 +325,11 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
+/* Cursor-following glow */
 .hero-glow {
   position: fixed;
   top: 50%;
@@ -309,95 +339,100 @@ body {
   background: radial-gradient(circle, rgba(255, 255, 227, 0.12) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   transform: translate(-50%, -50%);
   will-change: left, top;
   transition: left 0.4s ease-out, top 0.4s ease-out;
 }
 
+/* Hero content — flex column, justify-between */
 .hero-content {
   position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 900px;
-}
-
-.hero-name {
-  font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 10vw, 9rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-  margin-bottom: 1.5rem;
-}
-
-.hero-line {
-  display: block;
-  perspective: 800px;
-}
-
-.hero-char {
-  display: inline-block;
-  opacity: 0;
-  white-space: pre;
-}
-
-.hero-line.accent {
-  color: var(--color-accent);
-}
-
-.hero-subtitle {
-  font-family: var(--font-sans);
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  margin-bottom: 1rem;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.hero-tagline {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--color-text-muted);
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
+  justify-content: space-between;
+  height: calc(100vh - 80px);
+  padding: clamp(2rem, 6vh, 5rem) 6vw clamp(1.5rem, 4vh, 3rem);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Top section */
+.hero-top {
+  max-width: 56rem;
+  padding-top: 200px;
+}
+
+.hero-badge {
+  font-family: 'Geist', var(--font-sans);
+  font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
   opacity: 0;
+  animation: fadeSlideUp 0.8s ease 0.2s both;
 }
 
-.scroll-indicator span {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+.hero-heading {
+  font-family: 'Geist', var(--font-sans);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 0.4s both;
 }
 
-.scroll-line {
-  width: 1px;
-  height: 50px;
-  background: var(--color-accent);
-  opacity: 0.4;
-  animation: scrollPulse 2s ease-in-out infinite;
+/* Bottom section */
+.hero-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-@keyframes scrollPulse {
-  0%, 100% { transform: scaleY(0.4); opacity: 0.3; }
-  50% { transform: scaleY(1); opacity: 0.8; }
+.hero-desc {
+  font-family: 'Geist', var(--font-sans);
+  font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 32rem;
+  margin-bottom: clamp(1rem, 2.5vh, 1.5rem);
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 0.7s both;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Geist', var(--font-sans);
+  font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+  font-weight: 500;
+  color: #000;
+  background: #fff;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 0.9s both;
+}
+
+.hero-cta:hover {
+  transform: scale(1.05);
+}
+
+.cta-arrow {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.hero-cta:hover .cta-arrow {
+  transform: translateX(3px);
 }
 
 /* ----- Hero Floating Fragments ----- */
@@ -487,9 +522,9 @@ body {
 
 /* ----- Section Headings ----- */
 .section-heading {
-  font-family: var(--font-serif);
+  font-family: 'Geist', var(--font-sans);
   font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-text);
   margin-bottom: 3rem;
   letter-spacing: -0.02em;
@@ -716,9 +751,9 @@ body {
 }
 
 .contact-heading {
-  font-family: var(--font-serif);
+  font-family: 'Geist', var(--font-sans);
   font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--color-text);
@@ -850,8 +885,16 @@ body {
     font-size: 0.75rem;
   }
 
-  .hero-name {
-    font-size: clamp(2.5rem, 12vw, 4rem);
+  .hero-content {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .hero-heading {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+
+  .hero-desc {
+    max-width: 100%;
   }
 
   .works-grid {
@@ -885,10 +928,12 @@ body {
     scroll-behavior: auto !important;
   }
 
-  .hero-char,
-  .hero-subtitle,
-  .hero-tagline {
+  .hero-badge,
+  .hero-heading,
+  .hero-desc,
+  .hero-cta {
     opacity: 1;
+    animation: none;
     transform: none;
   }
 

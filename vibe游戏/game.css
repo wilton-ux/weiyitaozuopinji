@@ -479,7 +479,8 @@ body::before {
   gap: 8px;
   flex-shrink: 0;
   position: relative;
-  z-index: 100;
+  z-index: 500;
+  overflow: visible;
 }
 
 #hand-container {
@@ -517,8 +518,8 @@ body::before {
   flex: 1;
   justify-content: center;
   align-items: center;
-  overflow-x: auto;
-  padding: 4px 0;
+  overflow: visible;
+  padding: 28px 0 4px;
 }
 
 /* --- Phase Controls --- */
@@ -942,8 +943,82 @@ body::before {
 #card-tooltip {
   position: fixed;
   pointer-events: none;
-  z-index: 800;
+  z-index: 10000;
 }
+
+.tooltip-card-detail {
+  background: var(--white);
+  border: 3px solid var(--black);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-pop-lg);
+  padding: 12px 14px;
+  font-family: var(--font-sans);
+  min-width: 160px;
+  max-width: 220px;
+}
+
+.tooltip-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed var(--gray-200);
+}
+
+.tooltip-card-emoji {
+  font-size: 28px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-100);
+  border-radius: 50%;
+  border: 2px solid var(--black);
+}
+
+.tooltip-card-title {
+  font-weight: 900;
+  font-size: 16px;
+  color: var(--black);
+}
+
+.tooltip-card-meta {
+  font-size: 11px;
+  color: var(--gray-600);
+  margin-top: 1px;
+}
+
+.tooltip-card-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--gray-800);
+}
+
+.tooltip-card-desc strong {
+  color: var(--orange-dark);
+}
+
+.tooltip-card-tags {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.tooltip-card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1.5px solid var(--black);
+  background: var(--gray-100);
+}
+
+.tooltip-card-tag.type-basic { background: var(--card-basic-bg); }
+.tooltip-card-tag.type-trick { background: var(--card-trick-bg); color: white; }
+.tooltip-card-tag.type-equipment { background: var(--card-equip-bg); color: white; }
 
 /* ============================================================
    ANIMATIONS

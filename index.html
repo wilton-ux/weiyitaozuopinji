@@ -10,7 +10,7 @@
   <!-- Google Fonts: Playfair Display (serif headings) + Inter (sans-serif body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -50,11 +50,16 @@
   </nav>
 
   <!-- ============================================ -->
-  <!-- ✨ HERO SECTION                              -->
-  <!-- 👋 EDIT: Change the text between <h1> tags   -->
-  <!--    to your own name and title.               -->
+  <!-- ✨ HERO SECTION — Fullscreen video background -->
   <!-- ============================================ -->
   <section class="hero" id="hero">
+    <!-- Background video -->
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4" type="video/mp4">
+    </video>
+    <!-- Dark overlay for text readability -->
+    <div class="hero-video-overlay"></div>
+    <!-- Cursor-following glow -->
     <div class="hero-glow" id="heroGlow"></div>
     <!-- Antigravity particle canvas -->
     <canvas class="antigravity-canvas" id="antigravityCanvas" aria-hidden="true"></canvas>
@@ -75,16 +80,19 @@
       <span class="fragment fragment--circle"  data-depth="0.6" style="top:75%; left:7%;"></span>
       <span class="fragment fragment--ring"    data-depth="0.4" style="top:15%; right:28%;"></span>
     </div>
+    <!-- Hero content: top badge+heading, bottom desc+CTA -->
     <div class="hero-content">
-      <h1 class="hero-name">
-        <span class="hero-line accent">WILTON</span>
-      </h1>
-      <p class="hero-subtitle">韦毅韬 · UX/UI Designer</p>
-      <p class="hero-tagline">Designing intuitive experiences for emerging technology.</p>
-    </div>
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
+      <div class="hero-top">
+        <p class="hero-badge">Brand & Visual Storytelling</p>
+        <h1 class="hero-heading">Designing intuitive experiences for emerging technology.</h1>
+      </div>
+      <div class="hero-bottom">
+        <p class="hero-desc">UX/UI PORTFOLIO BY WILTON</p>
+        <a href="#works" class="hero-cta">
+          Explore Work
+          <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -116,15 +124,15 @@
         </div>
       </article>
 
-      <!-- PROJECT CARD 2 -->
-      <article class="work-card work-card--link" data-category="Dashboard Design" data-hover-img="assets/images/智投平台封面.png" onclick="location.href='projects/smart-adspro.html'">
+      <!-- PROJECT CARD 2 — 签明（SignWise） -->
+      <article class="work-card work-card--link" data-category="VibeCoding Product" data-hover-img="assets/images/签明signwise封面.png" onclick="location.href='projects/signwise.html'">
         <div class="work-card-image">
-          <img src="assets/images/智投平台封面.png" alt="Smart AdsPro" class="work-img">
+          <img src="assets/images/签明signwise封面.png" alt="签明（SignWise）" class="work-img">
         </div>
         <div class="work-card-overlay">
           <div class="work-card-text">
-            <span class="work-card-category">Dashboard Design</span>
-            <h3 class="work-card-title">Smart AdsPro</h3>
+            <span class="work-card-category">VibeCoding Product</span>
+            <h3 class="work-card-title">签明（SignWise）</h3>
           </div>
         </div>
       </article>
@@ -168,19 +176,18 @@
         </div>
       </article>
 
-      <!-- PROJECT CARD 6 — Large -->
-      <article class="work-card" data-category="Web Design" data-hover-img="assets/images/work-6.svg">
+      <!-- PROJECT CARD 6 -->
+      <article class="work-card work-card--link" data-category="Dashboard Design" data-hover-img="assets/images/智投平台封面.png" onclick="location.href='projects/smart-adspro.html'">
         <div class="work-card-image">
-          <img src="assets/images/work-6.svg" alt="Architecture Studio" class="work-img">
+          <img src="assets/images/智投平台封面.png" alt="Smart AdsPro" class="work-img">
         </div>
         <div class="work-card-overlay">
           <div class="work-card-text">
-            <span class="work-card-category">Web Design</span>
-            <h3 class="work-card-title">Architecture Studio</h3>
+            <span class="work-card-category">Dashboard Design</span>
+            <h3 class="work-card-title">Smart AdsPro</h3>
           </div>
         </div>
       </article>
-
     </div>
   </section>
 
@@ -202,12 +209,12 @@
         <h2 class="section-heading">About Me</h2>
         <div class="about-rule"></div>
         <p class="about-body">你好，我是韦毅韬（Wilton），一名UI/UX设计师，毕业于香港岭南大学艺术科技与商业（ATB）硕士项目。商科与设计的跨学科背景让我在产品设计过程中兼顾用户体验与商业逻辑，从策略到落地关注每一个细节。</p>
-        <p class="about-body">目前我深耕于UI/UX设计领域，同时研习Vibe Coding，探索用AI加速创作流程。生活中我热衷摄影，追求构图与光线的秩序感。我相信好的设计不追求复杂技法，而是恰如其分地解决问题。</p>
+        <p class="about-body">目前我于UI/UX设计领域学习中，同时学习Vibe Coding，探索用AI加速创作流程。</p>
         <div class="about-services">
           <span class="service-tag">UI/UX Design</span>
           <span class="service-tag">Vibe Coding</span>
           <span class="service-tag">Photography</span>
-          <span class="service-tag">AI Creator</span>
+          <span class="service-tag">Vibe Design</span>
         </div>
       </div>
     </div>

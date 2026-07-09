@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>案例分析 — 签明（SignWise）</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: #fafaf8;
+      overflow-x: hidden;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 120px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(250,250,248,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -1.44px;
+      color: #1a1a1a;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .nav-menu a {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: #1a1a1a;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-menu a:hover { opacity: 0.5; }
+    .nav-menu a.active { font-weight: 600; }
+    .nav-actions { flex-shrink: 0; }
+    .btn-nav {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: #fff;
+      background: #1a1a1a;
+      border: none;
+      padding: 0 20px;
+      height: 40px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { opacity: 0.85; }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px 100px;
+    }
+
+    .page-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -1.4px;
+      color: #1a1a1a;
+      margin-bottom: 48px;
+    }
+
+    .case-block {
+      margin-bottom: 64px;
+    }
+    .case-label {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #999;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .case-title {
+      font-family: 'Fustat', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -0.5px;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+    }
+    .case-image {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid #eee;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar { padding: 12px 20px; }
+      .nav-menu { display: none; }
+      .page { padding: 40px 20px 80px; }
+      .page-title { font-size: 28px; }
+      .case-title { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav-bar">
+    <a href="signwise.html" class="nav-logo">SignWise签明</a>
+    <ul class="nav-menu">
+      <li><a href="signwise.html">合同解析</a></li>
+      <li><a href="signwise-about.html">关于签明</a></li>
+      <li><a href="signwise-cases.html" class="active">案例分析</a></li>
+      <li><a href="signwise.html#contact">联系我们</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-nav" onclick="location.href='../index.html'">返回首页</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <h1 class="page-title">案例分析</h1>
+
+    <div class="case-block">
+      <div class="case-label">Case 01</div>
+      <h2 class="case-title">租房场景</h2>
+      <img class="case-image" src="../assets/签明Wisesign/案例1.png" alt="租房场景案例">
+    </div>
+
+    <div class="case-block">
+      <div class="case-label">Case 02</div>
+      <h2 class="case-title">劳务协议</h2>
+      <img class="case-image" src="../assets/签明Wisesign/案例2.png" alt="劳务协议案例">
+    </div>
+
+    <div class="case-block">
+      <div class="case-label">Case 03</div>
+      <h2 class="case-title">消费者协议</h2>
+      <img class="case-image" src="../assets/签明Wisesign/案例3.png" alt="消费者协议案例">
+    </div>
+  </div>
+
+</body>
+</html>

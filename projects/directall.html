@@ -7,7 +7,7 @@
   <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
   <script type="importmap">
   {
     "imports": {
@@ -30,9 +30,8 @@
       --text-muted: #889994;
       --text-dim: #5a6662;
       --border-subtle: rgba(255, 255, 255, 0.06);
-      --font-display: 'Playfair Display', 'Noto Serif SC', serif;
-      --font-body: 'Poppins', 'Noto Sans SC', -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      --font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -303,7 +302,7 @@
     .hero-content {
       position: relative;
       z-index: 3;
-      text-align: center;
+      text-align: left;
       max-width: 900px;
       padding: 0 2rem;
     }
@@ -314,6 +313,7 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       margin-bottom: 3rem;
+      text-align: center;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards;
       animation-delay: 0.3s;
@@ -387,6 +387,7 @@
       font-size: 0.72rem;
       color: var(--text-dim);
       letter-spacing: 0.15em;
+      text-align: center;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards;
       animation-delay: 6s;
@@ -483,6 +484,7 @@
       font-weight: 300;
       color: #ffffff;
       line-height: 1.85;
+      text-align: left;
     }
 
     .about-desc-cn {
@@ -601,7 +603,69 @@
     }
 
     /* ============================================
-       SECTION 4 — RESOURCES
+       SECTION 4 — PAIN POINTS & OPPORTUNITIES
+       ============================================ */
+    .section-painpoints {
+      background: linear-gradient(180deg, #0c121c 0%, #080c14 100%);
+      flex-direction: column;
+      padding: clamp(4rem, 10vh, 8rem) 6vw;
+      gap: 2.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .painpoints-title {
+      font-family: 'Inter', var(--font-body);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
+    .painpoints-table {
+      width: min(100%, 900px);
+      border-collapse: collapse;
+    }
+
+    .painpoints-table th {
+      font-family: 'Inter', var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-align: left;
+      padding: 0.9rem 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      width: 50%;
+    }
+
+    .painpoints-table td {
+      font-family: 'Inter', var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--text-primary);
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      line-height: 1.6;
+    }
+
+    .painpoints-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+      .section-painpoints {
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+      }
+      .painpoints-table th,
+      .painpoints-table td {
+        padding: 0.8rem 0.8rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ============================================
+       SECTION 7 — RESOURCES
        ============================================ */
     .section-resources {
       background: linear-gradient(180deg, #080c14 0%, #0c121c 100%);
@@ -627,6 +691,28 @@
       color: var(--text-muted);
       text-align: center;
       max-width: 600px;
+    }
+
+    .resources-text-wrap {
+      width: min(100%, 1100px);
+    }
+
+    .resources-subheading {
+      font-family: 'Inter', var(--font-body);
+      font-size: 24px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.8rem;
+    }
+
+    .resources-body {
+      font-family: 'Inter', var(--font-body);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 2rem;
     }
 
     .resources-carousel {
@@ -820,29 +906,87 @@
       <h2 class="about-heading">What Is <mark>DirectAll</mark>?</h2>
     </div>
     <div class="about-image">
-      <img src="../assets/DirectAll/home1.png" alt="DirectAll Platform">
+      <img src="../assets/DirectAll/home1.png" alt="DirectAll Platform" loading="lazy">
     </div>
     <div class="about-text">
       <p class="about-desc">At DirectAll, we believe that everyone has a director within, and every moment of life deserves the magic of cinema. Our platform offers you a one-stop solution for film production. Whether you're a budding film enthusiast or an experienced filmmaker, DirectAll empowers your creativity to reach new heights.</p>
       <p class="about-desc about-desc-cn">DirectAll 是一个AI驱动的影视智能共创平台，集成专业剪辑工具与AI评论分析，实时解析观众反馈并指导创作优化。平台通过深度学习用户创作轨迹，提供个性化辅助，并智能匹配队友与大师风格，将单兵作战转化为高效的创作共同体。</p>
     </div>
-    <div class="about-image about-image-b">
-      <img src="../assets/DirectAll/b.png" alt="DirectAll Platform B">
-    </div>
-    <div class="about-text">
-      <h2 class="about-heading about-heading-work">Film <mark>Co-creation</mark></h2>
-    </div>
-    <div class="about-video">
-      <video src="../assets/DirectAll/video2.mp4" poster="" controls preload="metadata"></video>
+    <div class="about-image">
+      <img src="../assets/DirectAll/log in.png" alt="Log In" loading="lazy">
     </div>
   </section>
 
   <!-- ============================================
-    SECTION 3 — 影片共创社区
+    SECTION 3 — MARKET INSIGHT
     ============================================ -->
-  <section class="section section-community" id="section3">
+  <section class="section section-about" id="section3">
+    <div class="about-text">
+      <h2 class="about-heading about-heading-work">Market <mark>Insight</mark></h2>
+    </div>
+    <div class="about-text">
+      <p class="about-desc about-desc-cn">AI正在重塑影视创作流程，但仍存在明显断层，近几年AI生成内容（AIGC）快速发展。从剧本创作、分镜生成，到剪辑、配音、调色，越来越多工具开始进入影视行业。但目前的大多数AI工具仍停留在：一个AI工具 = 一个独立功能。与此同时，创作者真正需要的是：贯穿整个创作生命周期的智能协作平台。</p>
+    </div>
+    <div class="about-image">
+      <img src="../assets/DirectAll/用户旅程.png" alt="用户旅程" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ============================================
+    SECTION 4 — PAIN POINTS & OPPORTUNITIES
+    ============================================ -->
+  <section class="section section-painpoints" id="section4">
+    <h2 class="painpoints-title">Pain Point &amp; Opportunities</h2>
+    <table class="painpoints-table">
+      <thead>
+        <tr>
+          <th>核心痛点</th>
+          <th>对应设计机会</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>创作流程碎片化</td>
+          <td>AI 一体化创作工作流，减少工具切换</td>
+        </tr>
+        <tr>
+          <td>反馈数据难以利用</td>
+          <td>AI 评论分析，形成数据驱动的创作闭环</td>
+        </tr>
+        <tr>
+          <td>协作资源获取困难</td>
+          <td>AI 智能匹配创作者与创作社区</td>
+        </tr>
+        <tr>
+          <td>AI 使用门槛较高</td>
+          <td>个性化 AI 助手，学习用户创作风格并主动辅助</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============================================
+    SECTION 5 — FILM CO-CREATION
+    ============================================ -->
+  <section class="section section-about" id="section5">
+    <div class="about-image about-image-b">
+      <img src="../assets/DirectAll/Frame 36.png" alt="Frame 36" loading="lazy">
+    </div>
+    <div class="about-text">
+      <h2 class="about-heading about-heading-work">Film <mark>Co-creation</mark></h2>
+      <p class="resources-body">让各位创作者得到充分发挥的专项技能，并借助AI辅助创造</p>
+    </div>
+    <div class="about-video">
+      <video src="../assets/DirectAll/video2.mp4" poster="../assets/DirectAll/制作平台B.png" controls preload="none"></video>
+    </div>
+  </section>
+
+  <!-- ============================================
+    SECTION 6 — 影片共创社区
+    ============================================ -->
+  <section class="section section-community" id="section6">
     <div class="about-image about-image-match">
-      <img src="../assets/DirectAll/match.png" alt="Smart Matching">
+      <img src="../assets/DirectAll/match.png" alt="Smart Matching" loading="lazy">
     </div>
     <div class="community-grid">
       <div class="community-card">
@@ -866,26 +1010,68 @@
   </section>
 
   <!-- ============================================
-    SECTION 4 — RESOURCES
+    SECTION 7 — COMMUNITY
     ============================================ -->
-  <section class="section section-resources" id="section4">
+  <section class="section section-resources" id="section7">
+    <h2 class="resources-title">Community</h2>
+    <div class="resources-carousel" id="communityCarousel">
+      <div class="resources-track" id="communityTrack">
+        <div class="resources-slide">
+          <img src="../assets/DirectAll/community.png" alt="Community 1" loading="lazy">
+        </div>
+        <div class="resources-slide">
+          <img src="../assets/DirectAll/community2.png" alt="Community 2" loading="lazy">
+        </div>
+      </div>
+      <button class="carousel-arrow carousel-prev" id="communityPrev" aria-label="Previous">&#10094;</button>
+      <button class="carousel-arrow carousel-next" id="communityNext" aria-label="Next">&#10095;</button>
+      <div class="carousel-dots" id="communityDots"></div>
+    </div>
+    <div class="resources-text-wrap">
+      <p class="resources-body">Community 聚合平台最新影视资讯、热门作品、创作者专栏及社区动态，为创作者打造一个集灵感发现、行业交流与内容分享于一体的创作社区，帮助用户持续获取优质内容并了解影视行业最新趋势。</p>
+      <p class="resources-body">让优秀创作者被更多人发现，同时帮助用户快速找到风格契合的合作伙伴，构建开放、高效的影视创作网络。</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+    SECTION 8 — RESOURCES
+    ============================================ -->
+  <section class="section section-resources" id="section8">
     <h2 class="resources-title">Resources</h2>
     <p class="resources-desc">这是一个「影视灵感 & 资源库」，服务于导演、摄影师、短片创作者</p>
     <div class="resources-carousel" id="resourcesCarousel">
       <div class="resources-track" id="resourcesTrack">
         <div class="resources-slide">
-          <img src="../assets/DirectAll/resources1.png" alt="Resources 1">
+          <img src="../assets/DirectAll/resources1.png" alt="Resources 1" loading="lazy">
         </div>
         <div class="resources-slide">
-          <img src="../assets/DirectAll/resources2.png" alt="Resources 2">
+          <img src="../assets/DirectAll/resources2.png" alt="Resources 2" loading="lazy">
         </div>
       </div>
       <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Previous">&#10094;</button>
       <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Next">&#10095;</button>
       <div class="carousel-dots" id="carouselDots"></div>
     </div>
-    <div class="about-image about-image-b">
-      <img src="../assets/DirectAll/尾部.png" alt="Resources Footer">
+    <div class="resources-text-wrap">
+      <h3 class="resources-subheading">01 Inspiration Search</h3>
+      <p class="resources-body">作为平台的灵感入口，用户可以通过 AI 智能搜索快速发现电影镜头、摄影风格、色彩方案、导演作品及创作者案例，帮助创作者在创作初期快速收集参考素材，缩短寻找灵感的时间。同时根据社区热度持续推荐热门镜头与优秀作品，为创作者提供实时创作趋势参考。</p>
+      <h3 class="resources-subheading">02 Resource Library</h3>
+      <p class="resources-body">资源库为创作者提供结构化的影视素材管理系统，通过丰富的筛选条件与分类方式，帮助用户快速找到符合创作需求的参考镜头、视觉素材及影视资源，提高素材检索效率。</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+    SECTION 9 — PRICE
+    ============================================ -->
+  <section class="section section-about" id="section9">
+    <div class="about-text">
+      <h2 class="about-heading">Price</h2>
+    </div>
+    <div class="about-image">
+      <img src="../assets/DirectAll/price.png" alt="Price" loading="lazy">
+    </div>
+    <div class="about-image">
+      <p class="resources-body">为不同阶段的影视创作者提供差异化影视创作权限、资源权益与社区服务，在提升创作效率的同时，建立平台长期稳定的商业收入模型。</p>
     </div>
   </section>
 
@@ -1284,6 +1470,15 @@
           renderer.render({ scene: mesh });
         }
 
+        // Pause animation when hero section leaves viewport
+        var heroEl = document.getElementById('hero');
+        if (heroEl) {
+          var visibilityObserver = new IntersectionObserver(function(entries) {
+            pause = !entries[0].isIntersecting;
+          }, { threshold: 0.05 });
+          visibilityObserver.observe(heroEl);
+        }
+
         rafId = requestAnimationFrame(updateTerminal);
         }).catch(function() {});
       }
@@ -1298,43 +1493,43 @@
 
       const lines = [
         { el: typeLine1, text: 'Life is your film,', startDelay: 800 },
-        { el: typeLine2, text: 'Every individual holds the potential', startDelay: 2200 },
-        { el: typeLine3, text: 'to be its director.', startDelay: 3800 },
-        { el: typeLine4, text: '人生如戏，每个人都是自己的导演', startDelay: 5000 },
+        { el: typeLine2, text: 'Every individual holds the potential', startDelay: 1100 },
+        { el: typeLine3, text: 'to be its director.', startDelay: 1400 },
+        { el: typeLine4, text: '人生如戏，每个人都是自己的导演', startDelay: 1700 },
       ];
 
-      // Create cursor element for each line
+      // Create cursor + textNode for each line (avoids innerHTML rebuild on every char)
       const cursors = lines.map(function(line, i) {
+        line.el.textContent = '';
+        const textNode = document.createTextNode('');
         const cursor = document.createElement('span');
         cursor.classList.add('type-cursor');
+        line.el.appendChild(textNode);
         line.el.appendChild(cursor);
-        return cursor;
+        return { cursor: cursor, textNode: textNode };
       });
 
       // Type a single line character by character
-      function typeLine(line, text, cursor, startDelay, onComplete) {
+      function typeLine(line, text, state, startDelay, onComplete) {
         let charIndex = 0;
 
         setTimeout(function() {
-          cursor.classList.add('visible');
+          state.cursor.classList.add('visible');
 
           function type() {
             if (charIndex < text.length) {
-              // Insert character before cursor
-              const before = line.textContent || '';
-              line.innerHTML = before + text[charIndex];
-              line.appendChild(cursor);
+              state.textNode.textContent += text[charIndex];
               charIndex++;
 
-              const delay = text[charIndex - 1] === ',' || text[charIndex - 1] === '.' || text[charIndex - 1] === '，'
-                ? 80 + Math.random() * 50
-                : 12 + Math.random() * 35;
+              const ch = text[charIndex - 1];
+              const delay = ch === ',' || ch === '.' || ch === '，'
+                ? 40 + Math.random() * 25
+                : 6 + Math.random() * 18;
 
               setTimeout(type, delay);
             } else {
-              // Typing complete — hide cursor after a moment
               setTimeout(function() {
-                cursor.classList.remove('visible');
+                state.cursor.classList.remove('visible');
               }, 600 + Math.random() * 400);
 
               if (onComplete) onComplete();
@@ -1451,6 +1646,11 @@
           goTo((currentIndex + 1) % total);
         });
 
+        // Auto-rotate every 2s
+        setInterval(function() {
+          goTo((currentIndex + 1) % total);
+        }, 2000);
+
         // Touch swipe support
         let touchStartX = 0;
         let touchEndX = 0;
@@ -1467,6 +1667,70 @@
               goTo((currentIndex + 1) % total);
             } else {
               goTo((currentIndex - 1 + total) % total);
+            }
+          }
+        });
+      }
+
+      // ============================================
+      // COMMUNITY CAROUSEL
+      // ============================================
+      const cTrack = document.getElementById('communityTrack');
+      const cDotsContainer = document.getElementById('communityDots');
+      const cPrevBtn = document.getElementById('communityPrev');
+      const cNextBtn = document.getElementById('communityNext');
+
+      if (cTrack && cDotsContainer && cPrevBtn && cNextBtn) {
+        const cSlides = cTrack.querySelectorAll('.resources-slide');
+        let cIndex = 0;
+        const cTotal = cSlides.length;
+
+        for (let i = 0; i < cTotal; i++) {
+          const dot = document.createElement('button');
+          dot.classList.add('carousel-dot');
+          if (i === 0) dot.classList.add('active');
+          dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+          dot.addEventListener('click', function() { cGoTo(i); });
+          cDotsContainer.appendChild(dot);
+        }
+
+        const cDots = cDotsContainer.querySelectorAll('.carousel-dot');
+
+        function cGoTo(index) {
+          cIndex = index;
+          cTrack.style.transform = 'translateX(-' + (cIndex * 100) + '%)';
+          cDots.forEach(function(d, i) {
+            d.classList.toggle('active', i === cIndex);
+          });
+        }
+
+        cPrevBtn.addEventListener('click', function() {
+          cGoTo((cIndex - 1 + cTotal) % cTotal);
+        });
+
+        cNextBtn.addEventListener('click', function() {
+          cGoTo((cIndex + 1) % cTotal);
+        });
+
+        setInterval(function() {
+          cGoTo((cIndex + 1) % cTotal);
+        }, 2000);
+
+        let cTouchStartX = 0;
+        let cTouchEndX = 0;
+
+        cTrack.addEventListener('touchstart', function(e) {
+          cTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        cTrack.addEventListener('touchend', function(e) {
+          cTouchEndX = e.changedTouches[0].screenX;
+          const diff = cTouchStartX - cTouchEndX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+              cGoTo((cIndex + 1) % cTotal);
+            } else {
+              cGoTo((cIndex - 1 + cTotal) % cTotal);
             }
           }
         });
@@ -1774,9 +2038,18 @@
       return out;
     }
 
+    let gridScanPaused = false;
+    if (container) {
+      const gridVisibilityObserver = new IntersectionObserver(function(entries) {
+        gridScanPaused = !entries[0].isIntersecting;
+      }, { threshold: 0.05 });
+      gridVisibilityObserver.observe(container);
+    }
+
     let last = performance.now();
     function tick(now) {
       requestAnimationFrame(tick);
+      if (gridScanPaused) return;
       const dt = Math.max(0, Math.min(0.1, (now - last) / 1000));
       last = now;
 
