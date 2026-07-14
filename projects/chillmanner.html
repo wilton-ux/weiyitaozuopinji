@@ -1457,18 +1457,57 @@
       { img: document.getElementById('imgDesigner'),  a: '../assets/Chill Manner/C/d1.png',   b: '../assets/Chill Manner/C/d2.png',  current: 'a' },
     ];
 
-    function swap() {
-      pairs.forEach(function(pair) {
-        pair.current = pair.current === 'a' ? 'b' : 'a';
-        pair.img.style.opacity = '0';
-        setTimeout(function() {
-          pair.img.src = pair.current === 'a' ? pair.a : pair.b;
-          pair.img.style.opacity = '1';
-        }, 200);
-      });
-    }
+    // Preload all images before starting the carousel
+    var allUrls = [];
+    pairs.forEach(function(p) { allUrls.push(p.a); allUrls.push(p.b); });
 
-    setInterval(swap, 1500);
+    var loaded = 0;
+    var cache = {};
+    allUrls.forEach(function(url) {
+      var pre = new Image();
+      pre.onload = function() {
+        loaded++;
+        if (loaded === allUrls.length) startCarousel();
+      };
+      pre.onerror = function() {
+        loaded++; // still count it to avoid hanging
+        if (loaded === allUrls.length) startCarousel();
+      };
+      pre.src = url;
+      cache[url] = pre;
+    });
+
+    function startCarousel() {
+      var swapping = false;
+
+      function swap() {
+        if (swapping) return;
+        swapping = true;
+
+        pairs.forEach(function(pair) {
+          pair.current = pair.current === 'a' ? 'b' : 'a';
+          var nextUrl = pair.current === 'a' ? pair.a : pair.b;
+
+          pair.img.style.opacity = '0';
+
+          setTimeout(function() {
+            pair.img.src = nextUrl;
+            // Wait for the new src to render, then fade in
+            requestAnimationFrame(function() {
+              requestAnimationFrame(function() {
+                pair.img.style.opacity = '1';
+              });
+            });
+          }, 300);
+        });
+
+        setTimeout(function() {
+          swapping = false;
+        }, 800);
+      }
+
+      setInterval(swap, 2000);
+    }
 
     /* Search bar rotating text */
     var searchWords = ['Color', 'Visual similarity', 'Designer'];
@@ -1481,7 +1520,7 @@
         searchEl.textContent = searchWords[searchIdx];
         searchEl.style.opacity = '1';
       }, 300);
-    }, 1500);
+    }, 2000);
   })();
   </script>
 
