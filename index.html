@@ -54,8 +54,8 @@
   <!-- ============================================ -->
   <section class="hero" id="hero">
     <!-- Background video -->
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4" type="video/mp4">
+    <video class="hero-video" muted playsinline preload="auto" poster="assets/images/hero-poster.jpg" aria-hidden="true">
+      <source data-src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4" type="video/mp4">
     </video>
     <!-- Dark overlay for text readability -->
     <div class="hero-video-overlay"></div>
@@ -208,16 +208,56 @@
       <div class="about-text">
         <h2 class="section-heading">About Me</h2>
         <div class="about-rule"></div>
-        <p class="about-body">你好，我是韦毅韬（Wilton），一名UI/UX设计师，毕业于香港岭南大学艺术科技与商业（ATB）硕士项目。商科与设计的跨学科背景让我在产品设计过程中兼顾用户体验与商业逻辑，从策略到落地关注每一个细节。</p>
-        <p class="about-body">目前我于UI/UX设计领域学习中，同时学习Vibe Coding，探索用AI加速创作流程。</p>
+        <p class="about-body">你好，我是韦毅韬（Wilton），一名 UI/UX 设计师，毕业于香港岭南大学艺术科技与商业（ATB）硕士项目。跨越商业与设计的学习经历，让我能够从用户体验与商业价值的双重视角思考产品，在策略、设计与落地的全过程中持续打磨细节。</p>
+        <p class="about-body">目前，我正持续深耕 UI/UX 设计，并学习 Vibe Coding，探索如何借助 AI 提升创作效率，将想法更快速地转化为真实、可用的产品。</p>
         <div class="about-services">
           <span class="service-tag">UI/UX Design</span>
           <span class="service-tag">Vibe Coding</span>
-          <span class="service-tag">Photography</span>
           <span class="service-tag">Vibe Design</span>
         </div>
       </div>
     </div>
+
+    <!-- About Gallery: "Other Activities" — two alternating sections -->
+    <div class="about-gallery">
+      <h3 class="gallery-heading">Other Activities</h3>
+      <div class="about-rule"></div>
+
+      <!-- Section 1: text left, 2 landscape images right -->
+      <div class="gallery-section">
+        <div class="gallery-text">
+          <h4 class="gallery-subheading">AI 艺术与设计交流</h4>
+          <p class="about-body">在香港学习期间，课余时间积极参与 AI 艺术、生成式 AI 与数字创意相关的分享会、设计交流活动，持续关注 AI 在艺术创作、产品设计及用户体验中的应用趋势。通过与设计师、开发者及行业从业者交流，不断拓展对 AI 工具、交互创新及创意工作流的理解，并将相关理念运用于个人 UI/UX 项目实践中。</p>
+          <h4 class="gallery-subheading">乐龄科技与适老化设计</h4>
+          <p class="about-body">持续关注乐龄科技（Gerontech）及适老化设计方向，关注老年用户在数字产品使用过程中的行为特征与体验痛点，研究 AI、智能硬件及数字服务在适老场景中的创新应用，培养从用户研究、包容性设计及社会价值角度思考产品设计的能力。</p>
+          <h4 class="gallery-subheading">清华大学研学项目</h4>
+          <p class="about-body">参与清华大学研学项目，学习产品创新、设计思维及商业实践等课程，深入了解创新产品从需求洞察到方案落地的完整过程。在清华企业家导师团主持的模拟面试中，分享独立设计项目及团队合作成果，凭借完整的产品思路、设计表达与项目展示能力获得最高票数认可，并受邀参与后续创新项目交流，围绕产品创新方向开展深入探讨。</p>
+        </div>
+        <div class="gallery-images gallery-images--stack">
+          <div class="gallery-placeholder landscape">
+            <img src="other%20activities/hk1.jpg" alt="HK 1">
+          </div>
+          <div class="gallery-placeholder landscape">
+            <img src="other%20activities/hk2.jpg" alt="HK 2">
+          </div>
+        </div>
+      </div>
+
+      <!-- Row: 3 image frames, first aligns with text-left, last aligns with hk2-right -->
+      <div class="gallery-frames-row">
+        <div class="gallery-placeholder" style="aspect-ratio: 4/3;">
+          <img src="other%20activities/%E6%B8%85%E5%8D%8Etitle.jpg" alt="清华 Title">
+        </div>
+        <div class="gallery-placeholder" style="aspect-ratio: 4/3;">
+          <img src="other%20activities/%E6%B8%85%E5%8D%8E2.jpg" alt="清华 2">
+        </div>
+        <div class="gallery-placeholder" style="aspect-ratio: 4/3;">
+          <img src="other%20activities/%E8%89%BA%E6%9C%AF%E8%8A%82.jpg" alt="艺术节">
+        </div>
+      </div>
+
+    </div>
+
   </section>
 
   <!-- ============================================ -->

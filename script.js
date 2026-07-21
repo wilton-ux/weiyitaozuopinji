@@ -14,13 +14,65 @@ const CONFIG = {
   socialLinks: {},
 };
 
+const REDUCED_MOTION_QUERY = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 // Update page title
 document.title = CONFIG.name + ' — Portfolio';
+
+// Hover-driven hero video — plays when mouse is in the right 40% of
+// the viewport, pauses elsewhere to save bandwidth.
+// Falls back to poster on mobile, reduced-motion, or data-saving paths.
+(function initHeroVideo() {
+  const video = document.querySelector('.hero-video');
+  const source = video?.querySelector('source[data-src]');
+  if (!video || !source) return;
+
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const shouldUsePoster =
+    window.matchMedia('(max-width: 768px)').matches ||
+    REDUCED_MOTION_QUERY.matches ||
+    Boolean(connection?.saveData);
+
+  if (shouldUsePoster) {
+    video.remove();
+    return;
+  }
+
+  // Load video source
+  source.src = source.dataset.src;
+  video.load();
+
+  video.addEventListener('loadedmetadata', function () {
+    video.classList.add('is-ready');
+    video.currentTime = 0;
+    video.pause();
+
+    // Play when mouse is in the right 40% of the viewport
+    document.addEventListener('mousemove', function (e) {
+      const threshold = window.innerWidth * 0.6; // right 40% starts at 60% width
+      if (e.clientX > threshold) {
+        if (video.paused) {
+          video.play().catch(function () {});
+        }
+      } else {
+        if (!video.paused) {
+          video.pause();
+        }
+      }
+    }, { passive: true });
+  }, { once: true });
+
+  video.addEventListener('error', function () {
+    video.remove();
+  }, { once: true });
+})();
 
 // ==============================================
 // 🖱️ CUSTOM CURSOR
 // ==============================================
 (function initCursor() {
+  if (REDUCED_MOTION_QUERY.matches) return;
+
   // Disable custom cursor on touch devices
   if ('ontouchstart' in window || window.matchMedia('(pointer: coarse)').matches) {
     const ring = document.querySelector('.cursor-ring');
@@ -118,6 +170,8 @@ document.title = CONFIG.name + ' — Portfolio';
 // 🌟 HERO GLOW — Cursor-following radial glow
 // ==============================================
 (function initHeroGlow() {
+  if (REDUCED_MOTION_QUERY.matches) return;
+
   const glow = document.getElementById('heroGlow');
   if (!glow) return;
 
@@ -146,6 +200,8 @@ document.title = CONFIG.name + ' — Portfolio';
 // 🖼️ HOVER PREVIEW — floating image on project cards
 // ==============================================
 (function initHoverPreview() {
+  if (REDUCED_MOTION_QUERY.matches) return;
+
   const preview = document.getElementById('hoverPreview');
   const previewImg = document.getElementById('hoverPreviewImg');
   const previewVideo = document.getElementById('hoverPreviewVideo');
@@ -216,6 +272,8 @@ document.title = CONFIG.name + ' — Portfolio';
 // 📜 GSAP + SCROLLTRIGGER ANIMATIONS
 // ==============================================
 (function initScrollAnimations() {
+  if (REDUCED_MOTION_QUERY.matches) return;
+
   // Wait for GSAP to load
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     // Retry after a short delay (CDN might not be loaded yet)
@@ -320,6 +378,8 @@ document.title = CONFIG.name + ' — Portfolio';
 // 🧲 MAGNETIC HOVER EFFECT (Contact links)
 // ==============================================
 (function initMagnetic() {
+  if (REDUCED_MOTION_QUERY.matches) return;
+
   document.querySelectorAll('.magnetic').forEach(function (link) {
     link.addEventListener('mousemove', function (e) {
       const rect = link.getBoundingClientRect();
@@ -355,7 +415,7 @@ document.title = CONFIG.name + ' — Portfolio';
       if (window.__lenis) {
         window.__lenis.scrollTo(target, { offset: 0, duration: 1.5 });
       } else {
-        target.scrollIntoView({ behavior: 'smooth' });
+        target.scrollIntoView({ behavior: REDUCED_MOTION_QUERY.matches ? 'auto' : 'smooth' });
       }
     });
   });
@@ -382,6 +442,8 @@ document.title = CONFIG.name + ' — Portfolio';
 // 🌀 LENIS SMOOTH SCROLL
 // ==============================================
 (function initLenis() {
+  if (REDUCED_MOTION_QUERY.matches) return;
+
   if (typeof Lenis === 'undefined' || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     setTimeout(initLenis, 200);
     return;
@@ -409,6 +471,8 @@ document.title = CONFIG.name + ' — Portfolio';
 // ✦ HERO FRAGMENTS — autonomous float + mouse parallax
 // ==============================================
 (function initFragments() {
+  if (REDUCED_MOTION_QUERY.matches) return;
+
   var fragments = document.querySelectorAll('.fragment');
   var hero = document.getElementById('hero');
   if (!fragments.length || !hero) return;
@@ -496,6 +560,8 @@ document.title = CONFIG.name + ' — Portfolio';
 // 🃏 WORK CARD — 3D micro-tilt
 // ==============================================
 (function initCardTilt() {
+  if (REDUCED_MOTION_QUERY.matches) return;
+
   var cards = document.querySelectorAll('.work-card');
 
   cards.forEach(function (card) {
@@ -538,6 +604,8 @@ document.title = CONFIG.name + ' — Portfolio';
 //    Ported from React Three Fiber to Canvas 2D
 // ==============================================
 (function initAntigravity() {
+  if (REDUCED_MOTION_QUERY.matches) return;
+
   var hero = document.getElementById('hero');
   var canvas = document.getElementById('antigravityCanvas');
   if (!hero || !canvas) return;
